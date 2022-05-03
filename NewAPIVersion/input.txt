@@ -1,0 +1,10 @@
+DFID
+with open
+small
+R,R,_
+B,B,_
+G,G,_
+Goal state:
+R,R,_
+B,G,_
+G,_,B

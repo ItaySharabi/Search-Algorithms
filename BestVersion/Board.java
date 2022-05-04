@@ -9,8 +9,6 @@ public class Board {
     private int dim;
     private String[][] board;
     private final List<Marble> movableMarbles;
-//    private Marble operatedMarble;
-//    private Direction operatedMarbleDirection;
 
     public Board(String[][] board) {
         movableMarbles = new ArrayList<>();

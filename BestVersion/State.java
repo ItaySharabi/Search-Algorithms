@@ -1,2 +1,5 @@
-package BestVersion;public class State {
+package BestVersion;
+
+public class State {
+
 }

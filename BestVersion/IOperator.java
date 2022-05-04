@@ -1,2 +1,4 @@
-package BestVersion;public interface IOperator {
+package BestVersion;
+
+public interface IOperator {
 }

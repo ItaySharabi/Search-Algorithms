@@ -36,7 +36,7 @@ public abstract class Algorithm {
     protected String path(Node n) {
         if (null == n) {return "";}
         Marble m = n.getOperatedMarble();
-        Board b = n.getBoardState();
+        Board b = n.getState();
         if (null == m) {return "";}
         if (prev_table.get(b) == null) {return m.getTag() + ":(" + (m.getI()+1) + "," + (m.getJ()+1)+ ")";}
         return path(prev_table.get(b)) + "--" + prev(n) + "" + m.getTag() + ":(" + (m.getI() + 1) + "," + (m.getJ()+1)+ ")";

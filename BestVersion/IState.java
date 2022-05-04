@@ -1,2 +1,4 @@
-package BestVersion;public interface IState {
+package BestVersion;
+
+public interface IState {
 }

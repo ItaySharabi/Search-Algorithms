@@ -1,10 +1,10 @@
-DFID
+BFS
 with open
 small
 R,R,_
 B,B,_
 G,G,_
 Goal state:
-R,R,B
+R,R,_
 B,G,_
-G,_,_
+G,_,B

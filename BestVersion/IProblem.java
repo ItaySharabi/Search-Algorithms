@@ -1,2 +1,4 @@
-package BestVersion;public interface IProblem {
+package BestVersion;
+
+public interface IProblem {
 }

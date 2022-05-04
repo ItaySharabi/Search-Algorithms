@@ -21,34 +21,34 @@ public class BFS extends Algorithm {
         Queue<Node> queue = new LinkedList<>();
 
         queue.add(new Node(start));
-        Node curr, next;
-        Board g;
+        Node curr;
+//        Board g;
+        int debug = 0;
 
         while (!queue.isEmpty()) {
 
             curr = queue.poll();
 
             // Do exploring...
-            frontier.remove(curr.getBoardState());
-            exploredSet.put(curr.getBoardState(), curr);
-
+            frontier.remove(curr.getState());
+            exploredSet.put(curr.getState(), curr);
+            System.out.println("Curr: " + curr);
             // Apply allowed operators on any movable marble from current board state:
-            for (Direction d : Direction.values()) {
-                if (Operator.opposite(d).equals(curr.getOperatedMarbleDirection())) {continue;}
-                for (Marble m : curr.getMovableMarbles()) {
-                    g = Operator.moveTile(curr, d, m);
-                    if (null == g) {continue;}
+            System.out.println("Allowed Operators(n): ");
+            System.out.println(Operator.allowedOperators(curr));
+            for (Operator operator : Operator.allowedOperators(curr)) {
+                Node next = operator.apply(curr);
+                System.out.println("New Node: " + next);
+//                if (null == next) {continue;}
 
-                    if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
-                        if (goals.contains(g)) {
-                            setPrev(g, curr);
-                            Node goalNode = new Node(g, m , d,
-                                    curr.getWeight() + m.getCost());
-                            return output(path(goalNode), goalNode.getWeight());
-                        }
-                        setPrev(g, curr);
-                        next = new Node(g, m, d, curr.getWeight() + m.getCost());
-                        frontier.put(g, next);
+                if (!(frontier.containsKey(next.getState()) || exploredSet.containsKey(next.getState()))) {
+                    if (goals.contains(next.getState())) {
+//                            setPrev(g, curr);
+                        return output(path(next), next.getWeight());
+                    }
+                    else {
+//                            setPrev(g, curr);
+                        frontier.put(next.getState(), next);
                         queue.add(next);
                     }
                 }

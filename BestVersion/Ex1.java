@@ -18,11 +18,12 @@ public class Ex1 {
         boolean showOpenList = io.getVerbose();
 
 
-//        Algorithm bfs = new BFS();
-        Algorithm dfid = new DFID();
+        Algorithm bfs = new BFS();
+//        Algorithm dfid = new DFID();
         List<Board> goals = new ArrayList<>();
         goals.add(goal);
-        String out = dfid.execute(start, goals, true);
+        String out = bfs.execute(start, goals, true);
+//        String out = dfid.execute(start, goals, true);
         System.out.println(out);
 //        try {
 //            io.write(

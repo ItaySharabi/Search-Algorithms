@@ -1,37 +1,41 @@
 package BestVersion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Operator {
+    private Pair p;
 
-    private Operator() {}
+    private Operator(Pair p) {this.p = p;}
 
-    public static Board moveTile(Node n, Direction d, Tile t) {
-        if (null == n || null == t || null == d) {return null;}
-        if (n.getOperatedMarbleDirection() == opposite(d)) {return null;}
-        if (!n.getBoardState().movableTile(t, d)) {return null;}
-
-        String[][] newBoard = n.getBoardState().getBoard();
-        int i = t.getI();
-        int j = t.getJ();
-
-        switch (d) {
-            case UP:
-                newBoard[i-1][j] = t.getTag();
-                break;
-            case DOWN:
-                newBoard[i+1][j] = t.getTag();
-                break;
-            case LEFT:
-                newBoard[i][j-1] = t.getTag();
-                break;
-            case RIGHT:
-                newBoard[i][j+1] = t.getTag();
-                break;
-        }
-        newBoard[i][j] = "_";
-        return new Board(newBoard);
+    public Node apply(Node n) {
+        if (null == n || null == p) {return null;}
+        return new Node(n, p);
     }
 
-    public static Direction opposite(Direction d) {
+    public static List<Operator> allowedOperators(Node n) {
+        List<Operator> allowedOperators = new ArrayList<>();
+        Marble badMarble = null;
+        Direction badDir = null;
+        if (null != n.getParent()) {
+            badMarble = n.getOperatedMarble();
+            badDir = opposite(n.getOperatedMarbleDirection());
+        }
+
+        for (Direction d : Direction.values()) {
+            for (Marble m : n.getState().getMovableMarbles()) {
+                if (null != badMarble) {
+                    if (m.equals(badMarble) && badDir.equals(d)) {continue;}
+                }
+                if (n.getState().movableTile(m, d)) {
+                    allowedOperators.add(new Operator(new Pair(d, m)));
+                }
+            }
+        }
+        return allowedOperators;
+    }
+
+    private static Direction opposite(Direction d) {
         switch (d) {
             case UP:
                 return Direction.DOWN;
@@ -43,5 +47,12 @@ public class Operator {
                 return Direction.LEFT;
         }
         return Direction.UP;
+    }
+
+    @Override
+    public String toString() {
+        return "Operator{" +
+                p +
+                '}';
     }
 }

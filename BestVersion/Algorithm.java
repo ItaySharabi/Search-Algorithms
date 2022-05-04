@@ -1,17 +1,11 @@
 package BestVersion;
 
-import java.util.Hashtable;
 import java.util.List;
 
 public abstract class Algorithm {
     protected String name = "~Algorithm~";
     private final long start_time = System.currentTimeMillis();
-    private Hashtable<Board, Node> prev_table;
 
-    public Algorithm() {
-        this.prev_table = new Hashtable<>();
-    }
-    protected void clearPrevTable() {this.prev_table = new Hashtable<>();}
     public String getName() {
         return name;
     }
@@ -36,10 +30,9 @@ public abstract class Algorithm {
     protected String path(Node n) {
         if (null == n) {return "";}
         Marble m = n.getOperatedMarble();
-        Board b = n.getState();
         if (null == m) {return "";}
-        if (prev_table.get(b) == null) {return m.getTag() + ":(" + (m.getI()+1) + "," + (m.getJ()+1)+ ")";}
-        return path(prev_table.get(b)) + "--" + prev(n) + "" + m.getTag() + ":(" + (m.getI() + 1) + "," + (m.getJ()+1)+ ")";
+        if (null == n.getParent()) {return m.getTag() + ":(" + (m.getI()+1) + "," + (m.getJ()+1)+ ")";}
+        return path(n.getParent()) + "--" + prev(n) + "" + m.getTag() + ":(" + (m.getI() + 1) + "," + (m.getJ()+1)+ ")";
     }
 
     private String prev(Node n) {
@@ -63,9 +56,5 @@ public abstract class Algorithm {
         }
 
         return "";
-    }
-
-    protected void setPrev(Board c, Node prev) {
-        prev_table.put(c, prev);
     }
 }

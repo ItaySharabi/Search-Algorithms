@@ -19,10 +19,9 @@ public class Ex1 {
         Board goal = new Board(io.getGoalGameState());
         boolean showOpenList = io.getVerbose();
 
-
-        Algorithm bfs = new BFS();
+        IProblem p = new Problem(start, goal);
+        Algorithm bfs = new BFS(p, showOpenList);
 //        Algorithm dfid = new DFID();
-        List<Board> goals = new ArrayList<>();
 
 //        Node n1 = new Node(start);
 //        Hashtable<Board, Node> map = new Hashtable<>();
@@ -42,8 +41,7 @@ public class Ex1 {
 //            }
 //        }
 //        System.out.println(map);
-        goals.add(goal);
-        String out = bfs.execute(start, goals, showOpenList);
+        String out = bfs.execute();
 //        String out = dfid.execute(start, goals, showOpenList);
         System.out.println(out);
 //        System.out.println("Tile's created: " + Marble.marbleCount);

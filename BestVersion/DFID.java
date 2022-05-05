@@ -9,21 +9,18 @@ public class DFID extends Algorithm {
     private final Hashtable<Board, Node> exploredSet;
 
 
-    public DFID() {
+    public DFID(IProblem p, boolean verbose) {
+        super(p, verbose);
         this.name = "DFID";
-//        this.frontier = new Hashtable<>();
         this.exploredSet = new Hashtable<>();
     }
 
 
 
-    private String LimitedDFS(Node curr, List<Board> goals, int depth, Hashtable<Board, Node> workingBranch) {
+    private String LimitedDFS(Node curr, int depth, Hashtable<Board, Node> workingBranch) {
 
-        if (goals.contains(curr.getState())) {
-            if (goals.size() > 1) {
-                System.out.println("Goal found!");
-                System.out.println("More goals could be found!");
-            }
+        if (isGoal(curr)) {
+
             return output(path(curr), curr.getWeight());
         } else if (depth == 0) {
             return "cutoff";
@@ -37,7 +34,7 @@ public class DFID extends Algorithm {
             Board g = operator.apply(curr);
             if (null == g || workingBranch.containsKey(g)) {continue;}
             next = new Node(curr, g);
-            result = LimitedDFS(next, goals, depth-1, workingBranch);
+            result = LimitedDFS(next, depth-1, workingBranch);
 
             if (result.equals("cutoff")) {
                 isCutoff = true;
@@ -55,16 +52,16 @@ public class DFID extends Algorithm {
     }
 
     @Override
-    public String execute(Board start, List<Board> goals, boolean withOpen) {
+    public String execute() {
 
-        int l = 10; // limit
+        int l = Integer.MAX_VALUE; // limit
 
-        Node root = new Node(start);
+        Node root = new Node(getStart());
 
         String output;
 
         for (int i = 1; i < l; ++i) {
-            output = LimitedDFS(root, goals, i, new Hashtable<>());
+            output = LimitedDFS(root, i, new Hashtable<>());
             if (!output.equals("cutoff")) {
                 System.out.println("Path found!");
                 return output;

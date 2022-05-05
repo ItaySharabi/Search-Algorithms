@@ -5,12 +5,39 @@ import java.util.List;
 public abstract class Algorithm {
     protected String name = "~Algorithm~";
     private final long start_time = System.currentTimeMillis();
+    private Board start, goal;
+    private boolean withOpen;
+
+    public Algorithm(IProblem problem, boolean verbose) {
+        start = problem.getStart();
+        goal = problem.getGoal();
+    }
+
+    public Board getGoal() {
+        return goal;
+    }
+
+    public Board getStart() {
+        return start;
+    }
+
+    public boolean withOpen() {
+        return withOpen;
+    }
+
+    protected boolean isGoal(Board b) {
+        return b.equals(goal);
+    }
+
+    protected boolean isGoal(Node n) {
+        return isGoal(n.getState());
+    }
 
     public String getName() {
         return name;
     }
 
-    public abstract String execute(Board start, List<Board> goals, boolean withOpen);
+    public abstract String execute();
 
 
     public String output(String path, int cost) {

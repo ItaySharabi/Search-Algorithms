@@ -5,6 +5,6 @@ R,R,_
 B,B,_
 G,G,_
 Goal state:
-_,R,G
-G,R,_
-B,_,B
+R,R,B
+B,G,_
+G,_,_

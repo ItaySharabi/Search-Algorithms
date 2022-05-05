@@ -9,6 +9,7 @@ public class BFS extends Algorithm {
 
     private final Hashtable<Board, Node> frontier;
     private final Hashtable<Board, Node> exploredSet;
+    private int nodes = 0;
 
     public BFS() {
         this.name = "BFS";
@@ -22,33 +23,28 @@ public class BFS extends Algorithm {
 
         queue.add(new Node(start));
         Node curr;
-//        Board g;
         int debug = 0;
 
         while (!queue.isEmpty()) {
-
             curr = queue.poll();
-
             // Do exploring...
             frontier.remove(curr.getState());
             exploredSet.put(curr.getState(), curr);
-            System.out.println("Curr: " + curr);
+            System.out.println("Curr:\n" + curr);
             // Apply allowed operators on any movable marble from current board state:
-            System.out.println("Allowed Operators(n): ");
-            System.out.println(Operator.allowedOperators(curr));
             for (Operator operator : Operator.allowedOperators(curr)) {
-                Node next = operator.apply(curr);
-                System.out.println("New Node: " + next);
-//                if (null == next) {continue;}
-
-                if (!(frontier.containsKey(next.getState()) || exploredSet.containsKey(next.getState()))) {
-                    if (goals.contains(next.getState())) {
-//                            setPrev(g, curr);
+                Board g = operator.apply(curr);
+                System.out.println("g <- operator(curr):\n");
+                System.out.println(g);
+                if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
+                    Node next = new Node(curr, g);
+                    System.out.println("Save this state in a Node:");
+                    System.out.println(next);
+                    if (goals.contains(g)) {
                         return output(path(next), next.getWeight());
                     }
                     else {
-//                            setPrev(g, curr);
-                        frontier.put(next.getState(), next);
+                        frontier.put(g, next);
                         queue.add(next);
                     }
                 }

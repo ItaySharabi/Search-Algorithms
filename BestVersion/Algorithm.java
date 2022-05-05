@@ -12,6 +12,8 @@ public abstract class Algorithm {
 
     public abstract String execute(Board start, List<Board> goals, boolean withOpen);
 
+
+
     public String output(String path, int cost) {
         return path
                 .substring(2)

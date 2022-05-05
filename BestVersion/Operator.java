@@ -8,9 +8,9 @@ public class Operator {
 
     private Operator(Pair p) {this.p = p;}
 
-    public Node apply(Node n) {
+    public Board apply(Node n) {
         if (null == n || null == p) {return null;}
-        return new Node(n, p);
+        return new Board(n.getState(), p);
     }
 
     public static List<Operator> allowedOperators(Node n) {
@@ -27,7 +27,7 @@ public class Operator {
                 if (null != badMarble) {
                     if (m.equals(badMarble) && badDir.equals(d)) {continue;}
                 }
-                if (n.getState().movableTile(m, d)) {
+                if (n.getState().movableMarble(m, d)) {
                     allowedOperators.add(new Operator(new Pair(d, m)));
                 }
             }

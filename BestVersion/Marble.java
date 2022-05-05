@@ -1,10 +1,16 @@
 package BestVersion;
 
-public class Marble extends Tile {
+public class Marble {
     private int cost;
+    private int i, j;
+    private String tag;
+    static int marbleCount = 0;
 
     public Marble(String tag, int i, int j) {
-        super(tag, i, j);
+        marbleCount++;
+        this.i = i;
+        this.j = j;
+        this.tag = tag;
         if (tag.equals("R")) {
             cost = 1;
         }
@@ -17,10 +23,21 @@ public class Marble extends Tile {
         else if (tag.equals("Y")) {
             cost = 1;
         }
+        else {
+            cost = 0;
+        }
     }
 
-    public Marble(Tile t) {
-        this(t.getTag(), t.getI(), t.getJ());
+    public int getI() {
+        return i;
+    }
+
+    public int getJ() {
+        return j;
+    }
+
+    public String getTag() {
+        return tag;
     }
 
     public int getCost() {
@@ -29,13 +46,18 @@ public class Marble extends Tile {
 
     @Override
     public boolean equals(Object o) {
-        return super.equals(o);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Marble m = (Marble) o;
+        return i == m.i &&
+                j == m.j &&
+                tag.equals(m.tag);
     }
 
     @Override
     public String toString() {
         return "Marble[" +
-                "`" + getTag() + "`,"
+                "`" + tag + "`,"
                 + "(" + i + "," + j + ")"
                 + "]";
     }

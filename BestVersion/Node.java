@@ -6,12 +6,8 @@ public class Node {
 
     private Node parent;
     private Board boardState;
-    private Direction operatedMarbleDirection;
-    private Marble operatedMarble;
-//    private Index operatedMarbleIndex;
     private int depth;
     private int weight;
-//    private final long timeCreated;
     private static int nodeCounter = 1;
     private int key;
 
@@ -25,35 +21,11 @@ public class Node {
         return key;
     }
 
-    public Node(Node n, Pair p) {
+    public Node(Node n, Board b) {
         key = nodeCounter++;
-        Marble t = p.getMarble();
-        Direction d = p.getDirection();
-        int i = t.getI(), j = t.getJ();
-
-        // Calculate the new index in which the moved marble is at
-        switch (d) {
-            case UP:
-                i -= 1;
-                break;
-            case DOWN:
-                i += 1;
-                break;
-            case LEFT:
-                j -= 1;
-                break;
-            case RIGHT:
-                j += 1;
-                break;
-        }
-        String[][] newBoard = n.boardState.getBoard();
-        newBoard[i][j] = t.getTag();
-        newBoard[t.getI()][t.getJ()] = "_";
-        this.boardState = new Board(newBoard);
+        this.boardState = b;
         this.parent = n;
-        this.operatedMarbleDirection = d;
-        this.operatedMarble = new Marble(t.getTag(), i, j);
-        this.weight = n.getWeight() + t.getCost();
+        this.weight = n.getWeight() + b.getOperatedMarble().getCost();
         this.depth = n.depth + 1;
     }
 
@@ -62,11 +34,11 @@ public class Node {
     }
 
     public Marble getOperatedMarble() {
-        return operatedMarble;
+        return boardState.getOperatedMarble();
     }
 
     public Direction getOperatedMarbleDirection() {
-        return operatedMarbleDirection;
+        return boardState.getOperatedMarbleDirection();
     }
 
     public int getWeight() {

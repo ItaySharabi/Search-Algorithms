@@ -76,9 +76,9 @@ public class IOHandler {
                     board[i][j] = "_";}
             }
         }
-        if (dim == 3 && countR > 2 || countB > 2 || countG > 2 || countY > 0) {
+        if (dim == 3 && (countR > 2 || countB > 2 || countG > 2 || countY > 0)) {
             throw new InputMismatchException("IOHandler:: Wrong GameBoard input");
-        } else if (dim == 5 && countR > 4 || countB > 4 || countG > 4 || countY > 4) {
+        } else if (dim == 5 && (countR > 4 || countB > 4 || countG > 4 || countY > 4)) {
             throw new InputMismatchException("IOHandler:: Wrong GameBoard input");
         }
         return board;

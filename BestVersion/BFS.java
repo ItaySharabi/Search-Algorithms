@@ -38,8 +38,8 @@ public class BFS extends Algorithm {
                 System.out.println(g);
                 if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
                     Node next = new Node(curr, g);
-                    System.out.println("Save this state in a Node:");
-                    System.out.println(next);
+//                    System.out.println("Save this state in a Node:");
+//                    System.out.println(next);
                     if (goals.contains(g)) {
                         return output(path(next), next.getWeight());
                     }

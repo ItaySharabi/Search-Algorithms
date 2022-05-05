@@ -3,6 +3,7 @@ package BestVersion;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Board {
 
@@ -13,7 +14,6 @@ public class Board {
     private Marble operatedMarble;
     static int boardCount = 0;
     private int hashCode;
-//    private int hashCode;
 
     public Board(String[][] board) {
         boardCount++;
@@ -22,10 +22,14 @@ public class Board {
         setIdentifier();
     }
 
+    /**
+     * This method will set a unique integer identifier for
+     * this board, based on some pseudo-random multiplications
+     * with prime numbers (So that less boards will have the same multiplication result!).
+     * This helps with generating the exact amount of boards during the algorithm's execution time.
+     */
     private void setIdentifier() {
-        int count = 0, p = 0;
         String[][] b = getBoard();
-//        int[] A = new int[dim*dim];
         hashCode = 0;
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
@@ -36,18 +40,16 @@ public class Board {
                 } else if (b[i][j].equals("G")) {
                     hashCode += Ex1.primes[j];
                 } else if (b[i][j].equals("Y")) {
-                    hashCode += Ex1.primes[(i + j) % (dim*dim)];
+                    hashCode += Ex1.primes[i];
                 } else {
-                    hashCode += Ex1.primes[0];
+                    hashCode += Ex1.primes[j];
                 }
-                hashCode *= (int)(movableMarbles.size()/2);
-//                hashCode += (A[count++] * (int)Math.pow(10, p++));
+                hashCode *= (int)(movableMarbles.size()*Ex1.primes[11]);
             }
         }
     }
 
     public Board(Board b, Pair p) {
-//        this(b.getBoard());
         boardCount++;
         Marble t = p.getMarble();
         Direction d = p.getDirection();
@@ -72,10 +74,19 @@ public class Board {
         newBoard[i][j] = t.getTag();
         newBoard[t.getI()][t.getJ()] = "_";
         movableMarbles = new ArrayList<>();
-        operatedMarble = new Marble(t.getTag(), i, j);
-        operatedMarbleDirection = p.getDirection();
         setGameBoard(newBoard);
+        operatedMarble = get(i, j);
+        operatedMarbleDirection = p.getDirection();
         setIdentifier();
+    }
+
+    public Marble get(int i, int j) {
+        for (Marble m : movableMarbles) {
+            if (m.getJ() == j && m.getI() == i) {
+                return m;
+            }
+        }
+        return null;
     }
 
     public Marble getOperatedMarble() {
@@ -123,6 +134,10 @@ public class Board {
                 return i < dim-1 && board[i+1][j].equals("_");
         }
         return false;
+    }
+
+    public static int getBoardCount() {
+        return boardCount;
     }
 
     public boolean movableMarble(int i, int j) {

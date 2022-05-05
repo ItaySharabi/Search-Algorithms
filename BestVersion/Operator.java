@@ -16,16 +16,16 @@ public class Operator {
     public static List<Operator> allowedOperators(Node n) {
         List<Operator> allowedOperators = new ArrayList<>();
         Marble badMarble = null;
-        Direction badDir = null;
+        Direction prevDirection = null;
         if (null != n.getParent()) {
             badMarble = n.getOperatedMarble();
-            badDir = opposite(n.getOperatedMarbleDirection());
+            prevDirection = opposite(n.getOperatedMarbleDirection());
         }
 
         for (Direction d : Direction.values()) {
             for (Marble m : n.getState().getMovableMarbles()) {
                 if (null != badMarble) {
-                    if (m.equals(badMarble) && badDir.equals(d)) {continue;}
+                    if (m.equals(badMarble) && prevDirection.equals(d)) {continue;}
                 }
                 if (n.getState().movableMarble(m, d)) {
                     allowedOperators.add(new Operator(new Pair(d, m)));

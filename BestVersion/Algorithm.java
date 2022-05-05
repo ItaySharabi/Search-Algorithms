@@ -13,13 +13,12 @@ public abstract class Algorithm {
     public abstract String execute(Board start, List<Board> goals, boolean withOpen);
 
 
-
     public String output(String path, int cost) {
         return path
                 .substring(2)
                 .substring(0, path.length()-2) +
                 "\nNum: " +
-                Node.getNumNodesCreated() +
+                Board.getBoardCount() +
                 "\nCost: " +
                 cost +
                 "\ntime: " + (System.currentTimeMillis() - getStartTime())/1000.0;

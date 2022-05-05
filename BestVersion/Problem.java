@@ -1,20 +1,20 @@
 package BestVersion;
 
 public class Problem implements IProblem{
-    private Board start, goal;
+    private State start, goal;
 
-    public Problem(Board s, Board g) {
+    public Problem(State s, State g) {
         start = s;
         goal = g;
     }
 
     @Override
-    public Board getStart() {
+    public State getStart() {
         return start;
     }
 
     @Override
-    public Board getGoal() {
+    public State getGoal() {
         return goal;
     }
 }

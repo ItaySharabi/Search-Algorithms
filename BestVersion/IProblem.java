@@ -2,6 +2,6 @@ package BestVersion;
 
 public interface IProblem {
 
-    public Board getStart();
-    public Board getGoal();
+    public State getStart();
+    public State getGoal();
 }

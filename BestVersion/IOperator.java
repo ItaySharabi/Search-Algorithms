@@ -1,5 +1,5 @@
 package BestVersion;
 
 public interface IOperator {
-    public Board apply(Node n);
+    public State apply(Node n);
 }

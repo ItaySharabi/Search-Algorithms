@@ -14,10 +14,29 @@ public class ManhattanDistance extends HeuristicEval {
         super(goal);
         this.goalNode = goal;
         this.board = goal.getState().getBoard();
+        dim = board.length;
     }
 
     @Override
-    public double heuristicVal(Node n) {
-        return 0;
+    public int heuristicVal(Node n) {
+
+        int h = 0;
+        for(int i=0;i<dim;++i){
+            for(int j=0;j<dim;++j){
+                int value = boardState.getBoard()[i][j];
+                if(value==0)
+                    continue;
+                int cRow = value/columns;
+                int cColumn = value%columns;
+                if(cColumn==0){
+                    cColumn = columns-1;
+                    cRow--;
+                }else{
+                    cColumn--;
+                }
+                h+=(Math.abs(i-cRow)+Math.abs(j-cColumn))*boardState.getPriceOfValue(value);
+            }
+        }
+        return h;
     }
 }

@@ -1,4 +1,4 @@
-DFID
+BFS
 no open
 big
 R,R,_,R,R
@@ -8,7 +8,7 @@ _,_,_,_,_
 Y,Y,Y,Y,_
 Goal state:
 R,R,_,R,R
-B,B,G,_,G
+B,G,B,_,G
 G,G,_,B,B
 _,_,_,_,_
 Y,Y,Y,Y,_

@@ -6,8 +6,9 @@ import java.util.Queue;
 
 public class BFS extends Algorithm {
 
-    private final Hashtable<Board, Node> frontier;
-    private final Hashtable<Board, Node> exploredSet;
+    private final Hashtable<State, Node> frontier;
+    private final Hashtable<State, Node> exploredSet;
+//    private int nodesExpanded = 0;
 
 
     public BFS(IProblem p, boolean verbose) {
@@ -34,7 +35,7 @@ public class BFS extends Algorithm {
             exploredSet.put(curr.getState(), curr);
             // Apply allowed operators on any movable marble from current board state:
             for (Operator operator : Operator.allowedOperators(curr)) {
-                Board g = operator.apply(curr);
+                State g = operator.apply(curr);
                 if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
                     Node next = new Node(curr, g);
                     if (isGoal(g)) {

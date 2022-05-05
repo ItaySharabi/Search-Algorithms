@@ -1,32 +1,34 @@
 package BestVersion;
 
-import java.util.List;
-
 public class Node {
 
-    private Node parent;
-    private Board boardState;
+    private final Node parent;
+    private final State boardState;
     private int depth;
     private int weight;
     private static int nodeCounter = 1;
-    private int key;
+//    private int key;
 
-    public Node(Board b) {
-        key = nodeCounter++;
+    public Node(State b) {
+        nodeCounter++;
         this.boardState = b;
         this.parent = null;
     }
 
-    public int getKey() {
-        return key;
-    }
+//    public int getKey() {
+//        return key;
+//    }
 
-    public Node(Node n, Board b) {
-        key = nodeCounter++;
+    public Node(Node n, State b) {
+        nodeCounter++;
         this.boardState = b;
         this.parent = n;
         this.weight = n.getWeight() + b.getOperatedMarble().getCost();
         this.depth = n.depth + 1;
+    }
+
+    public int getDepth() {
+        return depth;
     }
 
     public Node getParent() {
@@ -53,7 +55,7 @@ public class Node {
         return nodeCounter;
     }
 
-    public Board getState() {
+    public State getState() {
         return boardState;
     }
 
@@ -62,12 +64,13 @@ public class Node {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Node node = (Node) o;
+        System.out.println("How are 2 nodes equal?");
         return boardState.equals(node.boardState);
     }
 
     @Override
     public String toString() {
-        return "Node #" + key + "{" +
+        return "Node{" +
                 "boardState=\n" + boardState;
 //                ", timeCreated=" + timeCreated/1000.0;
     }

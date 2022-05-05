@@ -1,26 +1,22 @@
 package BestVersion;
 
 import java.util.Hashtable;
-import java.util.List;
 
 public class DFID extends Algorithm {
 
-//    private final Hashtable<Board, Node> frontier;
-    private final Hashtable<Board, Node> exploredSet;
+    private Hashtable<State, Node> H;
 
 
     public DFID(IProblem p, boolean verbose) {
         super(p, verbose);
         this.name = "DFID";
-        this.exploredSet = new Hashtable<>();
     }
 
 
 
-    private String LimitedDFS(Node curr, int depth, Hashtable<Board, Node> workingBranch) {
+    private String LimitedDFS(Node curr, int depth, Hashtable<State, Node> workingBranch) {
 
         if (isGoal(curr)) {
-
             return output(path(curr), curr.getWeight());
         } else if (depth == 0) {
             return "cutoff";
@@ -31,7 +27,7 @@ public class DFID extends Algorithm {
         String result;
 
         for (Operator operator : Operator.allowedOperators(curr)) {
-            Board g = operator.apply(curr);
+            State g = operator.apply(curr);
             if (null == g || workingBranch.containsKey(g)) {continue;}
             next = new Node(curr, g);
             result = LimitedDFS(next, depth-1, workingBranch);
@@ -59,14 +55,14 @@ public class DFID extends Algorithm {
         Node root = new Node(getStart());
 
         String output;
-
         for (int i = 1; i < l; ++i) {
-            output = LimitedDFS(root, i, new Hashtable<>());
+            H = new Hashtable<>();
+            output = LimitedDFS(root, i, H);
             if (!output.equals("cutoff")) {
-                System.out.println("Path found!");
+//                System.out.println("Path found!");
                 return output;
             }
-            System.out.println(output);
+//            System.out.println(output);
         }
         return "no path";
     }

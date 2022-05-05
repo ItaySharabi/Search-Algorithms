@@ -18,7 +18,7 @@
 //
 //    @Test
 //    public void test_equals() {
-//        Board b = new Board(io.getInitialGameState());
+//        State b = new State(io.getInitialGameState());
 //        Node n = new Node(b);
 //
 //        System.out.println(n);

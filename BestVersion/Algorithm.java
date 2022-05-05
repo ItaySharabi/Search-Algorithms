@@ -1,23 +1,22 @@
 package BestVersion;
 
-import java.util.List;
-
 public abstract class Algorithm {
     protected String name = "~Algorithm~";
     private final long start_time = System.currentTimeMillis();
-    private Board start, goal;
+    private State start, goal;
     private boolean withOpen;
 
     public Algorithm(IProblem problem, boolean verbose) {
+        this.withOpen = verbose;
         start = problem.getStart();
         goal = problem.getGoal();
     }
 
-    public Board getGoal() {
+    public State getGoal() {
         return goal;
     }
 
-    public Board getStart() {
+    public State getStart() {
         return start;
     }
 
@@ -25,7 +24,7 @@ public abstract class Algorithm {
         return withOpen;
     }
 
-    protected boolean isGoal(Board b) {
+    protected boolean isGoal(State b) {
         return b.equals(goal);
     }
 
@@ -41,11 +40,15 @@ public abstract class Algorithm {
 
 
     public String output(String path, int cost) {
+//        System.out.println("Path: " + path);
         return path
                 .substring(2)
                 .substring(0, path.length()-2) +
-                "\nNum: " +
-                Board.getBoardCount() +
+                "\nNum: (Boards)" +
+//                Node.getNumNodesCreated() +
+                    State.getBoardCount() +
+                    ", (Nodes)" +
+                    Node.getNumNodesCreated() +
                 "\nCost: " +
                 cost +
                 "\ntime: " + (System.currentTimeMillis() - getStartTime())/1000.0;

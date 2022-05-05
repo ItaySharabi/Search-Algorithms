@@ -9,9 +9,9 @@ public class Operator {
     private Operator(Pair p) {this.p = p;}
 
     // Apply the operator to node `n` with a `Marble` and a `Direction` (Located in field `p`).
-    public Board apply(Node n) {
+    public State apply(Node n) {
         if (null == n || null == p) {return null;}
-        return new Board(n.getState(), p);
+        return new State(n.getState(), p);
     }
 
     /**

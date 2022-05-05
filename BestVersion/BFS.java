@@ -23,23 +23,20 @@ public class BFS extends Algorithm {
 
         queue.add(new Node(start));
         Node curr;
-        int debug = 0;
 
         while (!queue.isEmpty()) {
             curr = queue.poll();
             // Do exploring...
+            if (withOpen) {
+                System.out.println(queue);
+            }
             frontier.remove(curr.getState());
             exploredSet.put(curr.getState(), curr);
-            System.out.println("Curr:\n" + curr);
             // Apply allowed operators on any movable marble from current board state:
             for (Operator operator : Operator.allowedOperators(curr)) {
                 Board g = operator.apply(curr);
-                System.out.println("g <- operator(curr):\n");
-                System.out.println(g);
                 if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
                     Node next = new Node(curr, g);
-//                    System.out.println("Save this state in a Node:");
-//                    System.out.println(next);
                     if (goals.contains(g)) {
                         return output(path(next), next.getWeight());
                     }

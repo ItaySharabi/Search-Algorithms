@@ -43,12 +43,12 @@ public class Ex1 {
 //        }
 //        System.out.println(map);
         goals.add(goal);
-        String out = bfs.execute(start, goals, true);
-//        String out = dfid.execute(start, goals, true);
+        String out = bfs.execute(start, goals, showOpenList);
+//        String out = dfid.execute(start, goals, showOpenList);
         System.out.println(out);
-        System.out.println("Tile's created: " + Marble.marbleCount);
-        System.out.println("Board's created: " + Board.boardCount);
-        System.out.println("Node's created: " + Node.getNumNodesCreated());
+//        System.out.println("Tile's created: " + Marble.marbleCount);
+//        System.out.println("Board's created: " + Board.getBoardCount());
+//        System.out.println("Node's created: " + Node.getNumNodesCreated());
 //        try {
 //            io.write(
 //                    AlgorithmsLibrary.execute(algoName, showOpenList, start, goal)

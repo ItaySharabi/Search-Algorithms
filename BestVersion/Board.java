@@ -12,7 +12,7 @@ public class Board {
     private final List<Marble> movableMarbles;
     private Direction operatedMarbleDirection;
     private Marble operatedMarble;
-    static int boardCount = 0;
+    private static int boardCount = 0;
     private int hashCode;
 
     public Board(String[][] board) {
@@ -36,15 +36,15 @@ public class Board {
                 if (b[i][j].equals("R")) {
                     hashCode += Ex1.primes[dim-1];
                 } else if (b[i][j].equals("B")) {
-                    hashCode += Ex1.primes[i];
+                    hashCode += ((int)Math.pow(-1, i) * Ex1.primes[j]);
                 } else if (b[i][j].equals("G")) {
-                    hashCode += Ex1.primes[j];
+                    hashCode += Ex1.primes[2*i + j];
                 } else if (b[i][j].equals("Y")) {
-                    hashCode += Ex1.primes[i];
+                    hashCode += ((int)Math.pow(-1, j) * Ex1.primes[i]);
                 } else {
-                    hashCode += Ex1.primes[j];
+                    hashCode += Ex1.primes[j] ;
                 }
-                hashCode *= (int)(movableMarbles.size()*Ex1.primes[11]);
+                hashCode *= (movableMarbles.size()*Ex1.primes[i + 2*j]);
             }
         }
     }
@@ -179,23 +179,6 @@ public class Board {
     public int hashCode() {
         return hashCode;
     }
-
-
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Board b1 = (Board) o;
-//        if (dim != b1.size()) {return false;}
-//        for (int i = 0; i < dim; ++i) {
-//            for (int j = 0; j < dim; ++j) {
-//                if (!board[i][j].equals(b1.board[i][j])) {
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
-//    }
 
     @Override
     public String toString() {

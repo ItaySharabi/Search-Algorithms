@@ -1,5 +1,6 @@
 package BestVersion;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +26,7 @@ public class ManhattanDistance extends HeuristicEval {
     @Override
     public int heuristicVal(Node n) {
         int h = 0;
+//        int blocked_factor = 1;
         String[][] b = n.getState().getBoard();
         boolean[][] visited = new boolean[dim][dim];
 
@@ -46,20 +48,24 @@ public class ManhattanDistance extends HeuristicEval {
             int dx, dy, gridDistance = 0;
             int i, j;
             for (Marble mG : matches) {
+//                blocked_factor = 1;
                 i = mG.getI();
                 j = mG.getJ();
                 if (visited[i][j]) {/*System.out.println("Oops.. taken marble!");*/continue;}
                 visited[i][j] = true;
                 dx = Math.abs(mC.getI() - i);
                 dy = Math.abs(mC.getJ() - j);
-                gridDistance = (dx + dy) * possibleMovementDirections(b, mC.getI(), mC.getJ());
+                gridDistance = (dx + dy); //  * dim;/*possibleMovementDirections(b, mC.getI(), mC.getJ());*/
+//                System.out.println("ManhattanDistance(" + mC + ") = " + gridDistance);
+//                blocked_factor = 4 - possibleMovementDirections(b, i, j);
+                h += (gridDistance * mC.getCost());
                 break;
             }
-            h += gridDistance;
         }
+//        System.out.println("h(#" + n.getKey() + ") = " + ((3*h) + n.getWeight()/2));
+//        System.out.println("======================================================");
         return h;
     }
-
 
     private int possibleMovementDirections(String[][] b, int i, int j) {
         if (b[i][j].equals("_")) {return 0;}

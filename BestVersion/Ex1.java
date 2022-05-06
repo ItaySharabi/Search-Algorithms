@@ -7,7 +7,7 @@ public class Ex1 {
     public static void main(String[] args) {
 
         long start_time = System.currentTimeMillis();
-        IOHandler io = new IOHandler("BestVersion/input.txt");
+        IOHandler io = new IOHandler("BestVersion/input_large.txt");
 
         // Extract algorithm execution info:
         String algoName = io.getAlgorithmName();

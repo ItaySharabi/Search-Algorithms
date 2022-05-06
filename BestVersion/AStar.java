@@ -32,6 +32,7 @@ public class AStar extends Algorithm {
             frontier.remove(n.getState());
             System.out.println("Current: ");
             System.out.println(n);
+            System.out.println("Parent: " + n.getParent());
 
             // Explore current node `n`:
             exploredSet.put(n.getState(), n);

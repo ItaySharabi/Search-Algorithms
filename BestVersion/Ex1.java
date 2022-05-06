@@ -7,7 +7,7 @@ public class Ex1 {
     public static void main(String[] args) {
 
         long start_time = System.currentTimeMillis();
-        IOHandler io = new IOHandler("BestVersion/input3.txt");
+        IOHandler io = new IOHandler("BestVersion/input.txt");
 
         // Extract algorithm execution info:
         String algoName = io.getAlgorithmName();
@@ -17,9 +17,11 @@ public class Ex1 {
 
         IProblem p = new Problem(start, goal);
 //        Algorithm bfs = new BFS(p, showOpenList);
-        Algorithm dfid = new DFID(p, showOpenList);
+//        Algorithm dfid = new DFID(p, showOpenList);
+        Algorithm a_star = new AStar(p, showOpenList, new ManhattanDistance(goal));
 //        String out = bfs.execute();
-        String out = dfid.execute();
+//        String out = dfid.execute();
+        String out = a_star.execute();
         System.out.println(out);
 
 

@@ -7,10 +7,10 @@ public class Node {
     private int depth;
     private int weight;
     private static int nodeCounter = 1;
-//    private int key;
+    private int key;
 
     public Node(State b) {
-        nodeCounter++;
+        key = nodeCounter++;
         this.boardState = b;
         this.parent = null;
     }
@@ -20,7 +20,7 @@ public class Node {
 //    }
 
     public Node(Node n, State b) {
-        nodeCounter++;
+        key = nodeCounter++;
         this.boardState = b;
         this.parent = n;
         this.weight = n.getWeight() + b.getOperatedMarble().getCost();
@@ -68,9 +68,13 @@ public class Node {
         return boardState.equals(node.boardState);
     }
 
+    public int getKey() {
+        return key;
+    }
+
     @Override
     public String toString() {
-        return "Node{" +
+        return "Node #" + key + "{" +
                 "boardState=\n" + boardState;
 //                ", timeCreated=" + timeCreated/1000.0;
     }

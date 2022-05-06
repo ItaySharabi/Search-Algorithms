@@ -9,15 +9,16 @@ public class State {
     private int dim;
     private String[][] board;
     private final List<Marble> movableMarbles;
+    private final List<Marble> marbles;
     private Direction operatedMarbleDirection;
     private Marble operatedMarble;
     private static int boardCount = 0;
-//    private String hash;
     private int hashCode;
 
     public State(String[][] board) {
         boardCount++;
         movableMarbles = new ArrayList<>();
+        marbles = new ArrayList<>();
         setGameBoard(board);
         setIdentifier();
     }
@@ -73,10 +74,6 @@ public class State {
         }
     }
 
-//    public int getKey() {
-//        return hashCode;
-//    }
-
     public State(State b, Pair p) {
         boardCount++;
         Marble t = p.getMarble();
@@ -101,14 +98,15 @@ public class State {
         String[][] newBoard = b.getBoard();
         newBoard[i][j] = t.getTag();
         newBoard[t.getI()][t.getJ()] = "_";
+        marbles = new ArrayList<>();
         movableMarbles = new ArrayList<>();
         setGameBoard(newBoard);
-        operatedMarble = get(i, j);
+        operatedMarble = getMarble(i, j);
         operatedMarbleDirection = p.getDirection();
         setIdentifier();
     }
 
-    public Marble get(int i, int j) {
+    public Marble getMarble(int i, int j) {
         for (Marble m : movableMarbles) {
             if (m.getJ() == j && m.getI() == i) {
                 return m;
@@ -139,6 +137,10 @@ public class State {
 
     public List<Marble> getMovableMarbles() {
         return movableMarbles;
+    }
+
+    public List<Marble> getMarbles() {
+        return marbles;
     }
 
     public boolean movableMarble(Marble t, Direction d) {
@@ -182,11 +184,14 @@ public class State {
             System.arraycopy(gameBoard[i], 0, t[i], 0, dim);
         }
         board = t;
-        Marble m;
+        Marble m = null;
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
                 if (!board[i][j].equals("_")) {
-                        if (movableMarble(i, j)) {
+                    m = new Marble(board[i][j], i, j);
+                    marbles.add(m);
+
+                    if (movableMarble(i, j)) {
                             m = new Marble(board[i][j], i, j);
                             movableMarbles.add(m);
                     }

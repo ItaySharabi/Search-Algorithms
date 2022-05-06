@@ -8,6 +8,7 @@ public class BFS extends Algorithm {
 
     private final Hashtable<State, Node> frontier;
     private final Hashtable<State, Node> exploredSet;
+    private final Queue<Node> Q;
 //    private int nodesExpanded = 0;
 
 
@@ -16,26 +17,27 @@ public class BFS extends Algorithm {
         this.name = "BFS";
         frontier = new Hashtable<>();
         exploredSet = new Hashtable<>();
+        Q = new LinkedList<>();
     }
 
     @Override
     public String execute() {
-        Queue<Node> queue = new LinkedList<>();
 
-        queue.add(new Node(getStart()));
+        Q.add(new Node(getStart()));
         Node curr;
 
-        while (!queue.isEmpty()) {
-            curr = queue.poll();
+        while (!Q.isEmpty()) {
+            curr = Q.poll();
             // Do exploring...
             if (withOpen()) {
-                System.out.println(queue);
+                System.out.println(Q);
             }
             frontier.remove(curr.getState());
             exploredSet.put(curr.getState(), curr);
             // Apply allowed operators on any movable marble from current board state:
             for (Operator operator : Operator.allowedOperators(curr)) {
                 State g = operator.apply(curr);
+
                 if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
                     Node next = new Node(curr, g);
                     if (isGoal(g)) {
@@ -43,7 +45,7 @@ public class BFS extends Algorithm {
                     }
                     else {
                         frontier.put(g, next);
-                        queue.add(next);
+                        Q.add(next);
                     }
                 }
             }

@@ -27,21 +27,26 @@ public class AStar extends Algorithm {
         while (!PQ.isEmpty()) {
 
             n = PQ.poll();
-            if(withOpen()) {System.out.println("Node #" + n.getKey()); }
+            if(withOpen()) {
+                System.out.println(n.getState());
+            }
             frontier.remove(n.getState());
 //            System.out.println("=====================================================");
-            System.out.println("Current: ");
-            System.out.println(n);
+//            System.out.println("Current: ");
+//            System.out.println(n);
 //            System.out.println("Parent: " + n.getParent());
 
             // Explore current node `n`:
             exploredSet.put(n.getState(), n);
             for (Operator operator : Operator.allowedOperators(n)){
                 g = operator.apply(n);
-                System.out.println("New State generated:\n" + g);
+//                System.out.println("New State generated:\n" + g);
                 Node next = new Node(n, g);
                 if (isGoal(g)) {
-                    System.out.println("Goal found: ");
+//                    if (isGoal(g)) {
+//                        System.out.println("OMFG");
+//                    }
+//                    System.out.println("Goal found: ");
                     System.out.println(g);
                     return output(path(next), next.getWeight());
 //                endTime = System.currentTimeMillis();

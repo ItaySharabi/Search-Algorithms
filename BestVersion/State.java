@@ -9,19 +9,19 @@ public class State {
     private int dim;
     private String[][] board;
     private final List<Marble> movableMarbles;
-    private final List<Marble> marbles;
+//    private final List<Marble> marbles;
     private Direction operatedMarbleDirection;
     private Marble operatedMarble;
     private static int boardCount = 0;
-//    private int hashCode;
+    private int hashCode;
 
     public State(String[][] board) {
         boardCount++;
         movableMarbles = new ArrayList<>();
-        marbles = new ArrayList<>();
+//        marbles = new ArrayList<>();
         dim = board.length;
         setGameBoard(board);
-//        setIdentifier();
+        setIdentifier();
     }
 
     /**
@@ -30,26 +30,19 @@ public class State {
      * with prime numbers (So that less boards will have the same multiplication result!).
      * This helps with generating the exact amount of boards during the algorithm's execution time.
      */
-//    private void setIdentifier() {
-//        String[][] b = getBoard();
-//        hashCode = 0;
-//        for (int i = 0; i < dim; ++i) {
-//            for (int j = 0; j < dim; ++j) {
-//                if (b[i][j].equals("R")) {
-//                    hashCode += Ex1.primes[dim-1];
-//                } else if (b[i][j].equals("B")) {
-//                    hashCode += ((int)Math.pow(-1, i) * Ex1.primes[j]);
-//                } else if (b[i][j].equals("G")) {
-//                    hashCode += Ex1.primes[2*i + j];
-//                } else if (b[i][j].equals("Y")) {
-//                    hashCode += ((int)Math.pow(-1, j) * Ex1.primes[i]);
-//                } else {
-//                    hashCode += Ex1.primes[j] ;
-//                }
-//                hashCode += (movableMarbles.size()*Ex1.primes[i + 2*j]);
-//            }
-//        }
-//    }
+    private void setIdentifier() {
+        StringBuilder b = new StringBuilder();
+
+        for (String[] row : board) {
+            for (String val : row) {
+                b.append(val);
+            }
+        }
+        String h = Arrays.deepToString(board);
+        hashCode = h.hashCode()
+                // b.toString().hashCode()
+                /*And to ensure uniqueness:*/ * Ex1.primes[14] * Ex1.primes[7];
+    }
 
     /* BEST HASHING SO FAR */
 //    private void setIdentifier() {
@@ -101,12 +94,12 @@ public class State {
         String[][] newBoard = b.getBoard();
         newBoard[i][j] = t.getTag();
         newBoard[t.getI()][t.getJ()] = "_";
-        marbles = new ArrayList<>();
+//        marbles = new ArrayList<>();
         movableMarbles = new ArrayList<>();
         setGameBoard(newBoard);
         operatedMarble = getMarble(i, j);
         operatedMarbleDirection = p.getDirection();
-//        setIdentifier();
+        setIdentifier();
     }
 
     public Marble getMarble(int i, int j) {
@@ -140,10 +133,6 @@ public class State {
 
     public List<Marble> getMovableMarbles() {
         return movableMarbles;
-    }
-
-    public List<Marble> getMarbles() {
-        return marbles;
     }
 
     public boolean movableMarble(Marble t, Direction d) {
@@ -189,9 +178,8 @@ public class State {
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
                 if (!board[i][j].equals("_")) {
-                    marbles.add(new Marble(board[i][j], i, j));
                     if (movableMarble(i, j)) {
-                        movableMarbles.add(marbles.get(marbles.size()-1));
+                        movableMarbles.add(new Marble(board[i][j], i, j));
                     }
                 }
             }
@@ -199,21 +187,26 @@ public class State {
     }
 
 
+    @Override
+    public int hashCode() {
+        return hashCode;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        State state1 = (State) o;
-        String[][] other = state1.getBoard();
-        for (int i = 0; i < dim; ++i) {
-            for (int j = 0; j < dim; ++j) {
-                if (!board[i][j].equals(other[i][j])) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        return hashCode() == o.hashCode();
+//        State state1 = (State) o;
+//        String[][] other = state1.getBoard();
+//        for (int i = 0; i < dim; ++i) {
+//            for (int j = 0; j < dim; ++j) {
+//                if (!board[i][j].equals(other[i][j])) {
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
     }
 
     @Override

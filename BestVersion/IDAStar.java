@@ -27,11 +27,12 @@ public class IDAStar extends Algorithm{
     @Override
     public String execute() {
         boolean goalFound = false;
+        int _f;
         Node curr;
         while (t != Integer.MAX_VALUE) {
             minF = Integer.MAX_VALUE;
             curr = new Node(start);
-            curr.getTag(false);
+            curr.markAsOut(false);
             L.add(curr);
             H.put(start, curr);
             while (!L.isEmpty()) {
@@ -42,23 +43,24 @@ public class IDAStar extends Algorithm{
                 if (n.isOut()) {
                     H.remove(n.getState());
                 } else {
-                    n.getTag(true);
+                    n.markAsOut(true);
                     L.add(n);
 
                     for (Operator operator : Operator.allowedOperators(n)) {
                         State child = operator.apply(n);
-                            int fOnChild = heuristics.heuristicVal(child);
-                            if (fOnChild > t) {
-                                minF = Math.min(minF, fOnChild);
+                            _f = heuristics.heuristicVal(child);
+                            if (_f > t) {
+                                minF = Math.min(minF, _f);
                                 continue;
                             }
                             if (H.contains(child) && H.get(child).isOut()) {
                                 continue;
                             }
+
                             if (H.contains(child) && !H.get(child).isOut()) {
                                 if (heuristics.
-                                        heuristicVal(H.get(child).getState()) >
-                                        heuristics.heuristicVal(child)) {
+                                        f(H.get(child)) >
+                                        heuristics.heuristicVal(child) + child.getOperatedMarble().getCost()) {
                                     L.remove(H.get(child));
                                     H.remove(child);
                                 } else {

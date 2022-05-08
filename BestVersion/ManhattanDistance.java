@@ -47,14 +47,14 @@ public class ManhattanDistance extends HeuristicEval {
                 }
             }
         }
-        return h * totalMvCost*2; // * totalMvCost/count;
+        return h * totalMvCost; // * totalMvCost/count;
     }
 
     private int manhattanDist(String KEY, int i, int j, String[][] board, boolean[][] placed) {
         if (placed[i][j]) {return 0;}
-        int dist;
+        int dist, avgCost = 0;
         int minDist = 10;
-        int countHits = 0;
+        int countHits = 0, mvOpts = 0;
 //        System.out.println("=====KEY: " + KEY + "=====(" + i + ", " + j + ")==================");
         for (int k = 0; k < dim; ++k) {
             for (int l = 0; l < dim; ++l) {
@@ -73,7 +73,24 @@ public class ManhattanDistance extends HeuristicEval {
                     if (++countHits >= 2) {
 //                        System.out.println(countHits + " Targets were found! Best: " + maxDist);
                         placed[i][j] = true;
-                        return minDist;
+                        if (i>0 && !board[i-1][j].equals("_")) {
+                            mvOpts++;
+                            avgCost += costs.get(board[i-1][j]);
+                        }
+                        if (i<dim-1 && !board[i+1][j].equals("_")) {
+                            mvOpts++;
+                            avgCost += costs.get(board[i+1][j]);
+                        }
+                        if (j>0 && !board[i][j-1].equals("_")) {
+                            mvOpts++;
+                            avgCost += costs.get(board[i][j-1]);
+                        }
+                        if (j<dim-1 && !board[i][j+1].equals("_")) {
+                            mvOpts++;
+                            avgCost += costs.get(board[i][j+1]);
+                        }
+
+                        return minDist * (mvOpts) * (avgCost/(5-mvOpts));
                     }
                 }
             }

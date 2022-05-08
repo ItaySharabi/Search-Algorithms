@@ -7,7 +7,7 @@ public class Node {
     private int depth;
     private int weight;
     private static int nodeCounter = 1;
-    private int key;
+    private final int key;
     private boolean tag;
 
     public Node(State b) {
@@ -26,7 +26,7 @@ public class Node {
 
     public boolean isOut() {return tag;}
 
-    public void getTag(boolean tag) {this.tag = tag;}
+    public void markAsOut(boolean tag) {this.tag = tag;}
 
     public int getDepth() {
         return depth;
@@ -65,14 +65,15 @@ public class Node {
         return boardState.equals(node.boardState);
     }
 
-    public int getKey() {
-        return key;
-    }
+//    public int getKey() {
+//        return key;
+//    }
 
     @Override
     public String toString() {
         return "Node #" + key + "{" +
-                "boardState=\n" + boardState;
-//                ", timeCreated=" + timeCreated/1000.0;
+                "\n" + boardState +
+                "\nWeight=" + weight +
+                "\n}";
     }
 }

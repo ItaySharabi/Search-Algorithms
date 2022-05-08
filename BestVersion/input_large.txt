@@ -8,7 +8,7 @@ _,_,_,_,_
 Y,Y,Y,Y,_
 Goal state:
 R,R,_,R,R
-B,G,_,_,G
+B,B,_,G,G
 G,G,_,B,B
-B,_,_,_,_
-Y,Y,Y,Y,_
+_,_,_,_,Y
+_,Y,Y,Y,_

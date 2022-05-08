@@ -6,9 +6,9 @@ import java.util.Queue;
 
 public class BFS extends Algorithm {
 
-    private final Hashtable<State, Node> frontier;
+    private Hashtable<State, Node> frontier;
     private final Hashtable<State, Node> exploredSet;
-    private final Queue<Node> Q;
+    private Queue<Node> Q;
 //    private int nodesExpanded = 0;
 
 
@@ -22,34 +22,31 @@ public class BFS extends Algorithm {
 
     @Override
     public String execute() {
+            Q.add(new Node(getStart()));
+            Node curr;
+            while (!Q.isEmpty()) {
+                curr = Q.poll();
+                // Do exploring...
+                if (withOpen()) {
+                    System.out.println(curr);
+                }
+                frontier.remove(curr.getState());
+                exploredSet.put(curr.getState(), curr);
+                // Apply allowed operators on any movable marble from current board state:
+                for (Operator operator : Operator.allowedOperators(curr)) {
+                    State g = operator.apply(curr);
 
-        Q.add(new Node(getStart()));
-        Node curr;
-
-        while (!Q.isEmpty()) {
-            curr = Q.poll();
-            // Do exploring...
-            if (withOpen()) {
-                System.out.println(Q);
-            }
-            frontier.remove(curr.getState());
-            exploredSet.put(curr.getState(), curr);
-            // Apply allowed operators on any movable marble from current board state:
-            for (Operator operator : Operator.allowedOperators(curr)) {
-                State g = operator.apply(curr);
-
-                if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
-                    Node next = new Node(curr, g);
-                    if (isGoal(g)) {
-                        return output(path(next), next.getWeight());
-                    }
-                    else {
-                        frontier.put(g, next);
-                        Q.add(next);
+                    if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
+                        Node next = new Node(curr, g);
+                        if (isGoal(g)) {
+                            return output(path(next), next.getWeight());
+                        } else {
+                            frontier.put(g, next);
+                            Q.add(next);
+                        }
                     }
                 }
             }
-        }
         return "no path";
     }
 }

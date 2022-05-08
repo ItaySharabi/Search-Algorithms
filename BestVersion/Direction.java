@@ -2,8 +2,8 @@ package BestVersion;
 
 public enum Direction {
 //    UP, DOWN, LEFT, RIGHT
-    UP, DOWN, LEFT, RIGHT // Best 2
-//    UP, DOWN, RIGHT, LEFT // BEST 1
+//    UP, DOWN, LEFT, RIGHT // Best 2
+    UP, DOWN, RIGHT, LEFT // BEST 1
 //    UP, LEFT, DOWN, RIGHT // BAD
 //    UP, LEFT, RIGHT, DOWN // 89
 //    UP, RIGHT, DOWN, LEFT // 89

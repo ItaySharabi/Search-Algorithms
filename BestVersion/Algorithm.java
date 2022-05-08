@@ -5,6 +5,7 @@ public abstract class Algorithm {
     private final long start_time = System.currentTimeMillis();
     private State start, goal;
     private boolean withOpen;
+    private static final int OUT = 1;
 
     public Algorithm(IProblem problem, boolean verbose) {
         this.withOpen = verbose;
@@ -38,9 +39,19 @@ public abstract class Algorithm {
 
     public abstract String execute();
 
-
     public String output(String path, int cost) {
 //        System.out.println("Path: " + path);
+        if (null == path || path.isEmpty()) {
+            return "Path: Path could not be found!" +
+                    "\nNum: (Boards)" +
+//                Node.getNumNodesCreated() +
+                    State.getBoardCount() +
+                    ", (Nodes)" +
+                    Node.getNumNodesCreated() +
+                    "\nCost: " +
+                    cost +
+                    "\ntime: " + (System.currentTimeMillis() - getStartTime())/1000.0;
+        }
         return path
                 .substring(2)
                 .substring(0, path.length()-2) +

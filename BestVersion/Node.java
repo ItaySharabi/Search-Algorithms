@@ -8,16 +8,13 @@ public class Node {
     private int weight;
     private static int nodeCounter = 1;
     private int key;
+    private boolean tag;
 
     public Node(State b) {
         key = nodeCounter++;
         this.boardState = b;
         this.parent = null;
     }
-
-//    public int getKey() {
-//        return key;
-//    }
 
     public Node(Node n, State b) {
         key = nodeCounter++;
@@ -26,6 +23,10 @@ public class Node {
         this.weight = n.getWeight() + b.getOperatedMarble().getCost();
         this.depth = n.depth + 1;
     }
+
+    public boolean isOut() {return tag;}
+
+    public void getTag(boolean tag) {this.tag = tag;}
 
     public int getDepth() {
         return depth;
@@ -46,10 +47,6 @@ public class Node {
     public int getWeight() {
         return weight;
     }
-
-//    public List<Marble> getMovableMarbles() {
-//        return boardState.getMovableMarbles();
-//    }
 
     public static int getNumNodesCreated() {
         return nodeCounter;

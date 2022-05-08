@@ -13,14 +13,15 @@ public class State {
     private Direction operatedMarbleDirection;
     private Marble operatedMarble;
     private static int boardCount = 0;
-    private int hashCode;
+//    private int hashCode;
 
     public State(String[][] board) {
         boardCount++;
         movableMarbles = new ArrayList<>();
         marbles = new ArrayList<>();
+        dim = board.length;
         setGameBoard(board);
-        setIdentifier();
+//        setIdentifier();
     }
 
     /**
@@ -49,30 +50,32 @@ public class State {
 //            }
 //        }
 //    }
-    private void setIdentifier() {
-        String[][] b = getBoard();
-        int R = Ex1.primes[0], B = Ex1.primes[1], G = Ex1.primes[2]
-                , Y = Ex1.primes[3], EMPTY = Ex1.primes[4];
-        hashCode = 1;
-        int val = 1;
-        for (int i = 0; i < dim; ++i) {
-            for (int j = 0; j < dim; ++j) {
-                if (b[i][j].equals("R")) {
-                    val += (Math.pow(R, i + j));
-                } else if (b[i][j].equals("B")) {
-                    val += (Math.pow(B, i + j));
-                } else if (b[i][j].equals("G")) {
-                    val += (Math.pow(G, i + j));
-                } else if (b[i][j].equals("Y")) {
-                    val += (Math.pow(Y, i + j));
-                } else {
-                    val += (Math.pow(EMPTY, i + j));
-                }
-                val *= (i+1) * (j+1);
-            }
-            hashCode *= (val);
-        }
-    }
+
+    /* BEST HASHING SO FAR */
+//    private void setIdentifier() {
+//        String[][] b = getBoard();
+//        int R = Ex1.primes[4], B = Ex1.primes[7], G = Ex1.primes[5]
+//                , Y = Ex1.primes[3], EMPTY = Ex1.primes[0];
+//        hashCode = 1;
+//        int val = 1;
+//        for (int i = 0; i < dim; ++i) {
+//            for (int j = 0; j < dim; ++j) {
+//                if (b[i][j].equals("R")) {
+//                    val += (Math.pow(R, i + j));
+//                } else if (b[i][j].equals("B")) {
+//                    val += (Math.pow(B, i + j));
+//                } else if (b[i][j].equals("G")) {
+//                    val += (Math.pow(G, i + j));
+//                } else if (b[i][j].equals("Y")) {
+//                    val += (Math.pow(Y, i + j));
+//                } else {
+//                    val += (Math.pow(EMPTY, i + j));
+//                }
+//                val *= (i+1) * (j+1);
+//            }
+//            hashCode *= (val);
+//        }
+//    }
 
     public State(State b, Pair p) {
         boardCount++;
@@ -103,7 +106,7 @@ public class State {
         setGameBoard(newBoard);
         operatedMarble = getMarble(i, j);
         operatedMarbleDirection = p.getDirection();
-        setIdentifier();
+//        setIdentifier();
     }
 
     public Marble getMarble(int i, int j) {
@@ -179,21 +182,16 @@ public class State {
 
     private void setGameBoard(String[][] gameBoard) {
         dim = gameBoard.length;
-        String[][] t = new String[dim][dim];
-        for (int i = 0; i < dim; i++) {
-            System.arraycopy(gameBoard[i], 0, t[i], 0, dim);
+        board = new String[dim][dim];
+        for (int i = 0; i < dim; ++i) {
+            System.arraycopy(gameBoard[i], 0, board[i], 0, dim);
         }
-        board = t;
-        Marble m = null;
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
                 if (!board[i][j].equals("_")) {
-                    m = new Marble(board[i][j], i, j);
-                    marbles.add(m);
-
+                    marbles.add(new Marble(board[i][j], i, j));
                     if (movableMarble(i, j)) {
-                            m = new Marble(board[i][j], i, j);
-                            movableMarbles.add(m);
+                        movableMarbles.add(marbles.get(marbles.size()-1));
                     }
                 }
             }
@@ -207,18 +205,21 @@ public class State {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         State state1 = (State) o;
-//        System.out.println("==================================");
-//        System.out.println(this);
-//        System.out.println(state1);
-//        System.out.println(hashCode == state1.hashCode);
-//        System.out.println("==================================");
-        return hashCode == state1.hashCode;
+        String[][] other = state1.getBoard();
+        for (int i = 0; i < dim; ++i) {
+            for (int j = 0; j < dim; ++j) {
+                if (!board[i][j].equals(other[i][j])) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
-        out.append("State (").append(hashCode).append(")\n");
+//        out.append("State (").append(hashCode()).append(")\n");
         for(String[] s : this.board) {
             out.append(Arrays.toString(s));
             out.append("\n");

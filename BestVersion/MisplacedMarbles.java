@@ -26,12 +26,12 @@ public class MisplacedMarbles extends HeuristicEval {
         costs.put("G", 10);
         costs.put("Y", 1);
     }
-    public int heuristicVal(Node n) {
-        if (n.getState().equals(getGoalState())) return 0;
+    public int heuristicVal(State s) {
+        if (s.equals(getGoalState())) return 0;
         int h = 0;
         System.out.println("======================================");
-        System.out.println("Heuristic evaluation of\n" + n);
-        String[][] b = n.getState().getBoard();
+        System.out.println("Heuristic evaluation of\n" + s);
+        String[][] b = s.getBoard();
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
                 if (!board[i][j].equals(b[i][j])) {
@@ -40,7 +40,7 @@ public class MisplacedMarbles extends HeuristicEval {
             }
         }
         System.out.println("======================================");
-        System.out.println("Node #" + n.getKey() + ": f() -> " + h);
+        System.out.println("f(Board:" + s + ") :: -> " + h);
         return h;
     }
 }

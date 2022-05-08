@@ -10,19 +10,19 @@ public class ManhattanDistance extends HeuristicEval {
     private State goalState;
     private final String[][] g;
     private final int dim;
-//    private HashMap<String, Integer> costs;
+    private HashMap<String, Integer> costs;
 
     public ManhattanDistance(State goal) {
         super(goal);
         goalState = goal;
         g = goal.getBoard();
         dim = g.length;
-//        costs = new HashMap<>();
-//        costs.put("_", 0);
-//        costs.put("R", 1);
-//        costs.put("B", 2);
-//        costs.put("G", 10);
-//        costs.put("Y", 1);
+        costs = new HashMap<>();
+        costs.put("_", 0);
+        costs.put("R", 1);
+        costs.put("B", 2);
+        costs.put("G", 10);
+        costs.put("Y", 1);
     }
 
     @Override
@@ -36,52 +36,49 @@ public class ManhattanDistance extends HeuristicEval {
                 placed[i][j] = n_board[i][j].equals(g[i][j]) && !n_board[i][j].equals("_");
             }
         }
-//        for (boolean[] a : placed) {
-//            System.out.println(Arrays.toString(a));
-//        }
-        int mDist;
+        int totalMvCost = 0, count = 0;
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
+                if (placed[i][j]) {continue;}
                 if (!n_board[i][j].equals("_")) {
-                    mDist = manhattanDist(n_board[i][j], i, j, n_board, placed);
-//                    if (mDist > 0) {} // Count misplaced marbles
-                    h += mDist;
-                    placed[i][j] = true;
+                    h += manhattanDist(n_board[i][j], i, j, n_board, placed);
+                    count++;
+                    totalMvCost += costs.get(n_board[i][j]);
                 }
             }
         }
-        return h;
+        return h * totalMvCost*2; // * totalMvCost/count;
     }
 
     private int manhattanDist(String KEY, int i, int j, String[][] board, boolean[][] placed) {
         if (placed[i][j]) {return 0;}
-        int manDist;
-        int best = dim;
+        int dist;
+        int minDist = 10;
         int countHits = 0;
-        System.out.println("=====KEY: " + KEY + "=====(" + i + ", " + j + ")==================");
+//        System.out.println("=====KEY: " + KEY + "=====(" + i + ", " + j + ")==================");
         for (int k = 0; k < dim; ++k) {
             for (int l = 0; l < dim; ++l) {
-                if (g[k][l].equals("_")) {continue;}
+                if (placed[k][l] || g[k][l].equals("_")) {continue;}
 
                 if (g[k][l].equals(KEY)) {
                     if (k == i && j == l) {
                         continue;
                     }
-                    placed[k][l] = true;
-                    manDist = Math.abs(k-i) + Math.abs(l-j); // Mult by a factor of `D` maybe ?
-                    System.out.println("Target found at: (" + k + ", " + l + ") -> " + manDist);
+                    dist = Math.abs(k-i) + Math.abs(l-j); // Mult by a factor of `D` maybe ?
 
-                    if (manDist < best) {
-                        best = manDist;
+                    // Save the larger distance possible for a marble to move.
+                    if (dist < minDist) {
+                        minDist = dist;
                     }
-                    if (++countHits >= dim-1 || countHits >= 1) {
-                        System.out.println(countHits + " Targets were found! Best: " + best);
-                        return best;
+                    if (++countHits >= 2) {
+//                        System.out.println(countHits + " Targets were found! Best: " + maxDist);
+                        placed[i][j] = true;
+                        return minDist;
                     }
                 }
             }
         }
-        return best;
+        return minDist;
     }
 
 

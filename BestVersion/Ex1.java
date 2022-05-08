@@ -8,7 +8,7 @@ public class Ex1 {
 
     public static void main(String[] args) {
 
-        IOHandler io = new IOHandler("BestVersion/input.txt");
+        IOHandler io = new IOHandler("input.txt");
 
         // Extract execution info:
         String algoName = io.getAlgorithmName();

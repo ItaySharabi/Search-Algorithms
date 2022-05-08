@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class IOHandler {
 
-    private final String outputFilePath;
     private String algorithmName;
     private boolean withOpenList;
     private String[][] initialBoard;
@@ -17,7 +16,6 @@ public class IOHandler {
     private IProblem p;
 
     public IOHandler(String inputFilePath) {
-        this.outputFilePath = "BestVersion/output.txt";
 
         Scanner s;
         try {
@@ -102,6 +100,7 @@ public class IOHandler {
 
     public boolean write(String content) throws IOException {
         FileWriter fw = null;
+        String outputFilePath = "output.txt";
         try {
             System.out.println("Output file path: " + outputFilePath);
             fw = new FileWriter(new File(outputFilePath));

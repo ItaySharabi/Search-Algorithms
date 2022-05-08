@@ -24,9 +24,12 @@ public class Node {
         this.depth = n.depth + 1;
     }
 
+    public boolean getTag() {return tag;}
+    public void setTag(boolean tag) {
+        this.tag = tag;
+    }
+    public void markAsOut() {setTag(true);}
     public boolean isOut() {return tag;}
-
-    public void markAsOut(boolean tag) {this.tag = tag;}
 
     public int getDepth() {
         return depth;
@@ -61,8 +64,9 @@ public class Node {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Node node = (Node) o;
-        System.out.println("How are 2 nodes equal?");
+//        System.out.println("How are 2 nodes equal?");
         return boardState.equals(node.boardState);
+//                && depth == node.depth;
     }
 
 //    public int getKey() {

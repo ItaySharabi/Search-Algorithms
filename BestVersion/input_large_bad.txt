@@ -1,4 +1,4 @@
-BFS
+A*
 with open
 big
 R,R,_,R,R
@@ -7,8 +7,8 @@ G,G,_,B,B
 _,_,_,_,_
 Y,Y,Y,Y,_
 Goal state:
-R,R,_,R,R
-B,B,_,G,G
+G,R,_,R,R
+B,B,_,G,R
 G,G,_,B,B
 _,_,_,_,Y
 _,Y,Y,Y,_

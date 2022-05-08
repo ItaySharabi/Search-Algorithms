@@ -14,9 +14,10 @@ public class IOHandler {
     private boolean withOpenList;
     private String[][] initialBoard;
     private String[][] goalBoard;
+    private IProblem p;
 
     public IOHandler(String inputFilePath) {
-        this.outputFilePath = "src/output.txt";
+        this.outputFilePath = "BestVersion/output.txt";
 
         Scanner s;
         try {
@@ -38,7 +39,10 @@ public class IOHandler {
             this.initialBoard = createBoard(dim, s);
             System.out.println(s.nextLine()); // Discard spare line: `Goal state`
             this.goalBoard = createBoard(dim, s);
-
+            p = new Problem(
+                    new State(initialBoard),
+                    new State(goalBoard)
+            );
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -92,22 +96,15 @@ public class IOHandler {
         return this.withOpenList;
     }
 
-    public String[][] getInitialGameState() {
-        return this.initialBoard;
-    }
-
-    public String[][] getGoalGameState() {
-        return this.goalBoard;
-    }
-
-    public void writeResults() {
-        System.out.println("Implement Writing results to output.txt file!");
+    public IProblem getProblem() {
+        return p;
     }
 
     public boolean write(String content) throws IOException {
         FileWriter fw = null;
         try {
-            fw = new FileWriter(new File(this.outputFilePath));
+            System.out.println("Output file path: " + outputFilePath);
+            fw = new FileWriter(new File(outputFilePath));
 
             fw.write(content);
             fw.close();

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class AStar extends Algorithm {
-    private HeuristicEval heuristics;
+//    private HeuristicEval heuristics;
     private PriorityQueue<Node> PQ;
     private Hashtable<State, Node> frontier;
     private Hashtable<State, Node> exploredSet;
@@ -28,13 +28,9 @@ public class AStar extends Algorithm {
 
             n = PQ.poll();
             if(withOpen()) {
-                System.out.println(n.getState());
+                System.out.println(n);
             }
             frontier.remove(n.getState());
-//            System.out.println("=====================================================");
-//            System.out.println("Current: ");
-//            System.out.println(n);
-//            System.out.println("Parent: " + n.getParent());
 
             // Explore current node `n`:
             exploredSet.put(n.getState(), n);

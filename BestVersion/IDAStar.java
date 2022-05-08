@@ -11,6 +11,7 @@ public class IDAStar extends Algorithm{
     private int t;
     private IProblem p;
     private State start, goal;
+    private final boolean OUT_OF_THE_STACK = false;
 
 
     public IDAStar(IProblem p, boolean verbose, HeuristicEval heuristic) {
@@ -26,13 +27,12 @@ public class IDAStar extends Algorithm{
 
     @Override
     public String execute() {
-        boolean goalFound = false;
         int _f;
         Node curr;
         while (t != Integer.MAX_VALUE) {
             minF = Integer.MAX_VALUE;
             curr = new Node(start);
-            curr.markAsOut(false);
+            curr.setTag(OUT_OF_THE_STACK);
             L.add(curr);
             H.put(start, curr);
             while (!L.isEmpty()) {
@@ -43,7 +43,7 @@ public class IDAStar extends Algorithm{
                 if (n.isOut()) {
                     H.remove(n.getState());
                 } else {
-                    n.markAsOut(true);
+                    n.markAsOut();
                     L.add(n);
 
                     for (Operator operator : Operator.allowedOperators(n)) {

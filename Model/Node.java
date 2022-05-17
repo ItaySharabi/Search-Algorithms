@@ -6,11 +6,11 @@ import Utils.Direction;
 /**
  * Model.Node class.
  *
- * A `Model.Node` is the Data-Structure, which holds
- * `Model.State`s of a Model.Problem `p`, during the search of an `API.Algorithm`.
+ * A `Node` is the Data-Structure, which holds
+ * `State`s of a Problem `p`, during the search of an `Algorithm`.
  * It contains the the state,
  * it's depth in the search tree,
- * it's weight (`Model.Node`s gain weight only when being applied an `Model.Operator`.
+ * it's weight (`Node`s gain weight only when being applied an `Operator`.
  * @see State
  * @see Algorithm
  * @see Operator
@@ -81,7 +81,6 @@ public class Node {
         Node node = (Node) o;
         return boardState.equals(node.boardState);
     }
-
 
     @Override
     public String toString() {

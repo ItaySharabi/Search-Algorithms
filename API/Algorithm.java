@@ -115,7 +115,6 @@ public abstract class Algorithm {
             case DOWN:
                 return "(" + (i-1) + "," + j + "):";
         }
-
         return "";
     }
 }

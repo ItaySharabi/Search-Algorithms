@@ -45,7 +45,7 @@ public class ManhattanDistance extends HeuristicEval {
             dist;
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
-                if (n_board[i][j].equals("_")) {continue;}
+                if (n_board[i][j].equals("_")) { continue; }
                 if (!g[i][j].equals(n_board[i][j])) {
                     // If Model.Marble[i, j] is not placed.
                     dist = manhattanDist(n_board[i][j], i, j, placed)

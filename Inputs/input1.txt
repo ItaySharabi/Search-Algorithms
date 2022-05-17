@@ -1,0 +1,15 @@
+A*
+with open
+small
+R,R,_
+B,B,_
+G,G,_
+Goal state:
+R,R,B
+B,G,_
+G,_,_
+
+A* - (2,2):B:(2,3)--(2,3):B:(1,3)--(3,2):G:(2,2)
+     Num: 13
+     Cost: 14
+     time: 0.029

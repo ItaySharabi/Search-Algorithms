@@ -1,0 +1,19 @@
+IDA*
+with open
+big
+R,_,Y,_,G
+R,_,Y,_,G
+R,_,Y,_,G
+R,_,Y,_,G
+B,B,_,B,B,
+Goal state:
+R,_,Y,_,_
+R,_,Y,G,G
+R,_,Y,_,G
+R,_,Y,_,G
+B,B,_,B,B
+
+A* - (1,5):G:(1,4)--(1,4):G:(2,4)
+     Num: 27
+     Cost: 20
+     time: 0.062

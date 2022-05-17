@@ -1,4 +1,4 @@
-BFS
+Algorithms.BFS
 no open
 small
 R,R,_

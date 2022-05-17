@@ -1,7 +1,24 @@
+import API.Algorithm;
+import API.IProblem;
+import Utils.IOHandler;
+import Utils.ProblemSolver;
+
 import java.io.IOException;
 
 /**
- * This is a
+ * AI Search Algorithms Library.
+ *
+ * This project is all about finding (The best?) solutions for
+ * a certain problem, for instance: `Arrange the Marbles` Game,
+ * which is a very simple game, but when it comes to figuring out
+ * in what search space we're dealing with, this project demonstrates
+ * 5 different search algorithms, for finding a solution to given
+ * situations of the game.
+ * Just write an input file (`input.txt` is an example file. More
+ * are to be found in `Inputs` folder) and plug it into the constructor
+ * of Utils.IOHandler.
+ * @see IOHandler
+ * @see Algorithm
  * @author Itay Sharabi
  */
 public class Ex1 {
@@ -12,7 +29,7 @@ public class Ex1 {
         IOHandler io;
         IProblem p;
         try {
-            io = new IOHandler("input.txt");
+            io = new IOHandler("Inputs/input.txt");
 
             // Extract execution info:
             p = io.getProblem();

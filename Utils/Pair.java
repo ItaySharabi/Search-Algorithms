@@ -1,3 +1,7 @@
+package Utils;
+
+import Model.Marble;
+
 public class Pair {
 
     private Direction d;

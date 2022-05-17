@@ -16,9 +16,9 @@ import java.util.PriorityQueue;
  *  from a specified source to all possible goals
  */
 public class AStar extends Algorithm {
-    private PriorityQueue<Node> PQ;
-    private Hashtable<State, Node> frontier;
-    private Hashtable<State, Node> exploredSet;
+    private final PriorityQueue<Node> PQ;
+    private final Hashtable<State, Node> frontier;
+    private final Hashtable<State, Node> exploredSet;
 
     public AStar(IProblem problem, boolean verbose, HeuristicEval h) {
         super(problem, verbose);

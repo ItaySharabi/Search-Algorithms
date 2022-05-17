@@ -12,9 +12,9 @@ import java.util.Queue;
 
 public class BFS extends Algorithm {
 
-    private Hashtable<State, Node> frontier;
-    private Hashtable<State, Node> exploredSet;
-    private Queue<Node> Q;
+    private final Hashtable<State, Node> frontier;
+    private final Hashtable<State, Node> exploredSet;
+    private final Queue<Node> Q;
 
 
     public BFS(IProblem p, boolean verbose) {

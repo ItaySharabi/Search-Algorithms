@@ -9,12 +9,12 @@ import java.util.Hashtable;
 import java.util.Stack;
 
 public class IDAStar extends Algorithm {
-    private Stack<Node> STK;
-    private Hashtable<State, Node> frontier;
-    private HeuristicEval heuristics;
+    private final Stack<Node> STK;
+    private final Hashtable<State, Node> frontier;
+    private final HeuristicEval heuristics;
     private int minF;
     private int t;
-    private State start;
+    private final State start;
 
 
     public IDAStar(IProblem p, boolean verbose, HeuristicEval heuristic) {

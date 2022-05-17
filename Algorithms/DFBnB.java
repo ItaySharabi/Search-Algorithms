@@ -10,8 +10,8 @@ import Model.State;
 import java.util.*;
 
 public class DFBnB extends Algorithm {
-    private Stack<Node> STK;
-    private Hashtable<State, Node> frontier; // Open-list
+    private final Stack<Node> STK;
+    private final Hashtable<State, Node> frontier; // Open-list
     private int t;
     private final Node start;
     private final HeuristicEval heuristics;

@@ -14,7 +14,7 @@ import java.io.IOException;
  * in what search space we're dealing with, this project demonstrates
  * 5 different search algorithms, for finding a solution to given
  * situations of the game.
- * Just write an input file (`input.txt` is an example file. More
+ * Just write an input file (`input1.txt` is an example file. More
  * are to be found in `Inputs` folder) and plug it into the constructor
  * of Utils.IOHandler.
  * @see IOHandler

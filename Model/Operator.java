@@ -79,7 +79,7 @@ public class Operator {
 
     @Override
     public String toString() {
-        return "Model.Operator{" +
+        return "Operator{" +
                 p +
                 '}';
     }

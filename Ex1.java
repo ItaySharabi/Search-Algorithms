@@ -36,15 +36,32 @@ public class Ex1 {
             String algoName = io.getAlgorithmName();
             boolean showOpenList = io.getVerbose();
 
+            prompt(p + "\n\n" +
+                    " ~ Starting `" + algoName + "` search algorithm ~\n" +
+                    "=======================================\n"
+                    , showOpenList);
+
             // Solve the problem
             String solution =
                     ProblemSolver.solve(p, algoName, showOpenList);
 
+            prompt("=======================================" +
+                    "\n ~ `" + algoName + "` ~ Finished successfully!\n" +
+                    "Open `output.txt` to see the solution for this problem!\n" +
+                    "=======================================\n"
+                    , showOpenList);
+
+            // Write out solution information
             io.write(solution, "output.txt");
 
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("I wish I knew what went wrong...");
         }
+    }
+
+    private static void prompt(String message, boolean verbose) {
+        System.out.println(verbose ? message : "");
+
     }
 }

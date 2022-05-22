@@ -20,7 +20,7 @@ import static Utils.Direction.*;
  * @see AStar - Informed search algorithm: An informed search algorithm, or a best-first search
  */
 public abstract class Algorithm {
-    protected String name = "~API.Algorithm~";
+    protected String name = "~Algorithm~";
     private long start_time;
     private State start, goal;
     private boolean withOpen;
@@ -73,7 +73,7 @@ public abstract class Algorithm {
                     "\ntime: " + (System.currentTimeMillis() - getStartTime())/1000.0;
         }
 
-        System.out.println("Goal Model.State found:\n" + goal);
+        System.out.println("Goal State found:\n" + goal);
         return path
                 .substring(2)
                 .substring(0, path.length()-2) +

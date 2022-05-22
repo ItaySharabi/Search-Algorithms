@@ -19,4 +19,12 @@ public class Problem implements IProblem {
     public State getGoal() {
         return goal;
     }
+
+    @Override
+    public String toString() {
+        return "\n`Arrange The Marbles`:\n" +
+                "Let's try to find a solution for this game!\n" +
+                "Initial board state:\n" + start +
+                "Goal board state:\n" + goal;
+    }
 }

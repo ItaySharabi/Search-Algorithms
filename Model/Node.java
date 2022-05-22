@@ -84,7 +84,7 @@ public class Node {
 
     @Override
     public String toString() {
-        return "Model.Node #" + key + "\n" +
+        return "Node #" + key + "\n" +
                 (boardState.size() == 3 ? "------\n" : "---------\n") +
                 boardState +
                 (boardState.size() == 3 ? "------\n" : "---------\n") +

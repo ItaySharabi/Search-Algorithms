@@ -56,7 +56,7 @@ public class Marble {
 
     @Override
     public String toString() {
-        return "Model.Marble[" +
+        return "Marble[" +
                 "`" + tag + "`,"
                 + "(" + i + "," + j + ")"
                 + "]";

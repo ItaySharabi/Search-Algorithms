@@ -185,9 +185,6 @@ public class State {
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
-//        for (String[] s : board) {
-//            out.append(Arrays.toString(s)).append("\n");
-//        }
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
                 out.append(board[i][j]).append(" ");

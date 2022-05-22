@@ -1,3 +1,5 @@
+package src;
+
 import src.API.Algorithm;
 import src.API.IProblem;
 import src.Utils.IOHandler;

@@ -1,6 +1,6 @@
-package API;
+package src.API;
 
-import Model.State;
+import src.Model.State;
 
 public interface IProblem {
     public State getStart();

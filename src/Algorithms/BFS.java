@@ -1,10 +1,10 @@
-package Algorithms;
+package src.Algorithms;
 
-import API.Algorithm;
-import API.IProblem;
-import Model.Node;
-import Model.Operator;
-import Model.State;
+import src.API.Algorithm;
+import src.API.IProblem;
+import src.Model.Node;
+import src.Model.Operator;
+import src.Model.State;
 
 import java.util.Hashtable;
 import java.util.LinkedList;
@@ -19,7 +19,7 @@ public class BFS extends Algorithm {
 
     public BFS(IProblem p, boolean verbose) {
         super(p, verbose);
-        this.name = "Algorithms.BFS";
+        this.name = "src.Algorithms.BFS";
         frontier = new Hashtable<>();
         exploredSet = new Hashtable<>();
         Q = new LinkedList<>();

@@ -1,11 +1,11 @@
-package Algorithms;
+package src.Algorithms;
 
-import API.Algorithm;
-import API.HeuristicEval;
-import API.IProblem;
-import Model.Node;
-import Model.Operator;
-import Model.State;
+import src.API.Algorithm;
+import src.API.HeuristicEval;
+import src.API.IProblem;
+import src.Model.Node;
+import src.Model.Operator;
+import src.Model.State;
 
 import java.util.Hashtable;
 import java.util.PriorityQueue;

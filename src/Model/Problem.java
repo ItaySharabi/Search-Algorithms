@@ -1,6 +1,6 @@
-package Model;
+package src.Model;
 
-import API.IProblem;
+import src.API.IProblem;
 
 public class Problem implements IProblem {
     private State start, goal;

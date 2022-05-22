@@ -1,16 +1,16 @@
-package API;
+package src.API;
 
-import Heuristics.ManhattanDistance;
-import Model.Node;
-import Model.State;
+import src.Heuristics.ManhattanDistance;
+import src.Model.Node;
+import src.Model.State;
 
 import java.util.Comparator;
 
 /**
  * Heuristic Evaluation abstraction class.
  * This is a Comparator class, which compares
- * `Model.Node`s by their f(n) value.
- * The f(n) value of a `Model.Node` n - is the heuristic evaluation
+ * `src.Model.Node`s by their f(n) value.
+ * The f(n) value of a `src.Model.Node` n - is the heuristic evaluation
  * of the node, h(n), and some cost function, g(n).
  * There are many different heuristic evaluation methods available.
  * @see ManhattanDistance

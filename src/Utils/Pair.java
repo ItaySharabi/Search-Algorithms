@@ -1,6 +1,6 @@
-package Utils;
+package src.Utils;
 
-import Model.Marble;
+import src.Model.Marble;
 
 public class Pair {
 

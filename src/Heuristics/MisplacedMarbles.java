@@ -1,7 +1,7 @@
-package Heuristics;
+package src.Heuristics;
 
-import API.HeuristicEval;
-import Model.State;
+import src.API.HeuristicEval;
+import src.Model.State;
 
 import java.util.HashMap;
 public class MisplacedMarbles extends HeuristicEval {

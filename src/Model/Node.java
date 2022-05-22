@@ -1,10 +1,10 @@
-package Model;
+package src.Model;
 
-import API.Algorithm;
-import Utils.Direction;
+import src.API.Algorithm;
+import src.Utils.Direction;
 
 /**
- * Model.Node class.
+ * src.Model.Node class.
  *
  * A `Node` is the Data-Structure, which holds
  * `State`s of a Problem `p`, during the search of an `Algorithm`.

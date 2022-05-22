@@ -1,10 +1,10 @@
-package Utils;
+package src.Utils;
 
-import API.Algorithm;
-import API.HeuristicEval;
-import API.IProblem;
-import Algorithms.*;
-import Heuristics.ManhattanDistance;
+import src.API.Algorithm;
+import src.API.HeuristicEval;
+import src.API.IProblem;
+import src.Algorithms.*;
+import src.Heuristics.ManhattanDistance;
 
 /**
  * A simple demonstration class

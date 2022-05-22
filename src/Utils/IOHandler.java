@@ -1,8 +1,8 @@
-package Utils;
+package src.Utils;
 
-import API.IProblem;
-import Model.Problem;
-import Model.State;
+import src.API.IProblem;
+import src.Model.Problem;
+import src.Model.State;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,13 +25,13 @@ public class IOHandler {
         try {
             s = new Scanner(new File(inputFilePath));
 
-            // API.Algorithm name to execute
+            // src.API.Algorithm name to execute
             this.algorithmName = s.nextLine();
 
             // Verbose output
             this.withOpenList = s.nextLine().equalsIgnoreCase("with open");
 
-            // Model.Node board size
+            // src.Model.Node board size
             int dim = s.nextLine().equalsIgnoreCase("big") ? 5 : 3;
 
             // Build up a char[][] start and goal matrices:
@@ -80,9 +80,9 @@ public class IOHandler {
             }
         }
         if (dim == 3 && (countR > 2 || countB > 2 || countG > 2 || countY > 0)) {
-            throw new InputMismatchException("Utils.IOHandler:: Wrong GameBoard input");
+            throw new InputMismatchException("src.Utils.IOHandler:: Wrong GameBoard input");
         } else if (dim == 5 && (countR > 4 || countB > 4 || countG > 4 || countY > 4)) {
-            throw new InputMismatchException("Utils.IOHandler:: Wrong GameBoard input");
+            throw new InputMismatchException("src.Utils.IOHandler:: Wrong GameBoard input");
         }
         return board;
     }

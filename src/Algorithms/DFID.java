@@ -1,10 +1,10 @@
-package Algorithms;
+package src.Algorithms;
 
-import API.Algorithm;
-import API.IProblem;
-import Model.Node;
-import Model.Operator;
-import Model.State;
+import src.API.Algorithm;
+import src.API.IProblem;
+import src.Model.Node;
+import src.Model.Operator;
+import src.Model.State;
 
 import java.util.Hashtable;
 
@@ -14,7 +14,7 @@ public class DFID extends Algorithm {
 
     public DFID(IProblem p, boolean verbose) {
         super(p, verbose);
-        this.name = "Algorithms.DFID";
+        this.name = "src.Algorithms.DFID";
     }
 
     private String LimitedDFS(Node curr, int depth, Hashtable<State, Node> workingBranch) {

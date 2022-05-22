@@ -1,18 +1,16 @@
-package API;
+package src.API;
 
-import Algorithms.AStar;
-import Algorithms.BFS;
-import Algorithms.DFID;
-import Model.Marble;
-import Model.Node;
-import Model.State;
-import Utils.Direction;
-
-import static Utils.Direction.*;
+import src.Algorithms.AStar;
+import src.Algorithms.BFS;
+import src.Algorithms.DFID;
+import src.Model.Marble;
+import src.Model.Node;
+import src.Model.State;
+import src.Utils.Direction;
 
 /**
- * API.Algorithm abstract class.
- * This class defines basic functionalities of a `Search API.Algorithm`.
+ * src.API.Algorithm abstract class.
+ * This class defines basic functionalities of a `Search src.API.Algorithm`.
  * Abstract method `execute` is given to all algorithms, and methods
  * such as `path(n)` and `output()`.
  * @see BFS - `Breadth-First` Search: A "Blind" search algorithm.

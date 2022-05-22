@@ -1,25 +1,25 @@
-package Model;
+package src.Model;
 
-import API.Algorithm;
-import API.IProblem;
-import Utils.Direction;
-import Utils.Pair;
+import src.API.Algorithm;
+import src.API.IProblem;
+import src.Utils.Direction;
+import src.Utils.Pair;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static Utils.Direction.*;
+import static src.Utils.Direction.*;
 
 /**
- * Model.State class.
+ * src.Model.State class.
  *
- * A `Model.State` is a representation of the Model.Problem `p` in time `t`.
- * `Model.State`s in this Project are represented by a matrix of strings.
- * It contains some more information like a `List` of `Model.Marble`s
+ * A `src.Model.State` is a representation of the src.Model.Problem `p` in time `t`.
+ * `src.Model.State`s in this Project are represented by a matrix of strings.
+ * It contains some more information like a `List` of `src.Model.Marble`s
  * for the convenience of implementing this solution.
  *
- * it's weight (`Model.Node`s gain weight only when being applied an `Model.Operator`.
+ * it's weight (`src.Model.Node`s gain weight only when being applied an `src.Model.Operator`.
  * @see Node
  * @see Marble
  * @see Algorithm

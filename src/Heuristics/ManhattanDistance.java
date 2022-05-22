@@ -1,15 +1,15 @@
-package Heuristics;
+package src.Heuristics;
 
-import API.HeuristicEval;
-import Model.State;
+import src.API.HeuristicEval;
+import src.Model.State;
 
 import java.util.HashMap;
 
 /**
  * The `Manhattan Distance` Heuristic Evaluation class.
  * `Manhattan Distance` is a "Heuristic Evaluation" method,
- * which evaluates a Model.Node `n` to be "far" from target Model.Node `g`,
- * by summing all "Gridded" distances of misplaced `Model.Marble`s.
+ * which evaluates a src.Model.Node `n` to be "far" from target src.Model.Node `g`,
+ * by summing all "Gridded" distances of misplaced `src.Model.Marble`s.
  * @see HeuristicEval
  */
 public class ManhattanDistance extends HeuristicEval {
@@ -47,7 +47,7 @@ public class ManhattanDistance extends HeuristicEval {
             for (int j = 0; j < dim; ++j) {
                 if (n_board[i][j].equals("_")) { continue; }
                 if (!g[i][j].equals(n_board[i][j])) {
-                    // If Model.Marble[i, j] is not placed.
+                    // If src.Model.Marble[i, j] is not placed.
                     dist = manhattanDist(n_board[i][j], i, j, placed)
                             * costs.get(n_board[i][j]);
                     countMisplaced ++;
@@ -61,8 +61,8 @@ public class ManhattanDistance extends HeuristicEval {
             }
         }
         /*Return the heuristic value, `h`, of
-        * the given Model.State, `s`, with an addition
-        * of the misplaced `Model.Marble`s count*/
+        * the given src.Model.State, `s`, with an addition
+        * of the misplaced `src.Model.Marble`s count*/
         return h + countMisplaced;
     }
 

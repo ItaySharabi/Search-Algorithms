@@ -1,9 +1,9 @@
-package Algorithms;
+package src.Algorithms;
 
-import API.Algorithm;
-import API.HeuristicEval;
-import API.IProblem;
-import Model.*;
+import src.API.Algorithm;
+import src.API.HeuristicEval;
+import src.API.IProblem;
+import src.Model.*;
 
 import java.util.Hashtable;
 import java.util.Stack;

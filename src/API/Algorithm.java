@@ -71,7 +71,9 @@ public abstract class Algorithm {
                     "\ntime: " + (System.currentTimeMillis() - getStartTime())/1000.0;
         }
 
-        System.out.println("Goal State found:\n" + goal);
+        if (withOpen) {
+            System.out.println("Goal State found:\n" + goal);
+        }
         return path
                 .substring(2)
                 .substring(0, path.length()-2) +

@@ -23,8 +23,6 @@ import java.io.IOException;
  */
 public class SearchEngine {
 
-    public static int[] primes = {7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107};
-
     public static void main(String[] args) {
         IOHandler io;
         IProblem p;
@@ -62,6 +60,5 @@ public class SearchEngine {
 
     private static void prompt(String message, boolean verbose) {
         System.out.println(verbose ? message : "");
-
     }
 }

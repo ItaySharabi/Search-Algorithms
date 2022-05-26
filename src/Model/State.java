@@ -12,14 +12,14 @@ import java.util.List;
 import static src.Utils.Direction.*;
 
 /**
- * src.Model.State class.
+ * State class.
  *
- * A `src.Model.State` is a representation of the src.Model.Problem `p` in time `t`.
- * `src.Model.State`s in this Project are represented by a matrix of strings.
- * It contains some more information like a `List` of `src.Model.Marble`s
+ * A `State` is a representation of the Problem `p` in time `t`.
+ * `State`s in this Project are represented by a matrix of strings.
+ * It contains some more information like a `List` of `Marble`s
  * for the convenience of implementing this solution.
  *
- * it's weight (`src.Model.Node`s gain weight only when being applied an `src.Model.Operator`.
+ * it's weight (`Node`s gain weight only when being applied an `Operator`.
  * @see Node
  * @see Marble
  * @see Algorithm

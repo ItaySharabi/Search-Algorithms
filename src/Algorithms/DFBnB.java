@@ -10,6 +10,7 @@ import src.Model.State;
 import java.util.*;
 
 public class DFBnB extends Algorithm {
+    this.name = "DFBnB";
     private final Stack<Node> STK;
     private final Hashtable<State, Node> frontier; // Open-list
     private int t;

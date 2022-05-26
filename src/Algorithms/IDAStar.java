@@ -9,6 +9,7 @@ import java.util.Hashtable;
 import java.util.Stack;
 
 public class IDAStar extends Algorithm {
+    this.name = "IDA*";
     private final Stack<Node> STK;
     private final Hashtable<State, Node> frontier;
     private final HeuristicEval heuristics;

@@ -1,6 +1,28 @@
 # AI-Search-Algorithms
 
 
+# How to Run?
+
+Simply download this repository's source files,
+or,
+you can use a `git bash` terminal (On windows) to clone this repository using the command:
+`git clone https://github.com/ItaySharabi/AI-Search-Algorithms.git`
+
+After you have the source files - just open the `MarblesPuzzle` package
+and run `SearchEngine.java`
+
+This file processes the input file given to it by default, 
+but you can always create a new input file and feed it to the `SearchEngine.java` file.
+![image](https://user-images.githubusercontent.com/63110245/170684815-542fb58b-4ee8-4ffd-a2cf-5f59a1899079.png)
+
+## Example input file for execution:
+You can write your own input files in the folder `MarblesPuzzle/Inputs`
+and simply change the input file in `SearchEngine.java`
+
+![image](https://user-images.githubusercontent.com/63110245/170685225-03f7bf4e-71c2-406c-a217-f032546fd713.png)
+
+___________________________________________________________________________________________________________________________________
+
 # Algorithms:
 
 ## BFS

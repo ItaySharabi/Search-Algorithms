@@ -19,6 +19,16 @@ of IOHandler.
 ## Rules:
 Moving marbles of any color is possible in 4 directions: UP, DOWN, LEFT, RIGHT,
 Unless the marble is blocked in that direction.
+The `costs` of moving marbles:
+
+Red - 1
+
+Blue - 2
+
+Green - 10
+
+Yellow - 1 (Only in 5x5 Game Boards)
+
 Try getting from this initial board state:
 
 <img src="https://user-images.githubusercontent.com/63110245/170682891-17fc3b36-16ae-4e4c-88b3-352cbf9d0931.png" width="200" height="175">

@@ -10,9 +10,9 @@ import java.util.Hashtable;
 import java.util.PriorityQueue;
 
 /**
- *  A* algorithm only finds the shortest path from a specified source
- *  to a specified goal, and not the shortest-path tree
- *  from a specified source to all possible goals
+ *  A* algorithm is an Informed search algorithm,
+ *  which evaluates `Node`s during search using 
+ *  a HeuristicEval comparator to help "navigate" the algorithm towards the goal.
  */
 public class AStar extends Algorithm {
 

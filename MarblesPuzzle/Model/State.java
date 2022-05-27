@@ -1,7 +1,7 @@
 package MarblesPuzzle.Model;
 
-import MarblesPuzzle.API.Algorithm;
-import MarblesPuzzle.API.IProblem;
+import API.Algorithm;
+import API.IProblem;
 import MarblesPuzzle.Utils.Direction;
 import MarblesPuzzle.Utils.Pair;
 

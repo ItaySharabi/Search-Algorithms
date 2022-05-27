@@ -1,8 +1,8 @@
-package MarblesPuzzle.Algorithms;
+package Algorithms;
 
-import MarblesPuzzle.API.Algorithm;
-import MarblesPuzzle.API.HeuristicEval;
-import MarblesPuzzle.API.IProblem;
+import API.Algorithm;
+import API.HeuristicEval;
+import API.IProblem;
 import MarblesPuzzle.Model.Node;
 import MarblesPuzzle.Model.Operator;
 import MarblesPuzzle.Model.State;

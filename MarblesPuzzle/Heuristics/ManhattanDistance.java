@@ -1,6 +1,6 @@
 package MarblesPuzzle.Heuristics;
 
-import MarblesPuzzle.API.HeuristicEval;
+import API.HeuristicEval;
 import MarblesPuzzle.Model.State;
 
 import java.util.HashMap;

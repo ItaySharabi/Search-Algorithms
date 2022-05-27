@@ -10,7 +10,6 @@ import MarblesPuzzle.Model.State;
 import java.util.*;
 
 public class DFBnB extends Algorithm {
-    this.name = "DFBnB";
     private final Stack<Node> STK;
     private final Hashtable<State, Node> frontier; // Open-list
     private int t;
@@ -19,6 +18,7 @@ public class DFBnB extends Algorithm {
 
     public DFBnB(IProblem p, boolean verbose, HeuristicEval heuristics) {
         super(p, verbose);
+        this.name = "DFBnB";
         this.start = new Node(p.getStart());
         this.heuristics = heuristics;
         STK = new Stack<>();

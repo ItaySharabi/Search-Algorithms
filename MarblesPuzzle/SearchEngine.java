@@ -29,7 +29,7 @@ public class SearchEngine {
         IOHandler io;
         IProblem<State> p;
         try {
-            io = new IOHandler("MarblesPuzzle/Inputs/input1.txt");
+            io = new IOHandler("MarblesPuzzle/Inputs/input.txt");
 
             // Extract execution info:
             p = io.getProblem();
@@ -45,7 +45,7 @@ public class SearchEngine {
             String solution =
                     ProblemSolver.solve(p, algoName, showOpenList);
 
-            prompt("=======================================" +
+            prompt(solution + "\n\n=======================================" +
                     "\n ~ `" + algoName + "` ~ has finished successfully!\n" +
                     "Open `output.txt` to see the solution for this problem!\n" +
                     "=======================================\n"

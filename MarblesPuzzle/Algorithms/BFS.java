@@ -12,9 +12,9 @@ import java.util.Queue;
 
 public class BFS extends Algorithm {
 
-    private final Hashtable<State, Node> frontier;
-    private final Hashtable<State, Node> exploredSet;
-    private final Queue<Node> Q;
+    private final Hashtable<State, Node<State>> frontier;
+    private final Hashtable<State, Node<State>> exploredSet;
+    private final Queue<Node<State>> Q;
 
 
     public BFS(IProblem p, boolean verbose) {
@@ -28,8 +28,8 @@ public class BFS extends Algorithm {
     @Override
     public String execute() {
         timerOn();
-        Q.add(new Node(getStart()));
-        Node curr;
+        Q.add(new Node<>(getStart()));
+        Node<State> curr;
         while (!Q.isEmpty()) {
             curr = Q.poll();
             // Do exploring...
@@ -43,7 +43,7 @@ public class BFS extends Algorithm {
                 State g = operator.apply(curr);
 
                 if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
-                    Node next = new Node(curr, g);
+                    Node<State> next = new Node<>(curr, g);
                     if (isGoal(g)) {
                         return output(path(next), next.getWeight());
                     } else {

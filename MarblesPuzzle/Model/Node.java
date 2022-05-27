@@ -15,27 +15,29 @@ import MarblesPuzzle.Utils.Direction;
  * @see Algorithm
  * @see Operator
  */
-public class Node {
+public class Node<T> {
 
-    private final Node parent;
-    private final State boardState;
+    private final Node<T> parent;
+    private final T boardState;
     private int depth;
     private int weight;
     private static int nodeCounter = 1;
     private final int key;
     private boolean tag;
 
-    public Node(State b) {
+    public Node(T state) {
         key = nodeCounter++;
-        this.boardState = b;
+        this.boardState = state;
         this.parent = null;
     }
 
-    public Node(Node n, State b) {
+    public Node(Node<T> n, T b) {
         key = nodeCounter++;
         this.boardState = b;
         this.parent = n;
-        this.weight = n.getWeight() + b.getOperatedMarble().getCost();
+        if (b instanceof State) {
+            this.weight = n.getWeight() + ((State)b).getOperatedMarble().getCost();
+        }
         this.depth = n.depth + 1;
     }
 
@@ -50,17 +52,17 @@ public class Node {
         return depth;
     }
 
-    public Node getParent() {
+    public Node<T> getParent() {
         return parent;
     }
 
-    public Marble getOperatedMarble() {
-        return boardState.getOperatedMarble();
-    }
+//    public Marble getOperatedMarble() {
+//        return boardState.getOperatedMarble();
+//    }
 
-    public Direction getOperatedMarbleDirection() {
-        return boardState.getOperatedMarbleDirection();
-    }
+//    public Direction getOperatedMarbleDirection() {
+//        return boardState.getOperatedMarbleDirection();
+//    }
 
     public int getWeight() {
         return weight;
@@ -70,7 +72,7 @@ public class Node {
         return nodeCounter;
     }
 
-    public State getState() {
+    public T getState() {
         return boardState;
     }
 
@@ -78,16 +80,16 @@ public class Node {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Node node = (Node) o;
-        return boardState.equals(node.boardState);
+//        Node<State> node = (Node) o;
+        return boardState.equals(((Node)o).boardState);
     }
 
     @Override
     public String toString() {
         return "Node #" + key + "\n" +
-                (boardState.size() == 3 ? "------\n" : "---------\n") +
+//                (boardState.size() == 3 ? "------\n" : "---------\n") +
                 boardState +
-                (boardState.size() == 3 ? "------\n" : "---------\n") +
+//                (boardState.size() == 3 ? "------\n" : "---------\n") +
                 "Weight: " + weight + "\n";
     }
 }

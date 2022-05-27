@@ -9,8 +9,8 @@ import java.util.Hashtable;
 import java.util.Stack;
 
 public class IDAStar extends Algorithm {
-    private final Stack<Node> STK;
-    private final Hashtable<State, Node> frontier;
+    private final Stack<Node<State>> STK;
+    private final Hashtable<State, Node<State>> frontier;
     private final HeuristicEval heuristics;
     private int minF;
     private int t;
@@ -30,18 +30,18 @@ public class IDAStar extends Algorithm {
     @Override
     public String execute() {
         int _f;
-        Node curr;
+        Node<State> curr;
         final boolean OUT_OF_THE_STACK = false;
         t = heuristics.h(start);
         timerOn();
         while (t != Integer.MAX_VALUE) {
             minF = Integer.MAX_VALUE;
-            curr = new Node(start);
+            curr = new Node<>(start);
             curr.setTag(OUT_OF_THE_STACK);
             STK.add(curr);
             frontier.put(start, curr);
             while (!STK.isEmpty()) {
-                Node n = STK.pop();
+                Node<State> n = STK.pop();
                 if (withOpen()) {
                     System.out.println(n);
                 }
@@ -65,7 +65,7 @@ public class IDAStar extends Algorithm {
                             if (frontier.contains(g) && frontier.get(g).isOut()) {
                                 continue;
                             }
-                            Node next = new Node(n, g);
+                            Node<State> next = new Node<>(n, g);
 
                             if (frontier.contains(g) && !frontier.get(g).isOut()) {
                                 if (heuristics.

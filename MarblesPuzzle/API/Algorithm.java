@@ -52,7 +52,7 @@ public abstract class Algorithm {
         return b.equals(goal);
     }
 
-    protected boolean isGoal(Node n) {
+    protected boolean isGoal(Node<State> n) {
         return isGoal(n.getState());
     }
 
@@ -88,19 +88,19 @@ public abstract class Algorithm {
         return this.start_time;
     }
 
-    protected String path(Node n) {
+    protected String path(Node<State> n) {
         if (null == n) {return "";}
-        Marble m = n.getOperatedMarble();
+        Marble m = n.getState().getOperatedMarble();
         if (null == m) {return "";}
         if (null == n.getParent()) {return m.getTag() + ":(" + (m.getI()+1) + "," + (m.getJ()+1)+ ")";}
         return path(n.getParent()) + "--" + prev(n) + "" + m.getTag() + ":(" + (m.getI() + 1) + "," + (m.getJ()+1)+ ")";
     }
 
-    private String prev(Node n) {
+    private String prev(Node<State> n) {
         if (null == n) {return "";}
 
-        Direction d = n.getOperatedMarbleDirection();
-        Marble t = n.getOperatedMarble();
+        Direction d = n.getState().getOperatedMarbleDirection();
+        Marble t = n.getState().getOperatedMarble();
 
         if (null == t) {return "";}
 

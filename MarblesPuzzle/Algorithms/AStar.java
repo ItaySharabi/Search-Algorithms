@@ -16,9 +16,9 @@ import java.util.PriorityQueue;
  *  from a specified source to all possible goals
  */
 public class AStar extends Algorithm {
-    private final PriorityQueue<Node> PQ;
-    private final Hashtable<State, Node> frontier;
-    private final Hashtable<State, Node> exploredSet;
+    private final PriorityQueue<Node<State>> PQ;
+    private final Hashtable<State, Node<State>> frontier;
+    private final Hashtable<State, Node<State>> exploredSet;
 
     public AStar(IProblem problem, boolean verbose, HeuristicEval h) {
         super(problem, verbose);
@@ -31,7 +31,7 @@ public class AStar extends Algorithm {
     @Override
     public String execute() {
         timerOn();
-        Node n = new Node(getStart());
+        Node<State> n = new Node<>(getStart());
         State g;
         PQ.add(n);
         frontier.put(getStart(), n);
@@ -47,7 +47,7 @@ public class AStar extends Algorithm {
             exploredSet.put(n.getState(), n);
             for (Operator operator : Operator.allowedOperators(n)){
                 g = operator.apply(n);
-                Node next = new Node(n, g);
+                Node<State> next = new Node<>(n, g);
                 if (isGoal(g)) {
                     return output(path(next), next.getWeight());
                 }

@@ -15,13 +15,13 @@ import java.util.Comparator;
  * There are many different heuristic evaluation methods available.
  * @see ManhattanDistance
  * */
-public abstract class HeuristicEval implements Comparator<Node> {
+public abstract class HeuristicEval implements Comparator<Node<State>> {
     private final State goalState; // Goal state to compare with
 
     public HeuristicEval(State goal){goalState = goal;}
 
     @Override
-    public int compare(Node n1, Node n2) {
+    public int compare(Node<State> n1, Node<State> n2) {
         int f1 = f(n1), f2 = f(n2);
         if (f1 == f2) {
             return n1.getDepth() - n2.getDepth();
@@ -33,7 +33,7 @@ public abstract class HeuristicEval implements Comparator<Node> {
 
     public abstract int h(State s);
 
-    public int f(Node n) {
+    public int f(Node<State> n) {
         return n.getWeight() + h(n.getState()); // give a factor of x5 to the Heuristic value!
     }
 

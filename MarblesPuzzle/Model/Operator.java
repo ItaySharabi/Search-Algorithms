@@ -27,7 +27,7 @@ public class Operator {
     private Operator(Pair p) {this.p = p;}
 
     // Apply the operator to node `n` with a `src.Model.Marble` and a `src.Utils.Direction` (Located in field `p`).
-    public State apply(Node n) {
+    public State apply(Node<State> n) {
         if (null == n || null == p) {return null;}
         return new State(n.getState(), p);
     }
@@ -41,13 +41,13 @@ public class Operator {
      * @return - A list of all allowed operators, which will be applied
      *           to `n` by invoking operator.apply().
      */
-    public static List<Operator> allowedOperators(Node n) {
+    public static List<Operator> allowedOperators(Node<State> n) {
         List<Operator> allowedOperators = new ArrayList<>();
         Marble badMarble = null;
         Direction prevDirection = null;
         if (null != n.getParent()) {
-            badMarble = n.getOperatedMarble();
-            prevDirection = opposite(n.getOperatedMarbleDirection());
+            badMarble = n.getState().getOperatedMarble();
+            prevDirection = opposite(n.getState().getOperatedMarbleDirection());
         }
 
         for (Direction d : values()) {

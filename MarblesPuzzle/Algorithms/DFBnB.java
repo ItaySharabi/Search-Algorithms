@@ -10,16 +10,16 @@ import MarblesPuzzle.Model.State;
 import java.util.*;
 
 public class DFBnB extends Algorithm {
-    private final Stack<Node> STK;
-    private final Hashtable<State, Node> frontier; // Open-list
+    private final Stack<Node<State>> STK;
+    private final Hashtable<State, Node<State>> frontier; // Open-list
     private int t;
-    private final Node start;
+    private final Node<State> start;
     private final HeuristicEval heuristics;
 
     public DFBnB(IProblem p, boolean verbose, HeuristicEval heuristics) {
         super(p, verbose);
         this.name = "DFBnB";
-        this.start = new Node(p.getStart());
+        this.start = new Node<>(p.getStart());
         this.heuristics = heuristics;
         STK = new Stack<>();
         frontier = new Hashtable<>();
@@ -36,7 +36,7 @@ public class DFBnB extends Algorithm {
         timerOn();
         while (!STK.isEmpty()) {
 
-            Node n = STK.pop();
+            Node<State> n = STK.pop();
             if (withOpen()) {
                 System.out.println(n);
             }
@@ -47,14 +47,14 @@ public class DFBnB extends Algorithm {
                 STK.add(n);
 
                 // Apply all allowed operators on node `n`
-                List<Node> N = new ArrayList<>();
+                List<Node<State>> N = new ArrayList<>();
                 for (Operator operator : Operator.allowedOperators(n)) {
-                    N.add(new Node(n, operator.apply(n)));
+                    N.add(new Node<>(n, operator.apply(n)));
                 }
                 // Sort the nodes in N according to their `f` heuristic values.
                 N.sort(heuristics);
-                List<Node> cpyN = new ArrayList<>(N);
-                for (Node child : cpyN) {
+                List<Node<State>> cpyN = new ArrayList<>(N);
+                for (Node<State> child : cpyN) {
                     if (heuristics.f(child) >= t) {
                         // Remove all nodes after `child` (including)
                         int thresh_ = N.indexOf(child);
@@ -79,7 +79,7 @@ public class DFBnB extends Algorithm {
                     }
                     Collections.reverse(N);
                     STK.addAll(N);
-                    for (Node c : N) {
+                    for (Node<State> c : N) {
                         frontier.put(c.getState(), c);
                     }
                 }

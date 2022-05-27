@@ -10,14 +10,14 @@ import java.util.Hashtable;
 
 public class DFID extends Algorithm {
 
-    private Hashtable<State, Node> frontier;
+    private Hashtable<State, Node<State>> frontier;
 
     public DFID(IProblem p, boolean verbose) {
         super(p, verbose);
         this.name = "DFID";
     }
 
-    private String LimitedDFS(Node curr, int depth, Hashtable<State, Node> workingBranch) {
+    private String LimitedDFS(Node<State> curr, int depth, Hashtable<State, Node<State>> workingBranch) {
         if (withOpen()) {
             System.out.println(curr);
         }
@@ -28,13 +28,13 @@ public class DFID extends Algorithm {
         }
         workingBranch.put(curr.getState(), curr);
         boolean isCutoff = false;
-        Node next = null;
+        Node<State> next = null;
         String result;
 
         for (Operator operator : Operator.allowedOperators(curr)) {
             State g = operator.apply(curr);
             if (null == g || workingBranch.containsKey(g)) {continue;}
-            next = new Node(curr, g);
+            next = new Node<>(curr, g);
             result = LimitedDFS(next, depth-1, workingBranch);
 
             if (result.equals("cutoff")) {
@@ -57,7 +57,7 @@ public class DFID extends Algorithm {
 
         int l = Integer.MAX_VALUE; // limit
 
-        Node root = new Node(getStart());
+        Node<State> root = new Node<>(getStart());
         timerOn();
         String output;
         for (int i = 1; i < l; ++i) {

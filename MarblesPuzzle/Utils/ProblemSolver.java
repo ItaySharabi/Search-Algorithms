@@ -17,18 +17,18 @@ public class ProblemSolver {
     public static String solve(IProblem<State> p, String algorithmName, boolean verbose) {
         Algorithm algo;
         HeuristicEval heuristicEval = new ManhattanDistance(p.getGoalState());
-        if (algorithmName.equals("BFS")) {
+        if (algorithmName.equalsIgnoreCase("BFS")) {
             algo = new BFS(p, verbose);
         }
-        else if(algorithmName.equals("DFID")) {
+        else if(algorithmName.equalsIgnoreCase("DFID")) {
             algo = new DFID(p, verbose);
 
         }
-        else if(algorithmName.equals("A*") || algorithmName.equals("AStar")) {
+        else if(algorithmName.equalsIgnoreCase("A*") || algorithmName.equalsIgnoreCase("AStar")) {
             algo = new AStar(p, verbose, heuristicEval);
 
         }
-        else if(algorithmName.equals("IDA*") || algorithmName.equals("IDAStar")) {
+        else if(algorithmName.equalsIgnoreCase("IDA*") || algorithmName.equalsIgnoreCase("IDAStar")) {
             algo = new IDAStar(p, verbose, heuristicEval);
 
         }

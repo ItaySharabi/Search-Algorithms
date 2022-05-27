@@ -3,7 +3,6 @@ package Algorithms;
 import API.Algorithm;
 import API.HeuristicEval;
 import API.IProblem;
-import MarblesPuzzle.Model.Node;
 import MarblesPuzzle.Model.Operator;
 import MarblesPuzzle.Model.State;
 

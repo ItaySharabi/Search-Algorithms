@@ -1,6 +1,8 @@
-package MarblesPuzzle.Model;
+package Algorithms;
 
 import API.Algorithm;
+import MarblesPuzzle.Model.Operator;
+import MarblesPuzzle.Model.State;
 
 /**
  * Node class.

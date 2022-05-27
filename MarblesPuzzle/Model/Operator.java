@@ -1,6 +1,7 @@
 package MarblesPuzzle.Model;
 
 import API.Algorithm;
+import Algorithms.Node;
 import MarblesPuzzle.Utils.Direction;
 import MarblesPuzzle.Utils.Pair;
 
@@ -10,13 +11,13 @@ import java.util.List;
 import static MarblesPuzzle.Utils.Direction.*;
 
 /**
- * src.Model.Operator class.
+ * Operator class.
  *
- * A `src.Model.Node` is the Data-Structure, which holds
- * `src.Model.State`s of a src.Model.Problem `p`, during the search of an `src.API.Algorithm`.
+ * A `Node` is the Data-Structure, which holds
+ * `State`s of a `Problem `p`, during the search of an `Algorithm`.
  * It contains the the state,
  * it's depth in the search tree,
- * it's weight (`src.Model.Node`s gain weight only when being applied an `src.Model.Operator`.
+ * it's weight (`Node`s gain weight only when being applied an `Operator`.
  * @see State
  * @see Algorithm
  * @see Operator

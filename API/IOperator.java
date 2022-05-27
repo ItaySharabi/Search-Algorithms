@@ -1,6 +1,6 @@
 package API;
 
-import MarblesPuzzle.Model.Node;
+import Algorithms.Node;
 import MarblesPuzzle.Model.State;
 
 public interface IOperator {

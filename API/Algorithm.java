@@ -4,7 +4,7 @@ import Algorithms.AStar;
 import Algorithms.BFS;
 import Algorithms.DFID;
 import MarblesPuzzle.Model.Marble;
-import MarblesPuzzle.Model.Node;
+import Algorithms.Node;
 import MarblesPuzzle.Model.State;
 import MarblesPuzzle.Utils.Direction;
 

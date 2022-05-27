@@ -24,6 +24,7 @@ public class Problem implements IProblem<State> {
     public String toString() {
         return "\n`Arrange The Marbles`:\n" +
                 "Let's try to find a solution for this game!\n" +
+                "===========================================\n\n\n" +
                 "Initial board state:\n" + start +
                 "\nGoal board state:\n" + goal;
     }

@@ -1,7 +1,7 @@
 package API;
 
 import MarblesPuzzle.Heuristics.ManhattanDistance;
-import MarblesPuzzle.Model.Node;
+import Algorithms.Node;
 import MarblesPuzzle.Model.State;
 
 import java.util.Comparator;

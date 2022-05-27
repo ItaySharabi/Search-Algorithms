@@ -2,6 +2,7 @@ package MarblesPuzzle.Model;
 
 import API.Algorithm;
 import API.IProblem;
+import Algorithms.Node;
 import MarblesPuzzle.Utils.Direction;
 import MarblesPuzzle.Utils.Pair;
 

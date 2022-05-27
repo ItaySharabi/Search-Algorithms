@@ -23,10 +23,10 @@ public abstract class Algorithm {
     private State start, goal;
     private boolean withOpen;
 
-    public Algorithm(IProblem problem, boolean verbose) {
+    public Algorithm(IProblem<State> problem, boolean verbose) {
         this.withOpen = verbose;
-        start = problem.getStart();
-        goal = problem.getGoal();
+        start = problem.getInitialState();
+        goal = problem.getGoalState();
         start_time = -1;
     }
 

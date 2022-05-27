@@ -1,7 +1,6 @@
 package MarblesPuzzle.Model;
 
 import MarblesPuzzle.API.Algorithm;
-import MarblesPuzzle.Utils.Direction;
 
 /**
  * Node class.
@@ -18,7 +17,7 @@ import MarblesPuzzle.Utils.Direction;
 public class Node<T> {
 
     private final Node<T> parent;
-    private final T boardState;
+    private final T state;
     private int depth;
     private int weight;
     private static int nodeCounter = 1;
@@ -27,16 +26,16 @@ public class Node<T> {
 
     public Node(T state) {
         key = nodeCounter++;
-        this.boardState = state;
+        this.state = state;
         this.parent = null;
     }
 
-    public Node(Node<T> n, T b) {
+    public Node(Node<T> n, T st) {
         key = nodeCounter++;
-        this.boardState = b;
+        this.state = st;
         this.parent = n;
-        if (b instanceof State) {
-            this.weight = n.getWeight() + ((State)b).getOperatedMarble().getCost();
+        if (st instanceof State) {
+            this.weight = n.getWeight() + ((State)st).getOperatedMarble().getCost();
         }
         this.depth = n.depth + 1;
     }
@@ -56,14 +55,6 @@ public class Node<T> {
         return parent;
     }
 
-//    public Marble getOperatedMarble() {
-//        return boardState.getOperatedMarble();
-//    }
-
-//    public Direction getOperatedMarbleDirection() {
-//        return boardState.getOperatedMarbleDirection();
-//    }
-
     public int getWeight() {
         return weight;
     }
@@ -73,7 +64,7 @@ public class Node<T> {
     }
 
     public T getState() {
-        return boardState;
+        return state;
     }
 
     @Override
@@ -81,15 +72,13 @@ public class Node<T> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 //        Node<State> node = (Node) o;
-        return boardState.equals(((Node)o).boardState);
+        return state.equals((Node)getState());
     }
 
     @Override
     public String toString() {
         return "Node #" + key + "\n" +
-//                (boardState.size() == 3 ? "------\n" : "---------\n") +
-                boardState +
-//                (boardState.size() == 3 ? "------\n" : "---------\n") +
+                state +
                 "Weight: " + weight + "\n";
     }
 }

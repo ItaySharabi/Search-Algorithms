@@ -10,16 +10,16 @@ import MarblesPuzzle.Model.State;
 import java.util.*;
 
 public class DFBnB extends Algorithm {
-    private final Stack<Node<State>> STK;
+    private final Stack<Node<State>> STK;                 // Stack
     private final Hashtable<State, Node<State>> frontier; // Open-list
-    private int t;
+    private int t;                                        // Threshold
     private final Node<State> start;
     private final HeuristicEval heuristics;
 
-    public DFBnB(IProblem p, boolean verbose, HeuristicEval heuristics) {
+    public DFBnB(IProblem<State> p, boolean verbose, HeuristicEval heuristics) {
         super(p, verbose);
         this.name = "DFBnB";
-        this.start = new Node<>(p.getStart());
+        this.start = new Node<>(p.getInitialState());
         this.heuristics = heuristics;
         STK = new Stack<>();
         frontier = new Hashtable<>();
@@ -33,10 +33,11 @@ public class DFBnB extends Algorithm {
         String result = null;
 
         t = Integer.MAX_VALUE;
+        Node<State> n;
         timerOn();
         while (!STK.isEmpty()) {
 
-            Node<State> n = STK.pop();
+            n = STK.pop();
             if (withOpen()) {
                 System.out.println(n);
             }

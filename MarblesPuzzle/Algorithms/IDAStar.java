@@ -9,18 +9,18 @@ import java.util.Hashtable;
 import java.util.Stack;
 
 public class IDAStar extends Algorithm {
-    private final Stack<Node<State>> STK;
-    private final Hashtable<State, Node<State>> frontier;
-    private final HeuristicEval heuristics;
-    private int minF;
-    private int t;
+    private final Stack<Node<State>> STK;                  // Stack
+    private final Hashtable<State, Node<State>> frontier;  // Open-list
+    private final HeuristicEval heuristics;                // Heuristic evaluation object
+    private int minF;                                      // Minimum heuristic val threshold
+    private int t;                                         // Threshold
     private final State start;
 
 
-    public IDAStar(IProblem p, boolean verbose, HeuristicEval heuristic) {
+    public IDAStar(IProblem<State> p, boolean verbose, HeuristicEval heuristic) {
         super(p, verbose);
         this.name = "IDA*";
-        this.start = p.getStart();
+        this.start = p.getInitialState();
         this.heuristics = heuristic;
         this.t = heuristic.h(start);
         STK = new Stack<>();
@@ -40,6 +40,7 @@ public class IDAStar extends Algorithm {
             curr.setTag(OUT_OF_THE_STACK);
             STK.add(curr);
             frontier.put(start, curr);
+
             while (!STK.isEmpty()) {
                 Node<State> n = STK.pop();
                 if (withOpen()) {
@@ -54,8 +55,9 @@ public class IDAStar extends Algorithm {
                     State g;
                     for (Operator operator : Operator.allowedOperators(n)) {
                         g = operator.apply(n);
-                            _f =    heuristics
-                                    .h(g) // f(x) = h(x.getState()) + g(x)
+                            _f =  // f(x) = g(x) + h(x.getState())
+                                    heuristics
+                                    .h(g)
                                     + g.getOperatedMarble().getCost()
                                     + n.getWeight();
                             if (_f > t) {
@@ -87,6 +89,6 @@ public class IDAStar extends Algorithm {
                 }
             t = minF;
         }
-        return output(path(null), 0);
+        return output(path(null), -1);
     }
 }

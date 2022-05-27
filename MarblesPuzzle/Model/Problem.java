@@ -11,12 +11,12 @@ public class Problem implements IProblem {
     }
 
     @Override
-    public State getStart() {
+    public State getInitialState() {
         return start;
     }
 
     @Override
-    public State getGoal() {
+    public State getGoalState() {
         return goal;
     }
 

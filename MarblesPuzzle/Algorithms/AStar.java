@@ -16,11 +16,12 @@ import java.util.PriorityQueue;
  *  from a specified source to all possible goals
  */
 public class AStar extends Algorithm {
+
     private final PriorityQueue<Node<State>> PQ;
     private final Hashtable<State, Node<State>> frontier;
     private final Hashtable<State, Node<State>> exploredSet;
 
-    public AStar(IProblem problem, boolean verbose, HeuristicEval h) {
+    public AStar(IProblem<State> problem, boolean verbose, HeuristicEval h) {
         super(problem, verbose);
         this.name = "A*";
         PQ = new PriorityQueue<>(h);

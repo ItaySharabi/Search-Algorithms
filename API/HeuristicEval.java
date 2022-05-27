@@ -1,4 +1,4 @@
-package MarblesPuzzle.API;
+package API;
 
 import MarblesPuzzle.Heuristics.ManhattanDistance;
 import MarblesPuzzle.Model.Node;

@@ -1,6 +1,6 @@
 package MarblesPuzzle.Model;
 
-import MarblesPuzzle.API.Algorithm;
+import API.Algorithm;
 
 /**
  * Node class.

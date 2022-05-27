@@ -1,6 +1,4 @@
-package MarblesPuzzle.API;
-
-import MarblesPuzzle.Model.State;
+package API;
 
 public interface IProblem<T> {
     public T getInitialState();

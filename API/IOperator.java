@@ -1,4 +1,4 @@
-package MarblesPuzzle.API;
+package API;
 
 import MarblesPuzzle.Model.Node;
 import MarblesPuzzle.Model.State;

@@ -1,6 +1,6 @@
 package MarblesPuzzle;
 
-import MarblesPuzzle.API.IProblem;
+import API.IProblem;
 import MarblesPuzzle.Model.State;
 import MarblesPuzzle.Utils.IOHandler;
 import MarblesPuzzle.Utils.ProblemSolver;
@@ -20,7 +20,7 @@ import java.io.IOException;
  * are to be found in `Inputs` folder) and plug it into the constructor
  * of IOHandler.
  * @see MarblesPuzzle.Utils.IOHandler
- * @see MarblesPuzzle.API.Algorithm
+ * @see API.Algorithm
  * @author Itay Sharabi
  */
 public class SearchEngine {

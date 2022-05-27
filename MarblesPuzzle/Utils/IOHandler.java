@@ -1,6 +1,6 @@
 package MarblesPuzzle.Utils;
 
-import MarblesPuzzle.API.IProblem;
+import API.IProblem;
 import MarblesPuzzle.Model.Problem;
 import MarblesPuzzle.Model.State;
 

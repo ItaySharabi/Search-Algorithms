@@ -1,8 +1,8 @@
-package MarblesPuzzle.API;
+package API;
 
-import MarblesPuzzle.Algorithms.AStar;
-import MarblesPuzzle.Algorithms.BFS;
-import MarblesPuzzle.Algorithms.DFID;
+import Algorithms.AStar;
+import Algorithms.BFS;
+import Algorithms.DFID;
 import MarblesPuzzle.Model.Marble;
 import MarblesPuzzle.Model.Node;
 import MarblesPuzzle.Model.State;

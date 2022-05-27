@@ -1,6 +1,6 @@
 package MarblesPuzzle.Model;
 
-import MarblesPuzzle.API.IProblem;
+import API.IProblem;
 
 public class Problem implements IProblem<State> {
     private State start, goal;

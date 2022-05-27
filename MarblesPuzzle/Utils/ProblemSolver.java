@@ -1,9 +1,9 @@
 package MarblesPuzzle.Utils;
 
-import MarblesPuzzle.API.Algorithm;
-import MarblesPuzzle.API.HeuristicEval;
-import MarblesPuzzle.API.IProblem;
-import MarblesPuzzle.Algorithms.*;
+import API.Algorithm;
+import API.HeuristicEval;
+import API.IProblem;
+import Algorithms.*;
 import MarblesPuzzle.Heuristics.ManhattanDistance;
 import MarblesPuzzle.Model.State;
 

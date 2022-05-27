@@ -1,10 +1,10 @@
-package src.Utils;
+package MarblesPuzzle.Utils;
 
-import src.API.Algorithm;
-import src.API.HeuristicEval;
-import src.API.IProblem;
-import src.Algorithms.*;
-import src.Heuristics.ManhattanDistance;
+import MarblesPuzzle.API.Algorithm;
+import MarblesPuzzle.API.HeuristicEval;
+import MarblesPuzzle.API.IProblem;
+import MarblesPuzzle.Algorithms.*;
+import MarblesPuzzle.Heuristics.ManhattanDistance;
 
 /**
  * A simple demonstration class

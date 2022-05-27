@@ -1,8 +1,8 @@
-package src.Utils;
+package MarblesPuzzle.Utils;
 
-import src.API.IProblem;
-import src.Model.Problem;
-import src.Model.State;
+import MarblesPuzzle.API.IProblem;
+import MarblesPuzzle.Model.Problem;
+import MarblesPuzzle.Model.State;
 
 import java.io.File;
 import java.io.FileNotFoundException;

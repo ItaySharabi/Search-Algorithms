@@ -1,6 +1,6 @@
-package src.Model;
+package MarblesPuzzle.Model;
 
-import src.API.IProblem;
+import MarblesPuzzle.API.IProblem;
 
 public class Problem implements IProblem {
     private State start, goal;

@@ -1,12 +1,12 @@
-package src.API;
+package MarblesPuzzle.API;
 
-import src.Algorithms.AStar;
-import src.Algorithms.BFS;
-import src.Algorithms.DFID;
-import src.Model.Marble;
-import src.Model.Node;
-import src.Model.State;
-import src.Utils.Direction;
+import MarblesPuzzle.Algorithms.AStar;
+import MarblesPuzzle.Algorithms.BFS;
+import MarblesPuzzle.Algorithms.DFID;
+import MarblesPuzzle.Model.Marble;
+import MarblesPuzzle.Model.Node;
+import MarblesPuzzle.Model.State;
+import MarblesPuzzle.Utils.Direction;
 
 /**
  * src.API.Algorithm abstract class.

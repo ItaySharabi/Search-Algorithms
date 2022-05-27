@@ -1,6 +1,6 @@
-package src.API;
+package MarblesPuzzle.API;
 
-import src.Model.State;
+import MarblesPuzzle.Model.State;
 
 public interface IProblem {
     public State getStart();

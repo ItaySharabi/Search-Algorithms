@@ -1,8 +1,8 @@
-package src.API;
+package MarblesPuzzle.API;
 
-import src.Heuristics.ManhattanDistance;
-import src.Model.Node;
-import src.Model.State;
+import MarblesPuzzle.Heuristics.ManhattanDistance;
+import MarblesPuzzle.Model.Node;
+import MarblesPuzzle.Model.State;
 
 import java.util.Comparator;
 

@@ -1,6 +1,6 @@
-package src.Utils;
+package MarblesPuzzle.Utils;
 
-import src.Model.Marble;
+import MarblesPuzzle.Model.Marble;
 
 public class Pair {
 

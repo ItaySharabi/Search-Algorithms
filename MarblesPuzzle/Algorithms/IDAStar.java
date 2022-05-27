@@ -1,9 +1,9 @@
-package src.Algorithms;
+package MarblesPuzzle.Algorithms;
 
-import src.API.Algorithm;
-import src.API.HeuristicEval;
-import src.API.IProblem;
-import src.Model.*;
+import MarblesPuzzle.API.Algorithm;
+import MarblesPuzzle.API.HeuristicEval;
+import MarblesPuzzle.API.IProblem;
+import MarblesPuzzle.Model.*;
 
 import java.util.Hashtable;
 import java.util.Stack;

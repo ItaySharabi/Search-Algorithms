@@ -1,7 +1,7 @@
-package src.Model;
+package MarblesPuzzle.Model;
 
-import src.API.Algorithm;
-import src.Utils.Direction;
+import MarblesPuzzle.API.Algorithm;
+import MarblesPuzzle.Utils.Direction;
 
 /**
  * src.Model.Node class.

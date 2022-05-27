@@ -1,15 +1,15 @@
-package src.Model;
+package MarblesPuzzle.Model;
 
-import src.API.Algorithm;
-import src.API.IProblem;
-import src.Utils.Direction;
-import src.Utils.Pair;
+import MarblesPuzzle.API.Algorithm;
+import MarblesPuzzle.API.IProblem;
+import MarblesPuzzle.Utils.Direction;
+import MarblesPuzzle.Utils.Pair;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static src.Utils.Direction.*;
+import static MarblesPuzzle.Utils.Direction.*;
 
 /**
  * src.Model.State class.

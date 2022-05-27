@@ -1,4 +1,4 @@
-package src.Model;
+package MarblesPuzzle.Model;
 
 public class Marble {
     private int cost;

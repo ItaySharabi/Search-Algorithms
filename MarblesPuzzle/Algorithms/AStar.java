@@ -1,11 +1,11 @@
-package src.Algorithms;
+package MarblesPuzzle.Algorithms;
 
-import src.API.Algorithm;
-import src.API.HeuristicEval;
-import src.API.IProblem;
-import src.Model.Node;
-import src.Model.Operator;
-import src.Model.State;
+import MarblesPuzzle.API.Algorithm;
+import MarblesPuzzle.API.HeuristicEval;
+import MarblesPuzzle.API.IProblem;
+import MarblesPuzzle.Model.Node;
+import MarblesPuzzle.Model.Operator;
+import MarblesPuzzle.Model.State;
 
 import java.util.Hashtable;
 import java.util.PriorityQueue;

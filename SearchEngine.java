@@ -1,5 +1,3 @@
-package MarblesPuzzle;
-
 import API.IProblem;
 import MarblesPuzzle.Model.State;
 import MarblesPuzzle.Utils.IOHandler;
@@ -19,7 +17,7 @@ import java.io.IOException;
  * Just write an input file (`input1.txt` is an example file. More
  * are to be found in `Inputs` folder) and plug it into the constructor
  * of IOHandler.
- * @see MarblesPuzzle.Utils.IOHandler
+ * @see IOHandler
  * @see API.Algorithm
  * @author Itay Sharabi
  */
@@ -52,7 +50,7 @@ public class SearchEngine {
                     , showOpenList);
 
             // Write out solution information
-            io.write(solution, "MarblesPuzzle/output.txt");
+            io.write(solution, "output.txt");
 
         } catch (IOException e) {
             e.printStackTrace();

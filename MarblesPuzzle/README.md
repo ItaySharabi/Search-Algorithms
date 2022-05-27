@@ -51,7 +51,7 @@ you can use a `git bash` terminal (On windows) to clone this repository using th
 `git clone https://github.com/ItaySharabi/AI-Search-Algorithms.git`
 
 After you have the source files - just open the `MarblesPuzzle` package
-and run `MarblesPuzzle/SearchEngine.java`
+and run `SearchEngine.java`
 
 This file processes the input file given to it by default, 
 but you can always create a new input file and feed it to the `SearchEngine.java` file.

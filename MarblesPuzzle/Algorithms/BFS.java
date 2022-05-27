@@ -19,7 +19,7 @@ public class BFS extends Algorithm {
 
     public BFS(IProblem p, boolean verbose) {
         super(p, verbose);
-        this.name = "src.Algorithms.BFS";
+        this.name = "BFS";
         frontier = new Hashtable<>();
         exploredSet = new Hashtable<>();
         Q = new LinkedList<>();

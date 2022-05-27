@@ -4,7 +4,7 @@ import MarblesPuzzle.API.Algorithm;
 import MarblesPuzzle.Utils.Direction;
 
 /**
- * src.Model.Node class.
+ * Node class.
  *
  * A `Node` is the Data-Structure, which holds
  * `State`s of a Problem `p`, during the search of an `Algorithm`.

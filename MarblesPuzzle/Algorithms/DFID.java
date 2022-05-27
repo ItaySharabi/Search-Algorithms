@@ -14,7 +14,7 @@ public class DFID extends Algorithm {
 
     public DFID(IProblem p, boolean verbose) {
         super(p, verbose);
-        this.name = "src.Algorithms.DFID";
+        this.name = "DFID";
     }
 
     private String LimitedDFS(Node curr, int depth, Hashtable<State, Node> workingBranch) {

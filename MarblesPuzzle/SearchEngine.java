@@ -45,7 +45,7 @@ public class SearchEngine {
             String solution =
                     ProblemSolver.solve(p, algoName, showOpenList);
 
-            prompt(solution + "\n\n=======================================" +
+            prompt("\n\n=======================================" +
                     "\n ~ `" + algoName + "` ~ has finished successfully!\n" +
                     "Open `output.txt` to see the solution for this problem!\n" +
                     "=======================================\n"

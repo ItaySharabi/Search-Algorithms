@@ -1,5 +1,5 @@
 A*
-no open
+with open
 big
 _,R,Y,G,_
 _,R,Y,G,_

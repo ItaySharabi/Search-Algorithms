@@ -17,7 +17,7 @@ public class IOHandler {
     private boolean withOpenList;
     private String[][] initialBoard;
     private String[][] goalBoard;
-    private IProblem p;
+    private IProblem<State> p;
 
     public IOHandler(String inputFilePath) {
 
@@ -95,22 +95,20 @@ public class IOHandler {
         return this.withOpenList;
     }
 
-    public IProblem getProblem() {
+    public IProblem<State> getProblem() {
         return p;
     }
 
-    public boolean write(String content, String outputFilePath) throws IOException {
+    public void write(String content, String outputFilePath) throws IOException {
         FileWriter fw = null;
         try {
             fw = new FileWriter(new File(outputFilePath));
 
             fw.write(content);
             fw.close();
-            return true;
         } catch (IOException e) {
             if (null != fw) fw.close();
             e.printStackTrace();
         }
-        return false;
     }
 }

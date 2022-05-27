@@ -1,6 +1,7 @@
 package MarblesPuzzle;
 
 import MarblesPuzzle.API.IProblem;
+import MarblesPuzzle.Model.State;
 import MarblesPuzzle.Utils.IOHandler;
 import MarblesPuzzle.Utils.ProblemSolver;
 
@@ -26,9 +27,9 @@ public class SearchEngine {
 
     public static void main(String[] args) {
         IOHandler io;
-        IProblem p;
+        IProblem<State> p;
         try {
-            io = new IOHandler("MarblesPuzzle/Inputs/input.txt");
+            io = new IOHandler("MarblesPuzzle/Inputs/input1.txt");
 
             // Extract execution info:
             p = io.getProblem();

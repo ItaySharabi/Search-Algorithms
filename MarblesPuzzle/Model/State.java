@@ -185,12 +185,15 @@ public class State {
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
+        out.append(dim == 3 ? " _______ \n" : " ___________ \n");
         for (int i = 0; i < dim; ++i) {
+            out.append("| ");
             for (int j = 0; j < dim; ++j) {
                 out.append(board[i][j]).append(" ");
             }
-            out.append("\n");
+            out.append("|\n");
         }
+        out.append(dim == 3 ? " ------- \n" : " ----------- \n");
         return out.toString();
     }
 }

@@ -2,7 +2,7 @@ package MarblesPuzzle.Model;
 
 import MarblesPuzzle.API.IProblem;
 
-public class Problem implements IProblem {
+public class Problem implements IProblem<State> {
     private State start, goal;
 
     public Problem(State s, State g) {
@@ -25,6 +25,6 @@ public class Problem implements IProblem {
         return "\n`Arrange The Marbles`:\n" +
                 "Let's try to find a solution for this game!\n" +
                 "Initial board state:\n" + start +
-                "Goal board state:\n" + goal;
+                "\nGoal board state:\n" + goal;
     }
 }

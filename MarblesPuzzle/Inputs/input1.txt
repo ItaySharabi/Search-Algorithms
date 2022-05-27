@@ -1,4 +1,4 @@
-BFS
+A*
 with open
 small
 R,R,_

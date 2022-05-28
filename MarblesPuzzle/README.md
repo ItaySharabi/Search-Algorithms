@@ -37,7 +37,7 @@ To this goal board state:
 
 <img src="https://user-images.githubusercontent.com/63110245/170682978-3db1a590-03f7-4399-9224-7abf0b030153.png" width="200" height="175">
 
-## In To Ways!
+## In Two Ways!
 1) Find the shortest solution
 2) Find the lowest cost solution
 

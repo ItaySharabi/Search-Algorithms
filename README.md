@@ -5,14 +5,23 @@
 
 Simply download this repository's source files,
 or,
-you can use a `git bash` terminal (On windows) to clone this repository using the command:
+you can use a `git bash` terminal (On windows).
+
+To clone this repository using the command:
+
 `git clone https://github.com/ItaySharabi/AI-Search-Algorithms.git`
 
-After you have the source files - just open the `MarblesPuzzle` package
-and run `MarblesPuzzle.SearchEngine.java`
+After you have the source files:
 
-This file processes the input file given to it by default, 
+### Using any Java workspace (IntelliJ, Eclipse, ...)
+Open the `MarblesPuzzle` package and look for `SearchEngine.java` file.
+
+Run it and enjoy!
+
+
+This file consumes an input file given to it by default, 
 but you can always create a new input file and feed it to the `MarblesPuzzle.SearchEngine.java` file.
+
 ![image](https://user-images.githubusercontent.com/63110245/170684815-542fb58b-4ee8-4ffd-a2cf-5f59a1899079.png)
 
 ## Example input file for execution:
@@ -48,7 +57,7 @@ bursting towards the target!
 
 
 
-## IDA*
+<!-- ## IDA*
 
 
-## DFBnB
+## DFBnB -->

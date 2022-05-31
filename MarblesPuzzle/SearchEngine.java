@@ -2,7 +2,6 @@ package MarblesPuzzle;
 
 import API.IProblem;
 import MarblesPuzzle.Model.Utils.IOHandler;
-
 import java.io.IOException;
 
 /**

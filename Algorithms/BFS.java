@@ -2,6 +2,7 @@ package Algorithms;
 
 import API.Algorithm;
 import API.IProblem;
+import API.Node;
 import MarblesPuzzle.Model.Operator;
 import MarblesPuzzle.Model.State;
 

@@ -2,7 +2,8 @@ package MarblesPuzzle.Model;
 
 import API.Algorithm;
 import API.IProblem;
-import Algorithms.Node;
+import API.IState;
+import API.Node;
 import MarblesPuzzle.Utils.Direction;
 import MarblesPuzzle.Utils.Pair;
 
@@ -26,7 +27,7 @@ import static MarblesPuzzle.Utils.Direction.*;
  * @see Algorithm
  * @see IProblem
  */
-public class State {
+public class State implements IState {
 
     private int dim;
     private String[][] board;
@@ -196,5 +197,11 @@ public class State {
         }
         out.append(dim == 3 ? " ------- \n" : " ----------- \n");
         return out.toString();
+    }
+
+    @Override
+    public int getCost() {
+        if (null == operatedMarble || null == operatedMarbleDirection) return 0;
+        return operatedMarble.getCost();
     }
 }

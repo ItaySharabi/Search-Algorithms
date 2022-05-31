@@ -1,23 +1,20 @@
 package Algorithms;
 
-import API.Algorithm;
-import API.HeuristicEval;
-import API.IProblem;
+import API.*;
 import MarblesPuzzle.Model.*;
 
 import java.util.Hashtable;
 import java.util.Stack;
 
 public class IDAStar extends Algorithm {
-    private final Stack<Node<State>> STK;                  // Stack
-    private final Hashtable<State, Node<State>> frontier;  // Open-list
+    private final Stack<Node> STK;                  // Stack
+    private final Hashtable<IState, Node> frontier;  // Open-list
     private final HeuristicEval heuristics;                // Heuristic evaluation object
-    private int minF;                                      // Minimum heuristic val threshold
     private int t;                                         // Threshold
-    private final State start;
+    private final IState start;
 
 
-    public IDAStar(IProblem<State> p, boolean verbose, HeuristicEval heuristic) {
+    public IDAStar(IProblem p, boolean verbose, HeuristicEval heuristic) {
         super(p, verbose);
         this.name = "IDA*";
         this.start = p.getInitialState();
@@ -30,19 +27,20 @@ public class IDAStar extends Algorithm {
     @Override
     public String execute() {
         int _f;
-        Node<State> curr;
+        Node curr;
         final boolean OUT_OF_THE_STACK = false;
         t = heuristics.h(start);
         timerOn();
         while (t != Integer.MAX_VALUE) {
-            minF = Integer.MAX_VALUE;
-            curr = new Node<>(start);
+            // Minimum heuristic val threshold
+            int minF = Integer.MAX_VALUE;
+            curr = new Node(start);
             curr.setTag(OUT_OF_THE_STACK);
             STK.add(curr);
             frontier.put(start, curr);
 
             while (!STK.isEmpty()) {
-                Node<State> n = STK.pop();
+                Node n = STK.pop();
                 if (withOpen()) {
                     System.out.println(n);
                 }
@@ -54,7 +52,7 @@ public class IDAStar extends Algorithm {
 
                     State g;
                     for (Operator operator : Operator.allowedOperators(n)) {
-                        g = operator.apply(n);
+                        g = operator.apply();
                             _f =  // f(x) = g(x) + h(x.getState())
                                     heuristics
                                     .h(g)
@@ -67,7 +65,7 @@ public class IDAStar extends Algorithm {
                             if (frontier.contains(g) && frontier.get(g).isOut()) {
                                 continue;
                             }
-                            Node<State> next = new Node<>(n, g);
+                            Node next = new Node(n, g);
 
                             if (frontier.contains(g) && !frontier.get(g).isOut()) {
                                 if (heuristics.

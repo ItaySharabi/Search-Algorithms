@@ -1,6 +1,7 @@
 package MarblesPuzzle.Heuristics;
 
 import API.HeuristicEval;
+import API.IState;
 import MarblesPuzzle.Model.State;
 
 import java.util.HashMap;
@@ -18,9 +19,9 @@ public class ManhattanDistance extends HeuristicEval {
     private final int dim;
     private final HashMap<String, Integer> costs;
 
-    public ManhattanDistance(State goal) {
+    public ManhattanDistance(IState goal) {
         super(goal);
-        g = goal.getBoard();
+        g = ((State)goal).getBoard();
         dim = g.length;
         costs = new HashMap<>();
         costs.put("_", 0);
@@ -31,9 +32,10 @@ public class ManhattanDistance extends HeuristicEval {
     }
 
     @Override
-    public int h(State s) {
+    public int h(IState s) {
         int h = 0;
-        String[][] n_board = s.getBoard();
+        State state = (State) s;
+        String[][] n_board = state.getBoard();
         boolean[][] placed = new boolean[dim][dim];
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
@@ -51,7 +53,7 @@ public class ManhattanDistance extends HeuristicEval {
                     dist = manhattanDist(n_board[i][j], i, j, placed)
                             * costs.get(n_board[i][j]);
                     countMisplaced ++;
-                    if (!s.movableMarble(i, j)) {
+                    if (!state.movableMarble(i, j)) {
                         // Punish nodes with +1 distance
                         // if they are misplaced and blocked!
                         dist++;

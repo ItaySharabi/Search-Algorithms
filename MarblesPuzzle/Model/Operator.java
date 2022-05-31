@@ -1,7 +1,7 @@
 package MarblesPuzzle.Model;
 
 import API.Algorithm;
-import Algorithms.Node;
+import API.Node;
 import MarblesPuzzle.Utils.Direction;
 import MarblesPuzzle.Utils.Pair;
 
@@ -23,13 +23,16 @@ import static MarblesPuzzle.Utils.Direction.*;
  * @see Operator
  */
 public class Operator {
-    private Pair p;
+    private final Node n;
+    private final Pair p;
 
-    private Operator(Pair p) {this.p = p;}
+    private Operator(Node n, Pair p) {
+        this.n = n;
+        this.p = p;
+    }
 
     // Apply the operator to node `n` with a `src.Model.Marble` and a `src.Utils.Direction` (Located in field `p`).
-    public State apply(Node<State> n) {
-        if (null == n || null == p) {return null;}
+    public State apply() {
         return new State(n.getState(), p);
     }
 
@@ -42,22 +45,23 @@ public class Operator {
      * @return - A list of all allowed operators, which will be applied
      *           to `n` by invoking operator.apply().
      */
-    public static List<Operator> allowedOperators(Node<State> n) {
+    public static List<Operator> allowedOperators(Node n) {
         List<Operator> allowedOperators = new ArrayList<>();
         Marble badMarble = null;
         Direction prevDirection = null;
+        State s = (State) n.getState();
         if (null != n.getParent()) {
-            badMarble = n.getState().getOperatedMarble();
-            prevDirection = opposite(n.getState().getOperatedMarbleDirection());
+            badMarble = s.getOperatedMarble();
+            prevDirection = opposite(s.getOperatedMarbleDirection());
         }
 
         for (Direction d : values()) {
-            for (Marble m : n.getState().getMovableMarbles()) {
+            for (Marble m : s.getMovableMarbles()) {
                 if (null != badMarble) {
                     if (m.equals(badMarble) && prevDirection.equals(d)) {continue;}
                 }
-                if (n.getState().movableMarble(m, d)) {
-                    allowedOperators.add(new Operator(new Pair(d, m)));
+                if (s.movableMarble(m, d)) {
+                    allowedOperators.add(new Operator(n, new Pair(d, m)));
                 }
             }
         }

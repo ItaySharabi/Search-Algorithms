@@ -1,22 +1,23 @@
 package MarblesPuzzle.Model;
 
 import API.IProblem;
+import API.IState;
 
-public class Problem implements IProblem<State> {
-    private State start, goal;
+public class Problem implements IProblem {
+    private final IState start, goal;
 
-    public Problem(State s, State g) {
+    public Problem(IState s, IState g) {
         start = s;
         goal = g;
     }
 
     @Override
-    public State getInitialState() {
+    public IState getInitialState() {
         return start;
     }
 
     @Override
-    public State getGoalState() {
+    public IState getGoalState() {
         return goal;
     }
 

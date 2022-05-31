@@ -1,6 +1,7 @@
 package MarblesPuzzle.Heuristics;
 
 import API.HeuristicEval;
+import API.IState;
 import MarblesPuzzle.Model.State;
 
 import java.util.HashMap;
@@ -14,9 +15,10 @@ public class MisplacedMarbles extends HeuristicEval {
     private final int Y = 1;
     private final HashMap<String, Integer> costs;
 
-    public MisplacedMarbles(State goal) {
+    public MisplacedMarbles(IState goal) {
         super(goal);
-        board = goal.getBoard();
+        State s = (State) goal;
+        board = s.getBoard();
         dim = board.length;
         costs = new HashMap<>();
         costs.put("_", 0);
@@ -25,12 +27,13 @@ public class MisplacedMarbles extends HeuristicEval {
         costs.put("G", 10);
         costs.put("Y", 1);
     }
-    public int h(State s) {
+    public int h(IState s) {
         if (s.equals(getGoalState())) return 0;
         int h = 0;
+        State state = (State) s;
         System.out.println("======================================");
         System.out.println("Heuristic evaluation of\n" + s);
-        String[][] b = s.getBoard();
+        String[][] b = state.getBoard();
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
                 if (!board[i][j].equals(b[i][j])) {

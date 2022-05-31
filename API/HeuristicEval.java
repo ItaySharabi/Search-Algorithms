@@ -1,7 +1,6 @@
 package API;
 
 import MarblesPuzzle.Heuristics.ManhattanDistance;
-import Algorithms.Node;
 import MarblesPuzzle.Model.State;
 
 import java.util.Comparator;
@@ -15,13 +14,13 @@ import java.util.Comparator;
  * There are many different heuristic evaluation methods available.
  * @see ManhattanDistance
  * */
-public abstract class HeuristicEval implements Comparator<Node<State>> {
-    private final State goalState; // Goal state to compare with
+public abstract class HeuristicEval implements Comparator<Node> {
+    private final IState goalState; // Goal state to compare with
 
-    public HeuristicEval(State goal){goalState = goal;}
+    public HeuristicEval(IState goal){goalState = goal;}
 
     @Override
-    public int compare(Node<State> n1, Node<State> n2) {
+    public int compare(Node n1, Node n2) {
         int f1 = f(n1), f2 = f(n2);
         if (f1 == f2) {
             return n1.getDepth() - n2.getDepth();
@@ -31,13 +30,13 @@ public abstract class HeuristicEval implements Comparator<Node<State>> {
         }
     }
 
-    public abstract int h(State s);
+    public abstract int h(IState s);
 
-    public int f(Node<State> n) {
+    public int f(Node n) {
         return n.getWeight() + h(n.getState()); // give a factor of x5 to the Heuristic value!
     }
 
-    public State getGoalState() {
+    public IState getGoalState() {
         return goalState;
     }
 }

@@ -17,7 +17,7 @@ public class IOHandler {
     private boolean withOpenList;
     private String[][] initialBoard;
     private String[][] goalBoard;
-    private IProblem<State> p;
+    private IProblem p;
 
     public IOHandler(String inputFilePath) {
 
@@ -95,7 +95,7 @@ public class IOHandler {
         return this.withOpenList;
     }
 
-    public IProblem<State> getProblem() {
+    public IProblem getProblem() {
         return p;
     }
 

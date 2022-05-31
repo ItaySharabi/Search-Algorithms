@@ -4,7 +4,6 @@ import Algorithms.AStar;
 import Algorithms.BFS;
 import Algorithms.DFID;
 import MarblesPuzzle.Model.Marble;
-import Algorithms.Node;
 import MarblesPuzzle.Model.State;
 import MarblesPuzzle.Utils.Direction;
 
@@ -20,10 +19,10 @@ import MarblesPuzzle.Utils.Direction;
 public abstract class Algorithm {
     protected String name = "~Algorithm~";
     private long start_time;
-    private State start, goal;
+    private final IState start, goal;
     private boolean withOpen;
 
-    public Algorithm(IProblem<State> problem, boolean verbose) {
+    public Algorithm(IProblem problem, boolean verbose) {
         this.withOpen = verbose;
         start = problem.getInitialState();
         goal = problem.getGoalState();
@@ -36,11 +35,11 @@ public abstract class Algorithm {
         }
     }
 
-    public State getGoal() {
+    public IState getGoal() {
         return goal;
     }
 
-    public State getStart() {
+    public IState getStart() {
         return start;
     }
 
@@ -48,11 +47,11 @@ public abstract class Algorithm {
         return withOpen;
     }
 
-    protected boolean isGoal(State b) {
+    protected boolean isGoal(IState b) {
         return b.equals(goal);
     }
 
-    protected boolean isGoal(Node<State> n) {
+    protected boolean isGoal(Node n) {
         return isGoal(n.getState());
     }
 
@@ -88,19 +87,19 @@ public abstract class Algorithm {
         return this.start_time;
     }
 
-    protected String path(Node<State> n) {
+    protected String path(Node n) {
         if (null == n) {return "";}
-        Marble m = n.getState().getOperatedMarble();
+        Marble m = ((State)n.getState()).getOperatedMarble();
         if (null == m) {return "";}
         if (null == n.getParent()) {return m.getTag() + ":(" + (m.getI()+1) + "," + (m.getJ()+1)+ ")";}
         return path(n.getParent()) + "--" + prev(n) + "" + m.getTag() + ":(" + (m.getI() + 1) + "," + (m.getJ()+1)+ ")";
     }
 
-    private String prev(Node<State> n) {
+    private String prev(Node n) {
         if (null == n) {return "";}
-
-        Direction d = n.getState().getOperatedMarbleDirection();
-        Marble t = n.getState().getOperatedMarble();
+        State s = (State) n.getState();
+        Direction d = s.getOperatedMarbleDirection();
+        Marble t = s.getOperatedMarble();
 
         if (null == t) {return "";}
 

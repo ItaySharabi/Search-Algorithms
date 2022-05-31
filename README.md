@@ -1,5 +1,6 @@
 # AI-Search-Algorithms
 
+[![Build](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml)
 
 # How to Run?
 

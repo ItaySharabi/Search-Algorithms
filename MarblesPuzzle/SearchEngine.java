@@ -1,3 +1,5 @@
+package MarblesPuzzle;
+
 import API.IProblem;
 import MarblesPuzzle.Model.State;
 import MarblesPuzzle.Utils.IOHandler;
@@ -51,7 +53,7 @@ public class SearchEngine {
                     , showOpenList);
 
             // Write out solution information
-            io.write(solution, "output.txt");
+            io.write(solution, "MarblesPuzzle/output.txt");
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,15 +1,14 @@
 package API;
 
 import MarblesPuzzle.Heuristics.ManhattanDistance;
-import MarblesPuzzle.Model.State;
 
 import java.util.Comparator;
 
 /**
  * Heuristic Evaluation abstraction class.
  * This is a Comparator class, which compares
- * `src.Model.Node`s by their f(n) value.
- * The f(n) value of a `src.Model.Node` n - is the heuristic evaluation
+ * `Node`s by their f(n) value.
+ * The f(n) value of a `Node` n - is the heuristic evaluation
  * of the node, h(n), and some cost function, g(n).
  * There are many different heuristic evaluation methods available.
  * @see ManhattanDistance
@@ -29,11 +28,13 @@ public abstract class HeuristicEval implements Comparator<Node> {
             return f1 - f2;
         }
     }
-
+    /* Any implementation of this class
+    *  will implement its version of heuristic estimation*/
     public abstract int h(IState s);
 
     public int f(Node n) {
-        return n.getWeight() + h(n.getState()); // give a factor of x5 to the Heuristic value!
+        // f(n) = h(n) + g(n)
+        return h(n.getState()) + n.getWeight();
     }
 
     public IState getGoalState() {

@@ -26,7 +26,7 @@ public class SearchEngine {
         IOHandler io;
         IProblem p;
         try {
-            io = new IOHandler("MarblesPuzzle/Inputs/input.txt");
+            io = new IOHandler("MarblesPuzzle/Inputs/input1.txt");
 
             // Extract execution info:
             p = io.getProblem();

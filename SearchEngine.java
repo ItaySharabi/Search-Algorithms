@@ -25,7 +25,7 @@ public class SearchEngine {
 
     public static void main(String[] args) {
         IOHandler io;
-        IProblem<State> p;
+        IProblem p;
         try {
             io = new IOHandler("MarblesPuzzle/Inputs/input.txt");
 
@@ -46,7 +46,8 @@ public class SearchEngine {
             prompt("=======================================" +
                     "\n ~ `" + algoName + "` ~ has finished successfully!\n" +
                     "Open `output.txt` to see the solution for this problem!\n" +
-                    "=======================================\n"
+                    "=======================================\n" +
+                    solution
                     , showOpenList);
 
             // Write out solution information

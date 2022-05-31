@@ -1,25 +1,20 @@
 package Algorithms;
 
-import API.Algorithm;
-import API.HeuristicEval;
-import API.IProblem;
-import API.Node;
+import API.*;
 import MarblesPuzzle.Model.Operator;
 import MarblesPuzzle.Model.State;
 
 import java.util.*;
 
 public class DFBnB extends Algorithm {
-    private final Stack<Node<State>> STK;                 // Stack
-    private final Hashtable<State, Node<State>> frontier; // Open-list
-    private int t;                                        // Threshold
-    private final Node<State> start;
+    private final Stack<Node> STK;                  // Stack
+    private final Hashtable<IState, Node> frontier; // Open-list
     private final HeuristicEval heuristics;
 
-    public DFBnB(IProblem<State> p, boolean verbose, HeuristicEval heuristics) {
+    public DFBnB(IProblem p, boolean verbose, HeuristicEval heuristics) {
         super(p, verbose);
         this.name = "DFBnB";
-        this.start = new Node<>(p.getInitialState());
+        Node start = new Node(p.getInitialState());
         this.heuristics = heuristics;
         STK = new Stack<>();
         frontier = new Hashtable<>();
@@ -32,8 +27,9 @@ public class DFBnB extends Algorithm {
 
         String result = null;
 
-        t = Integer.MAX_VALUE;
-        Node<State> n;
+        // Threshold
+        int t = Integer.MAX_VALUE;
+        Node n;
         timerOn();
         while (!STK.isEmpty()) {
 
@@ -48,14 +44,14 @@ public class DFBnB extends Algorithm {
                 STK.add(n);
 
                 // Apply all allowed operators on node `n`
-                List<Node<State>> N = new ArrayList<>();
+                List<Node> N = new ArrayList<>();
                 for (Operator operator : Operator.allowedOperators(n)) {
-                    N.add(new Node<>(n, operator.apply(n)));
+                    N.add(new Node(n, operator.apply()));
                 }
                 // Sort the nodes in N according to their `f` heuristic values.
                 N.sort(heuristics);
-                List<Node<State>> cpyN = new ArrayList<>(N);
-                for (Node<State> child : cpyN) {
+                List<Node> cpyN = new ArrayList<>(N);
+                for (Node child : cpyN) {
                     if (heuristics.f(child) >= t) {
                         // Remove all nodes after `child` (including)
                         int thresh_ = N.indexOf(child);
@@ -80,7 +76,7 @@ public class DFBnB extends Algorithm {
                     }
                     Collections.reverse(N);
                     STK.addAll(N);
-                    for (Node<State> c : N) {
+                    for (Node c : N) {
                         frontier.put(c.getState(), c);
                     }
                 }

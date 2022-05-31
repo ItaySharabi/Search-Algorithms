@@ -58,7 +58,7 @@ public class State implements IState {
                 /*And to ensure uniqueness:*/ * 61 * 31; // Prime numbers (7'th and 14'th).
     }
 
-    public State(State b, Pair p) {
+    public State(IState b, Pair p) {
         boardCount++;
         Marble t = p.getMarble();
         Direction d = p.getDirection();
@@ -79,7 +79,7 @@ public class State implements IState {
                 j += 1;
                 break;
         }
-        String[][] newBoard = b.getBoard();
+        String[][] newBoard = ((State)b).getBoard();
         newBoard[i][j] = t.getTag();
         newBoard[t.getI()][t.getJ()] = "_";
         movableMarbles = new ArrayList<>();

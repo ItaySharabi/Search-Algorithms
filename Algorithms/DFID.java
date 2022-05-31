@@ -2,6 +2,7 @@ package Algorithms;
 
 import API.Algorithm;
 import API.IProblem;
+import API.IState;
 import API.Node;
 import MarblesPuzzle.Model.Operator;
 import MarblesPuzzle.Model.State;
@@ -10,14 +11,12 @@ import java.util.Hashtable;
 
 public class DFID extends Algorithm {
 
-    private Hashtable<State, Node<State>> frontier;
-
     public DFID(IProblem p, boolean verbose) {
         super(p, verbose);
         this.name = "DFID";
     }
 
-    private String LimitedDFS(Node<State> curr, int depth, Hashtable<State, Node<State>> workingBranch) {
+    private String LimitedDFS(Node curr, int depth, Hashtable<IState, Node> workingBranch) {
         if (withOpen()) {
             System.out.println(curr);
         }
@@ -28,13 +27,13 @@ public class DFID extends Algorithm {
         }
         workingBranch.put(curr.getState(), curr);
         boolean isCutoff = false;
-        Node<State> next = null;
+        Node next = null;
         String result;
-
+        IState g;
         for (Operator operator : Operator.allowedOperators(curr)) {
-            State g = operator.apply(curr);
+            g = operator.apply();
             if (null == g || workingBranch.containsKey(g)) {continue;}
-            next = new Node<>(curr, g);
+            next = new Node(curr, g);
             result = LimitedDFS(next, depth-1, workingBranch);
 
             if (result.equals("cutoff")) {
@@ -55,14 +54,17 @@ public class DFID extends Algorithm {
     @Override
     public String execute() {
 
-        int l = Integer.MAX_VALUE; // limit
-
-        Node<State> root = new Node<>(getStart());
+        Node root = new Node(getStart());
+        // Initialize Hashtable H to keep track of
+        // current working branch
+        Hashtable<IState, Node> H;
         timerOn();
         String output;
+
+        int l = Integer.MAX_VALUE; // limit
         for (int i = 1; i < l; ++i) {
-            frontier = new Hashtable<>();
-            output = LimitedDFS(root, i, frontier);
+            H = new Hashtable<>();
+            output = LimitedDFS(root, i, H);
             if (!output.equals("cutoff")) {
                 return output;
             }

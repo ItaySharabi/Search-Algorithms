@@ -14,7 +14,7 @@ public class ProblemSolver {
 
     private ProblemSolver() {}
 
-    public static String solve(IProblem<State> p, String algorithmName, boolean verbose) {
+    public static String solve(IProblem p, String algorithmName, boolean verbose) {
         Algorithm algo;
         HeuristicEval heuristicEval = new ManhattanDistance(p.getGoalState());
         if (algorithmName.equalsIgnoreCase("BFS")) {

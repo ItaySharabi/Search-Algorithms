@@ -30,7 +30,7 @@ public class AStar extends Algorithm {
     public String execute() {
         timerOn();
         Node n = new Node(getStart());
-        State g;
+        IState g;
         PQ.add(n);
         frontier.put(getStart(), n);
 

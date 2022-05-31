@@ -50,13 +50,12 @@ public class IDAStar extends Algorithm {
                     n.markAsOut();
                     STK.add(n);
 
-                    State g;
+                    IState g;
                     for (Operator operator : Operator.allowedOperators(n)) {
                         g = operator.apply();
                             _f =  // f(x) = g(x) + h(x.getState())
                                     heuristics
                                     .h(g)
-                                    + g.getOperatedMarble().getCost()
                                     + n.getWeight();
                             if (_f > t) {
                                 minF = Math.min(minF, _f);

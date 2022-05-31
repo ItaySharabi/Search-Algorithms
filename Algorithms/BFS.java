@@ -2,6 +2,7 @@ package Algorithms;
 
 import API.Algorithm;
 import API.IProblem;
+import API.IState;
 import API.Node;
 import MarblesPuzzle.Model.Operator;
 import MarblesPuzzle.Model.State;
@@ -12,10 +13,9 @@ import java.util.Queue;
 
 public class BFS extends Algorithm {
 
-    private final Hashtable<State, Node<State>> frontier;
-    private final Hashtable<State, Node<State>> exploredSet;
-    private final Queue<Node<State>> Q;
-
+    private final Hashtable<IState, Node> frontier;
+    private final Hashtable<IState, Node> exploredSet;
+    private final Queue<Node> Q;
 
     public BFS(IProblem p, boolean verbose) {
         super(p, verbose);
@@ -23,13 +23,13 @@ public class BFS extends Algorithm {
         frontier = new Hashtable<>();
         exploredSet = new Hashtable<>();
         Q = new LinkedList<>();
+        Q.add(new Node(getStart()));
     }
 
     @Override
     public String execute() {
         timerOn();
-        Q.add(new Node<>(getStart()));
-        Node<State> curr;
+        Node curr;
         while (!Q.isEmpty()) {
             curr = Q.poll();
             // Do exploring...
@@ -40,10 +40,10 @@ public class BFS extends Algorithm {
             exploredSet.put(curr.getState(), curr);
             // Apply allowed operators on any movable marble from current board state:
             for (Operator operator : Operator.allowedOperators(curr)) {
-                State g = operator.apply(curr);
+                IState g = operator.apply();
 
                 if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
-                    Node<State> next = new Node<>(curr, g);
+                    Node next = new Node(curr, g);
                     if (isGoal(g)) {
                         return output(path(next), next.getWeight());
                     } else {
@@ -53,6 +53,6 @@ public class BFS extends Algorithm {
                 }
             }
         }
-        return "no path";
+        return output(path(null), -1);
     }
 }

@@ -1,6 +1,7 @@
 package MarblesPuzzle.Model;
 
 import API.Algorithm;
+import API.IState;
 import API.Node;
 import MarblesPuzzle.Utils.Direction;
 import MarblesPuzzle.Utils.Pair;
@@ -32,7 +33,7 @@ public class Operator {
     }
 
     // Apply the operator to node `n` with a `src.Model.Marble` and a `src.Utils.Direction` (Located in field `p`).
-    public State apply() {
+    public IState apply() {
         return new State(n.getState(), p);
     }
 

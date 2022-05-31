@@ -1,11 +1,7 @@
 package Algorithms;
 
-import API.Algorithm;
-import API.IProblem;
-import API.IState;
-import API.Node;
+import API.*;
 import MarblesPuzzle.Model.Operator;
-import MarblesPuzzle.Model.State;
 
 import java.util.Hashtable;
 import java.util.LinkedList;

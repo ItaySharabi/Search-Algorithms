@@ -53,10 +53,10 @@ public class IDAStar extends Algorithm {
                     IState g;
                     for (Operator operator : Operator.allowedOperators(n)) {
                         g = operator.apply();
-                            _f =  // f(x) = g(x) + h(x.getState())
+                            _f =  // f(x) = h(x.getState()) + g(x)
                                     heuristics
                                     .h(g)
-                                    + n.getWeight();
+                                    + n.getWeight(); // == g(x)
                             if (_f > t) {
                                 minF = Math.min(minF, _f);
                                 continue;

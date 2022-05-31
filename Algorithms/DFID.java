@@ -1,11 +1,7 @@
 package Algorithms;
 
-import API.Algorithm;
-import API.IProblem;
-import API.IState;
-import API.Node;
+import API.*;
 import MarblesPuzzle.Model.Operator;
-import MarblesPuzzle.Model.State;
 
 import java.util.Hashtable;
 
@@ -30,7 +26,7 @@ public class DFID extends Algorithm {
         Node next = null;
         String result;
         IState g;
-        for (Operator operator : Operator.allowedOperators(curr)) {
+        for (IOperator operator : Operator.allowedOperators(curr)) {
             g = operator.apply();
             if (null == g || workingBranch.containsKey(g)) {continue;}
             next = new Node(curr, g);

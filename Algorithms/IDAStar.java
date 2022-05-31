@@ -51,7 +51,7 @@ public class IDAStar extends Algorithm {
                     STK.add(n);
 
                     IState g;
-                    for (Operator operator : Operator.allowedOperators(n)) {
+                    for (IOperator operator : Operator.allowedOperators(n)) {
                         g = operator.apply();
                             _f =  // f(x) = h(x.getState()) + g(x)
                                     heuristics

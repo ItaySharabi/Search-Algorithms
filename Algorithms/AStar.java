@@ -43,7 +43,7 @@ public class AStar extends Algorithm {
             frontier.remove(n.getState());
 
             exploredSet.put(n.getState(), n);
-            for (Operator operator : Operator.allowedOperators(n)){
+            for (IOperator operator : Operator.allowedOperators(n)){
                 g = operator.apply();
                 Node next = new Node(n, g);
                 if (isGoal(g)) {

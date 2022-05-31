@@ -35,7 +35,7 @@ public class BFS extends Algorithm {
             frontier.remove(curr.getState());
             exploredSet.put(curr.getState(), curr);
             // Apply allowed operators on any movable marble from current board state:
-            for (Operator operator : Operator.allowedOperators(curr)) {
+            for (IOperator operator : Operator.allowedOperators(curr)) {
                 IState g = operator.apply();
 
                 if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {

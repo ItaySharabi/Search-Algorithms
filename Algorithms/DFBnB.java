@@ -2,7 +2,6 @@ package Algorithms;
 
 import API.*;
 import MarblesPuzzle.Model.Operator;
-import MarblesPuzzle.Model.State;
 
 import java.util.*;
 
@@ -45,7 +44,7 @@ public class DFBnB extends Algorithm {
 
                 // Apply all allowed operators on node `n`
                 List<Node> N = new ArrayList<>();
-                for (Operator operator : Operator.allowedOperators(n)) {
+                for (IOperator operator : Operator.allowedOperators(n)) {
                     N.add(new Node(n, operator.apply()));
                 }
                 // Sort the nodes in N according to their `f` heuristic values.

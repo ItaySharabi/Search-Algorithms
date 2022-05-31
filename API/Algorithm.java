@@ -8,8 +8,8 @@ import MarblesPuzzle.Model.State;
 import MarblesPuzzle.Model.Utils.Direction;
 
 /**
- * src.API.Algorithm abstract class.
- * This class defines basic functionalities of a `Search src.API.Algorithm`.
+ * Algorithm abstract class.
+ * This class defines basic functionalities of a `Search Algorithm`.
  * Abstract method `execute` is given to all algorithms, and methods
  * such as `path(n)` and `output()`.
  * @see BFS - `Breadth-First` Search: A "Blind" search algorithm.

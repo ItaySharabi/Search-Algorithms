@@ -7,8 +7,6 @@ import MarblesPuzzle.Model.Utils.IOHandler;
 import javax.swing.*;
 import javax.swing.text.View;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static java.awt.BorderLayout.*;
 
@@ -60,28 +58,33 @@ public class SimulationWindow extends JFrame {
 
 
         // Central Frame:
-        JPanel frame = new JPanel();
-        frame.setBackground(Color.green);
-//        centerPanel.add(new JLabel("Game Board:"));
         int dim = s.size();
-        frame.setLayout(new GridLayout(dim, dim));
+        JPanel gridPanel = new JPanel();
+        gridPanel.setLayout(new GridLayout(dim, dim));
+        gridPanel.setBackground(Color.green);
+//        centerPanel.add(new JLabel("Game Board:"));
         String[][] board = s.getBoard();
         JButton b;
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
-                b = new MarbleButtonView(board[i][j], new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        System.out.println("Holla");
-                    }
-                });
-                frame.add(b);
+                b = new MarbleButton(board[i][j]);
+                gridPanel.add(b);
             }
         }
 
-        add(frame, CENTER);
-        add(new JPanel(), EAST);
-        add(new JPanel(), WEST);
-        add(new JPanel(), SOUTH);
+        add(gridPanel, CENTER);
+
+        // Left panel:
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new GridLayout(3, 1));
+        leftPanel.add(new MarbleButton("Start",  Color.green));
+        leftPanel.add(new MarbleButton("Pause", Color.orange));
+        leftPanel.add(new MarbleButton("Stop", Color.lightGray));
+        // Add the panel
+        add(leftPanel, WEST);
+
+
+//        add(new JPanel(), EAST);
+//        add(new JPanel(), SOUTH);
     }
 }

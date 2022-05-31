@@ -1,6 +1,7 @@
 package MarblesPuzzle.Model;
 
 import API.Algorithm;
+import API.IOperator;
 import API.IState;
 import API.Node;
 import MarblesPuzzle.Model.Utils.Direction;
@@ -23,7 +24,7 @@ import static MarblesPuzzle.Model.Utils.Direction.*;
  * @see Algorithm
  * @see Operator
  */
-public class Operator {
+public class Operator implements IOperator {
     private final Node n;
     private final Pair p;
 
@@ -32,7 +33,8 @@ public class Operator {
         this.p = p;
     }
 
-    // Apply the operator to node `n` with a `src.Model.Marble` and a `src.Utils.Direction` (Located in field `p`).
+    // Apply the operator to node `n` with a `Marble` and a `Direction` (Located in field `p`).
+    @Override
     public IState apply() {
         return new State(n.getState(), p);
     }
@@ -46,11 +48,12 @@ public class Operator {
      * @return - A list of all allowed operators, which will be applied
      *           to `n` by invoking operator.apply().
      */
-    public static List<Operator> allowedOperators(Node n) {
-        List<Operator> allowedOperators = new ArrayList<>();
+    public static List<IOperator> allowedOperators(Node n) {
+        List<IOperator> allowedOperators = new ArrayList<>();
         Marble badMarble = null;
         Direction prevDirection = null;
         State s = (State) n.getState();
+
         if (null != n.getParent()) {
             badMarble = s.getOperatedMarble();
             prevDirection = opposite(s.getOperatedMarbleDirection());

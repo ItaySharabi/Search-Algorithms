@@ -4,14 +4,14 @@ import API.Algorithm;
 import API.IProblem;
 import API.IState;
 import API.Node;
-import MarblesPuzzle.Utils.Direction;
-import MarblesPuzzle.Utils.Pair;
+import MarblesPuzzle.Model.Utils.Direction;
+import MarblesPuzzle.Model.Utils.Pair;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static MarblesPuzzle.Utils.Direction.*;
+import static MarblesPuzzle.Model.Utils.Direction.*;
 
 /**
  * State class.

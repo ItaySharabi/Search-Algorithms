@@ -1,4 +1,4 @@
-package MarblesPuzzle.Utils;
+package MarblesPuzzle.Model.Utils;
 
 import MarblesPuzzle.Model.Marble;
 

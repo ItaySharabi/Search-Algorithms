@@ -1,4 +1,4 @@
-package MarblesPuzzle.Utils;
+package MarblesPuzzle.Model.Utils;
 
 import API.IProblem;
 import MarblesPuzzle.Model.Problem;

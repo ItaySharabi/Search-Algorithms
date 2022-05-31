@@ -5,7 +5,7 @@ import Algorithms.BFS;
 import Algorithms.DFID;
 import MarblesPuzzle.Model.Marble;
 import MarblesPuzzle.Model.State;
-import MarblesPuzzle.Utils.Direction;
+import MarblesPuzzle.Model.Utils.Direction;
 
 /**
  * src.API.Algorithm abstract class.

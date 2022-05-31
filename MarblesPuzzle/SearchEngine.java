@@ -1,9 +1,7 @@
 package MarblesPuzzle;
 
 import API.IProblem;
-import MarblesPuzzle.Model.State;
-import MarblesPuzzle.Utils.IOHandler;
-import MarblesPuzzle.Utils.ProblemSolver;
+import MarblesPuzzle.Model.Utils.IOHandler;
 
 import java.io.IOException;
 

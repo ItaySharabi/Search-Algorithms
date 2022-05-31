@@ -1,4 +1,4 @@
-package MarblesPuzzle.Utils;
+package MarblesPuzzle;
 
 import API.Algorithm;
 import API.HeuristicEval;

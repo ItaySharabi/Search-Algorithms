@@ -18,7 +18,7 @@ import static MarblesPuzzle.Model.Utils.Direction.*;
  *
  * A `State` is a representation of the Problem `p` in time `t`.
  * `State`s in this Project are represented by a matrix of strings.
- * It contains some more information like a `List` of `Marble`s
+ * It contains some more information like a `List` of `MarbleButtonView`s
  * for the convenience of implementing this solution.
  *
  * it's weight (`Node`s gain weight only when being applied an `Operator`.

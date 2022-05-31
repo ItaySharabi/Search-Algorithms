@@ -65,18 +65,16 @@ public class SimulationWindow extends JFrame {
 //        centerPanel.add(new JLabel("Game Board:"));
         int dim = s.size();
         frame.setLayout(new GridLayout(dim, dim));
-
+        String[][] board = s.getBoard();
         JButton b;
         for (int i = 0; i < dim; ++i) {
             for (int j = 0; j < dim; ++j) {
-                b = new JButton(i + ", " + j);
-                if (j % 2 == 0) {
-                    b.setBackground(Color.LIGHT_GRAY);
-                } else {
-                    b.setBackground(Color.GRAY);
-                }
-                b.setActionCommand("onClick");
-                b.setBackground(Color.blue);
+                b = new MarbleButtonView(board[i][j], new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        System.out.println("Holla");
+                    }
+                });
                 frame.add(b);
             }
         }
@@ -85,15 +83,5 @@ public class SimulationWindow extends JFrame {
         add(new JPanel(), EAST);
         add(new JPanel(), WEST);
         add(new JPanel(), SOUTH);
-    }
-    public void onClick(View v) {
-        System.out.println("Hellow");
-    }
-    public int getWindowHeight() {
-        return height;
-    }
-
-    public int getWindowWidth() {
-        return width;
     }
 }

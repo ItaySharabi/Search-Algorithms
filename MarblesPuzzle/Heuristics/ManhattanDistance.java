@@ -10,7 +10,7 @@ import java.util.HashMap;
  * The `Manhattan Distance` Heuristic Evaluation class.
  * `Manhattan Distance` is a "Heuristic Evaluation" method,
  * which evaluates a Node `n` to be "far" from target Node `g`,
- * by summing all "Gridded" distances of misplaced `Marble`s.
+ * by summing all "Gridded" distances of misplaced `MarbleButtonView`s.
  * @see HeuristicEval
  */
 public class ManhattanDistance extends HeuristicEval {
@@ -49,7 +49,7 @@ public class ManhattanDistance extends HeuristicEval {
             for (int j = 0; j < dim; ++j) {
                 if (n_board[i][j].equals("_")) { continue; }
                 if (!g[i][j].equals(n_board[i][j])) {
-                    // If Marble[i, j] is not placed.
+                    // If MarbleButtonView[i, j] is not placed.
                     dist = manhattanDist(n_board[i][j], i, j, placed)
                             * costs.get(n_board[i][j]);
                     countMisplaced ++;
@@ -64,7 +64,7 @@ public class ManhattanDistance extends HeuristicEval {
         }
         /*Return the heuristic value, `h`, of
         * the given State, `s`, with an addition
-        * of the misplaced `Marble`s count*/
+        * of the misplaced `MarbleButtonView`s count*/
         return h + countMisplaced;
     }
 

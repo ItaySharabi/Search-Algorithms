@@ -56,7 +56,7 @@ public class Marble {
 
     @Override
     public String toString() {
-        return "Marble[" +
+        return "MarbleButtonView[" +
                 "`" + tag + "`,"
                 + "(" + i + "," + j + ")"
                 + "]";

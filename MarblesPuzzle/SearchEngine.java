@@ -25,29 +25,29 @@ public class SearchEngine {
     public static void main(String[] args) {
         IOHandler io;
         IProblem p;
+        io = new IOHandler("MarblesPuzzle/Inputs/input.txt");
+
+        // Extract execution info:
+        p = io.getProblem();
+        String algoName = io.getAlgorithmName();
+        boolean showOpenList = io.getVerbose();
+
+        prompt(p + "\n\n" +
+                " ~ Starting `" + algoName + "` search algorithm ~\n" +
+                "=======================================\n"
+                , showOpenList);
+
+        // Solve the problem
+        String solution = p.solve(algoName, showOpenList);
+
+        prompt("=======================================" +
+                "\n ~ `" + algoName + "` ~ has finished successfully!\n" +
+                "Open `output.txt` to see the solution for this problem!\n" +
+                "=======================================\n" +
+                solution
+                , showOpenList);
+
         try {
-            io = new IOHandler("MarblesPuzzle/Inputs/input.txt");
-
-            // Extract execution info:
-            p = io.getProblem();
-            String algoName = io.getAlgorithmName();
-            boolean showOpenList = io.getVerbose();
-
-            prompt(p + "\n\n" +
-                    " ~ Starting `" + algoName + "` search algorithm ~\n" +
-                    "=======================================\n"
-                    , showOpenList);
-
-            // Solve the problem
-            String solution = p.solve(algoName, showOpenList);
-
-            prompt("=======================================" +
-                    "\n ~ `" + algoName + "` ~ has finished successfully!\n" +
-                    "Open `output.txt` to see the solution for this problem!\n" +
-                    "=======================================\n" +
-                    solution
-                    , showOpenList);
-
             // Write out solution information
             io.write(solution, "MarblesPuzzle/output.txt");
 

@@ -18,6 +18,13 @@ public abstract class HeuristicEval implements Comparator<Node> {
 
     public HeuristicEval(IState goal){goalState = goal;}
 
+    public abstract int h(IState s); // Heuristic evaluation method to be implemented.
+
+    public int f(Node n) {
+        // f(n) = g(n) + h(n.getState())
+        return n.getWeight() + h(n.getState());
+    }
+
     @Override
     public int compare(Node n1, Node n2) {
         int f1 = f(n1), f2 = f(n2);
@@ -27,13 +34,6 @@ public abstract class HeuristicEval implements Comparator<Node> {
         else {
             return f1 - f2;
         }
-    }
-
-    public abstract int h(IState s);
-
-    public int f(Node n) {
-        // f(n) = g(n) + h(n.getState())
-        return n.getWeight() + h(n.getState());
     }
 
     public IState getGoalState() {

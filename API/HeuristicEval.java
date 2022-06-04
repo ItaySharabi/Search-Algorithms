@@ -1,7 +1,6 @@
 package API;
 
 import MarblesPuzzle.Heuristics.ManhattanDistance;
-import MarblesPuzzle.Model.State;
 
 import java.util.Comparator;
 
@@ -33,7 +32,8 @@ public abstract class HeuristicEval implements Comparator<Node> {
     public abstract int h(IState s);
 
     public int f(Node n) {
-        return n.getWeight() + h(n.getState()); // give a factor of x5 to the Heuristic value!
+        // f(n) = g(n) + h(n.getState())
+        return n.getWeight() + h(n.getState());
     }
 
     public IState getGoalState() {

@@ -39,8 +39,7 @@ public class SearchEngine {
                     , showOpenList);
 
             // Solve the problem
-            String solution =
-                    ProblemSolver.solve(p, algoName, showOpenList);
+            String solution = p.solve(algoName, showOpenList);
 
             prompt("=======================================" +
                     "\n ~ `" + algoName + "` ~ has finished successfully!\n" +

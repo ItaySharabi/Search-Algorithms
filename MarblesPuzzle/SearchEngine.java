@@ -58,6 +58,8 @@ public class SearchEngine {
     }
 
     private static void prompt(String message, boolean verbose) {
-        System.out.println(verbose ? message : "");
+        if (verbose) {
+            System.out.println(message);
+        }
     }
 }

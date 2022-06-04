@@ -18,21 +18,22 @@ import MarblesPuzzle.Model.Utils.Direction;
  */
 public abstract class Algorithm {
     protected String name = "~Algorithm~";
-    private long start_time;
     private final IState start, goal;
     private boolean withOpen;
 
-    public Algorithm(IProblem problem, boolean verbose) {
+    public Algorithm(IProblem p, boolean verbose) {
         this.withOpen = verbose;
-        start = problem.getInitialState();
-        goal = problem.getGoalState();
-        start_time = -1;
+        start = p.getInitialState();
+        goal = p.getGoalState();
     }
 
-    protected void timerOn() {
-        if (start_time == -1) {
-            start_time = System.currentTimeMillis();
+    public abstract String execute();
+
+    public void print(Node n) {
+        if (withOpen) {
+            System.out.println(n);
         }
+//        currentNode = n; // Maybe save currently processed node.
     }
 
     public IState getGoal() {
@@ -59,15 +60,13 @@ public abstract class Algorithm {
         return name;
     }
 
-    public abstract String execute();
-
-    public String output(String path, int cost) {
+    public String output(String path, int cost, long startTime) {
         if (null == path || path.isEmpty() || path.equals("no path")) {
             return "Path: Path could not be found!" +
                     "\nNum: " +
                     State.getBoardCount() +
                     "\nCost: inf" +
-                    "\ntime: " + (System.currentTimeMillis() - getStartTime())/1000.0;
+                    "\ntime: " + (System.currentTimeMillis() - startTime) / 1000.0;
         }
 
         if (withOpen) {
@@ -80,11 +79,7 @@ public abstract class Algorithm {
                     State.getBoardCount() +
                 "\nCost: " +
                 cost +
-                "\ntime: " + (System.currentTimeMillis() - getStartTime())/1000.0;
-    }
-
-    public long getStartTime() {
-        return this.start_time;
+                "\ntime: " + (System.currentTimeMillis() - startTime) / 1000.0;
     }
 
     protected String path(Node n) {

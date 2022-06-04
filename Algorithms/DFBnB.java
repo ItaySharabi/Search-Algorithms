@@ -1,6 +1,6 @@
-package Algorithms;
+package MarblesPuzzle.Algorithms;
 
-import API.*;
+import MarblesPuzzle.API.*;
 import MarblesPuzzle.Model.Operator;
 
 import java.util.*;

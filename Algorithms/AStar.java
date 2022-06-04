@@ -1,8 +1,7 @@
-package Algorithms;
+package MarblesPuzzle.Algorithms;
 
-import API.*;
+import MarblesPuzzle.API.*;
 import MarblesPuzzle.Model.Operator;
-import MarblesPuzzle.Model.State;
 
 import java.util.Hashtable;
 import java.util.PriorityQueue;

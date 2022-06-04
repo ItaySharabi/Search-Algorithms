@@ -11,7 +11,8 @@ import MarblesPuzzle.Model.Utils.Direction;
  * Algorithm abstract class.
  * This class defines basic functionalities of a `Search Algorithm`.
  * Abstract method `execute` is given to all algorithms, and methods
- * such as `path(n)` and `output()`.
+ * such as `path(n)` and `output()` are implemented once inside this class
+ * to inherit these abilities to all algorithms.
  * @see BFS - `Breadth-First` Search: A "Blind" search algorithm.
  * @see DFID - `Depth-First` Iterative Deepening: An iterative "DFS" search algorithm.
  * @see AStar - Informed search algorithm: An informed search algorithm, or a best-first search

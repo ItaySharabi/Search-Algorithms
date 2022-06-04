@@ -6,18 +6,17 @@ import MarblesPuzzle.Model.Operator;
 import java.util.Hashtable;
 
 public class DFID extends Algorithm {
-
+    private long startTime;
     public DFID(IProblem p, boolean verbose) {
         super(p, verbose);
         this.name = "DFID";
     }
 
     private String LimitedDFS(Node curr, int depth, Hashtable<IState, Node> workingBranch) {
-        if (withOpen()) {
-            System.out.println(curr);
-        }
+        print(curr);
+
         if (isGoal(curr)) {
-            return output(path(curr), curr.getWeight());
+            return output(path(curr), curr.getWeight(), startTime);
         } else if (depth == 0) {
             return "cutoff";
         }
@@ -54,8 +53,8 @@ public class DFID extends Algorithm {
         // Initialize Hashtable H to keep track of
         // current working branch
         Hashtable<IState, Node> H;
-        timerOn();
         String output;
+        startTime = System.currentTimeMillis();
 
         int l = Integer.MAX_VALUE; // limit
         for (int i = 1; i < l; ++i) {

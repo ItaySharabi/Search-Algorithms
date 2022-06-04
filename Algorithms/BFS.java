@@ -24,16 +24,18 @@ public class BFS extends Algorithm {
 
     @Override
     public String execute() {
-        timerOn();
         Node curr;
+        long startTime = System.currentTimeMillis();
+
         while (!Q.isEmpty()) {
             curr = Q.poll();
-            // Do exploring...
-            if (withOpen()) {
-                System.out.println(curr);
-            }
+
+            print(curr);
+
             frontier.remove(curr.getState());
             exploredSet.put(curr.getState(), curr);
+
+            // Do exploring...
             // Apply allowed operators on any movable marble from current board state:
             for (IOperator operator : Operator.allowedOperators(curr)) {
                 IState g = operator.apply();
@@ -41,7 +43,7 @@ public class BFS extends Algorithm {
                 if (!(frontier.containsKey(g) || exploredSet.containsKey(g))) {
                     Node next = new Node(curr, g);
                     if (isGoal(g)) {
-                        return output(path(next), next.getWeight());
+                        return output(path(next), next.getWeight(), startTime);
                     } else {
                         frontier.put(g, next);
                         Q.add(next);
@@ -49,6 +51,6 @@ public class BFS extends Algorithm {
                 }
             }
         }
-        return output(path(null), -1);
+        return output(path(null), -1, startTime);
     }
 }

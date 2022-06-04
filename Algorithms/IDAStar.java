@@ -29,8 +29,8 @@ public class IDAStar extends Algorithm {
         int _f;
         Node curr;
         final boolean OUT_OF_THE_STACK = false;
-        t = heuristics.h(start);
-        timerOn();
+        long startTime = System.currentTimeMillis();
+
         while (t != Integer.MAX_VALUE) {
             // Minimum heuristic val threshold
             int minF = Integer.MAX_VALUE;
@@ -77,7 +77,7 @@ public class IDAStar extends Algorithm {
                                 }
                             }
                             if (isGoal(g)) {
-                                return output(path(next), next.getWeight());
+                                return output(path(next), next.getWeight(), startTime);
                             }
                             STK.add(next);
                             frontier.put(g, next);
@@ -86,6 +86,6 @@ public class IDAStar extends Algorithm {
                 }
             t = minF;
         }
-        return output(path(null), -1);
+        return output(path(null), -1, startTime);
     }
 }

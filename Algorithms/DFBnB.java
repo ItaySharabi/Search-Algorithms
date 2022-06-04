@@ -29,13 +29,13 @@ public class DFBnB extends Algorithm {
         // Threshold
         int t = Integer.MAX_VALUE;
         Node n;
-        timerOn();
+        long startTime = System.currentTimeMillis();
+
         while (!STK.isEmpty()) {
 
             n = STK.pop();
-            if (withOpen()) {
-                System.out.println(n);
-            }
+            print(n);
+
             if (n.isOut()) {
                 frontier.remove(n.getState());
             } else {
@@ -69,7 +69,7 @@ public class DFBnB extends Algorithm {
                         // If we've reached here -
                         // then f(child) < t
                         t = heuristics.f(child);
-                        result = output(path(child), child.getWeight());
+                        result = output(path(child), child.getWeight(), startTime);
                         int thresh_ = N.indexOf(child);
                         N.removeIf(boardState -> thresh_ <= N.indexOf(boardState));
                     }
@@ -81,7 +81,7 @@ public class DFBnB extends Algorithm {
                 }
             }
         }
-        if (null == result) {return output(path(null), Integer.MAX_VALUE);}
+        if (null == result) {return output(path(null), -1, startTime);}
         return result;
     }
 }

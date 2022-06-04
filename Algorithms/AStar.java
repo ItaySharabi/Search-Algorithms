@@ -24,22 +24,22 @@ public class AStar extends Algorithm {
         PQ = new PriorityQueue<>(h);
         frontier = new Hashtable<>();
         exploredSet = new Hashtable<>();
+        Node n = new Node(getStart());
+        PQ.add(n);
+        frontier.put(getStart(), n);
     }
 
     @Override
     public String execute() {
-        timerOn();
-        Node n = new Node(getStart());
+        Node n;
         IState g;
-        PQ.add(n);
-        frontier.put(getStart(), n);
+        long startTime = System.currentTimeMillis();
 
         while (!PQ.isEmpty()) {
 
             n = PQ.poll();
-            if(withOpen()) {
-                System.out.println(n);
-            }
+
+            print(n);
             frontier.remove(n.getState());
 
             exploredSet.put(n.getState(), n);
@@ -47,7 +47,7 @@ public class AStar extends Algorithm {
                 g = operator.apply();
                 Node next = new Node(n, g);
                 if (isGoal(g)) {
-                    return output(path(next), next.getWeight());
+                    return output(path(next), next.getWeight(), startTime);
                 }
                 if (!exploredSet.containsKey(g) && !frontier.contains(g)) {
                     PQ.add(next);
@@ -60,6 +60,6 @@ public class AStar extends Algorithm {
                 }
             }
         }
-        return output(path(null), -1);
+        return output(path(null), -1, startTime);
     }
 }

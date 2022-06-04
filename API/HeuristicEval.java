@@ -7,8 +7,8 @@ import java.util.Comparator;
 /**
  * Heuristic Evaluation abstraction class.
  * This is a Comparator class, which compares
- * `src.Model.Node`s by their f(n) value.
- * The f(n) value of a `src.Model.Node` n - is the heuristic evaluation
+ * `Node`s by their f(n) value.
+ * The f(n) value of a `Node` n - is the heuristic evaluation
  * of the node, h(n), and some cost function, g(n).
  * There are many different heuristic evaluation methods available.
  * @see ManhattanDistance

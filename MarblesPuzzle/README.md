@@ -1,4 +1,4 @@
-# Marbles Puzzle Game Solving Algorithms
+# Marbles Puzzle - Game Solving
 This project is all about finding (The best?) solutions for
 a certain problem, for instance: `Arrange the Marbles` Game,
 which is a very simple game, but when it comes to figuring out

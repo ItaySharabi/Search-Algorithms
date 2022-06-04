@@ -1,15 +1,20 @@
 # AI-Search-Algorithms
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="java" height="40"/>
 
+[![Build](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml)
 
 # How to Run?
 
-Simply download this repository's source files,
-or,
-you can use a `git bash` terminal (On windows).
+Download this repository's source files by clicking Code -> Download ZIP:
 
-To clone this repository using the command:
+<img src="https://user-images.githubusercontent.com/63110245/171963689-c52f95d4-007a-4da9-95a9-c15bf408bfd9.png" height=300 width=350>
+
+or,
+you can use a `git bash` terminal (On windows) to clone this repository by running the command:
 
 `git clone https://github.com/ItaySharabi/AI-Search-Algorithms.git`
+
+<img src="https://user-images.githubusercontent.com/63110245/171963918-20077df2-c190-47df-8a15-c7f638a37193.png" height=90 width=650>
 
 After you have the source files:
 

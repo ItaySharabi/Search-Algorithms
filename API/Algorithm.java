@@ -60,7 +60,9 @@ public abstract class Algorithm {
     public String getName() {
         return name;
     }
-
+    
+    /* The methods below are only compatible with `State` objects and in the future will be refactored into more generic methods */
+    
     public String output(String path, int cost, long startTime) {
         if (null == path || path.isEmpty() || path.equals("no path")) {
             return "Path: Path could not be found!" +

@@ -56,9 +56,9 @@ public class DFBnB extends Algorithm {
                         int thresh_ = N.indexOf(child);
                         N.removeIf(boardState -> thresh_ <= N.indexOf(boardState));
 
-                    } else if (frontier.contains(child) && frontier.get(child.getState()).isOut()) {
+                    } else if (frontier.contains(child.getState()) && frontier.get(child.getState()).isOut()) {
                         N.remove(child);
-                    } else if (frontier.contains(child) && (!frontier.get(child.getState()).isOut())) {
+                    } else if (frontier.contains(child.getState()) && (!frontier.get(child.getState()).isOut())) {
                         if (heuristics.f(frontier.get(child.getState())) <= heuristics.f(child)) {
                             N.remove(child);
                         } else {

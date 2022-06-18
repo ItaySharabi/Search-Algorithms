@@ -1,4 +1,4 @@
-A*
+IDA*
 with open
 big
 _,R,Y,G,_

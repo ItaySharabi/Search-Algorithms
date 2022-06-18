@@ -73,6 +73,7 @@ public class DFBnB extends Algorithm {
                         int thresh_ = N.indexOf(child);
                         N.removeIf(boardState -> thresh_ <= N.indexOf(boardState));
                     }
+                    N.sort(heuristics);
                     Collections.reverse(N);
                     STK.addAll(N);
                     for (Node c : N) {

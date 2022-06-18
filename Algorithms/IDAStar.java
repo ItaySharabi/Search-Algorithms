@@ -46,41 +46,45 @@ public class IDAStar extends Algorithm {
                 }
                 if (n.isOut()) {
                     frontier.remove(n.getState());
-                } else {
+                }
+                else {
                     n.markAsOut();
                     STK.add(n);
 
                     IState g;
                     for (IOperator operator : Operator.allowedOperators(n)) {
                         g = operator.apply();
-                            _f =  // f(x) = h(x.getState()) + g(x)
-                                    heuristics
-                                    .h(g)
-                                    + n.getWeight(); // == g(x)
-                            if (_f > t) {
-                                minF = Math.min(minF, _f);
-                                continue;
-                            }
-                            if (frontier.contains(g) && frontier.get(g).isOut()) {
-                                continue;
-                            }
-                            Node next = new Node(n, g);
+                        _f =  // f(x) = h(x.getState()) + g(x)
+                                heuristics
+                                .h(g)
+                                + n.getWeight(); // == g(x)
+                        if (_f > t) {
+                            minF = Math.min(minF, _f);
+                            continue;
+                        }
+                        if (frontier.contains(g) && frontier.get(g).isOut()) {
+                            continue;
+                        }
 
-                            if (frontier.contains(g) && !frontier.get(g).isOut()) {
-                                if (heuristics.
-                                        f(frontier.get(g)) >
-                                        heuristics.f(next)) {
+                        Node next = new Node(n, g);
+
+                        if (isGoal(g)) {
+                            return output(path(next), next.getWeight(), startTime);
+                        }
+                        if (frontier.contains(g) && !frontier.get(g).isOut()) {
+                            if (heuristics.
+                                f(frontier.get(g)) >
+                                heuristics.f(next)) {
                                     STK.remove(frontier.get(g));
                                     frontier.remove(g);
-                                } else {
-                                    continue;
-                                }
                             }
-                            if (isGoal(g)) {
-                                return output(path(next), next.getWeight(), startTime);
+                            else {
+                                continue;
                             }
-                            STK.add(next);
-                            frontier.put(g, next);
+                        }
+
+                        STK.add(next);
+                        frontier.put(g, next);
                         }
                     }
                 }

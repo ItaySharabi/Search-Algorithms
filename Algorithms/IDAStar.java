@@ -26,20 +26,20 @@ public class IDAStar extends Algorithm {
 
     @Override
     public String execute() {
-        int _f;
-        Node curr;
+        int _f, minF;
+        Node curr, n;
         long startTime = System.currentTimeMillis();
 
         while (t != Integer.MAX_VALUE) {
-            // Minimum heuristic val threshold
-            int minF = Integer.MAX_VALUE;
+            // Minimum f(x) value we have seen through an iteration
+            minF = Integer.MAX_VALUE;
             curr = new Node(start);
-            curr.setTag(false); // Not marked
+            curr.setTag(false); // Means node is out of the stack
             STK.add(curr);
             frontier.put(start, curr);
 
             while (!STK.isEmpty()) {
-                Node n = STK.pop();
+                n = STK.pop();
                 if (withOpen()) {
                     System.out.println(n);
                 }

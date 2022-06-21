@@ -39,15 +39,18 @@ public class AStar extends Algorithm {
             n = PQ.poll();
 
             print(n);
-            frontier.remove(n.getState());
+            if (isGoal(n)) {
+                return output(path(n), n.getWeight(), startTime);
+            }
 
+            frontier.remove(n.getState());
             exploredSet.put(n.getState(), n);
+
+            // Expanding node `n`
             for (IOperator operator : Operator.allowedOperators(n)){
                 g = operator.apply();
                 Node next = new Node(n, g);
-                if (isGoal(g)) {
-                    return output(path(next), next.getWeight(), startTime);
-                }
+
                 if (!exploredSet.containsKey(g) && !frontier.contains(g)) {
                     PQ.add(next);
                     frontier.put(g, next);

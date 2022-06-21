@@ -28,14 +28,13 @@ public class IDAStar extends Algorithm {
     public String execute() {
         int _f;
         Node curr;
-        final boolean OUT_OF_THE_STACK = false;
         long startTime = System.currentTimeMillis();
 
         while (t != Integer.MAX_VALUE) {
             // Minimum heuristic val threshold
             int minF = Integer.MAX_VALUE;
             curr = new Node(start);
-            curr.setTag(OUT_OF_THE_STACK);
+            curr.setTag(false); // Not marked
             STK.add(curr);
             frontier.put(start, curr);
 
@@ -48,7 +47,9 @@ public class IDAStar extends Algorithm {
                     frontier.remove(n.getState());
                 }
                 else {
+                    // Mark the node to be removed next time it's added to the stack
                     n.markAsOut();
+                    // Push back to the stack
                     STK.add(n);
 
                     IState g;
@@ -67,10 +68,6 @@ public class IDAStar extends Algorithm {
                         }
 
                         Node next = new Node(n, g);
-
-                        if (isGoal(g)) {
-                            return output(path(next), next.getWeight(), startTime);
-                        }
                         if (frontier.contains(g) && !frontier.get(g).isOut()) {
                             if (heuristics.
                                 f(frontier.get(g)) >
@@ -81,6 +78,10 @@ public class IDAStar extends Algorithm {
                             else {
                                 continue;
                             }
+                        }
+
+                        if (isGoal(next)) {
+                            return output(path(next), next.getWeight(), startTime);
                         }
 
                         STK.add(next);

@@ -53,9 +53,21 @@ public class State implements IState {
      * This helps with generating the exact amount of boards during the algorithm's execution time.
      */
     private void setIdentifier() {
-        String h = Arrays.deepToString(board);
-        hashCode = h.hashCode()
-                /*And to ensure uniqueness:*/ * 61 * 31; // Prime numbers (7'th and 14'th).
+        // String h = Arrays.deepToString(board);
+        // hashCode = h.hashCode()
+        //         /*And to ensure uniqueness:*/ * 61 * 31; // Prime numbers (7'th and 14'th).
+        
+        StringBuilder id = new StringBuilder();
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                id.append(board[i][j]);
+            }
+        }
+        String s = id.toString();
+
+        for (int i = 0; i < s.length(); i++) {
+            hashCode += (((int)Math.pow(dim, i) * s.charAt(i)) % m);
+        }
     }
 
     public State(IState b, Pair p) {
